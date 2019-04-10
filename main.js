@@ -6,12 +6,14 @@ function render(components) {
     webix.ui({
         type: "wide",
         cols: [
+            // панель управления
             {
                 id: "control",
                 rows: components.controlPanel(),
             },
+            // кнопка "Расписание" на панели управления
             {
-                id: "control_menu_1_data",
+                id: "control_menu_1_1_data",
                 container: "",
                 hidden: false,
                 // контент расписания
@@ -21,88 +23,197 @@ function render(components) {
                         height: 40,
                     },
                     { 
-                        view:"toolbar", 
-                        type:"MainBar", 
+                        view:"scrollview", 
+                        scroll:false, 
                         height: 40,
-                        elements:[
-                            { 
-                                view:"datepicker", 
-                                label:"Start date", 
-                                name:"start", 
-                                width: 200,
-                                stringResult:true 
-                            },
-                            { 
-                                view:"datepicker", 
-                                label:"End date", 
-                                name:"end", 
-                                width: 200,
-                                stringResult:true 
+                        body:{
+                            view:"daterangepicker",
+                            width: 300,
+                            label:"Период", 
+                        }
+                    },
+                    { 
+                        rows: [
+                            {  
+                                view:"scrollview", 
+                                scroll:"x",
+                                body:{
+                                    view:"dataview", 
+                                    select: true,
+                                    xCount:8, // длина массива расписания
+                                    template:"<div class='webix_strong'>#date#</div><div>#schedule#</div>",
+                                    data: components.schedule("self"),
+                                }
                             },
                         ]
                     },
-                    { 
-                        view:"scrollview", 
-                        id:"scrollview", 
-                        scroll:"x", 
-                        body:{
-                            cols: components.schedule("self") 
-                        }
-                    },
                 ]
             },
+                {
+                    id: "control_menu_1_2_1_data",
+                    container: "",
+                    hidden: true,
+                    // контент расписания
+                    rows: [
+                        { 
+                            template: "Сотрудник 1", 
+                            height: 40,
+                        },
+                        { 
+                            view:"scrollview", 
+                            scroll:false, 
+                            height: 40,
+                            body:{
+                                view:"daterangepicker",
+                                width: 300,
+                                label:"Период", 
+                            }
+                        },
+                        { 
+                            rows: [
+                                {  
+                                    view:"scrollview", 
+                                    scroll:"x",
+                                    body:{
+                                        view:"dataview", 
+                                        select: true,
+                                        xCount:8, // длина массива расписания
+                                        template:"<div class='webix_strong'>#date#</div><div>#schedule#</div>",
+                                        data: components.schedule("сотрудник 1"),
+                                    }
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id: "control_menu_1_2_2_data",
+                    container: "",
+                    hidden: true,
+                    // контент расписания
+                    rows: [
+                        { 
+                            template: "Сотрудник 2", 
+                            height: 40,
+                        },
+                        { 
+                            view:"scrollview", 
+                            scroll:false, 
+                            height: 40,
+                            body:{
+                                view:"daterangepicker",
+                                width: 300,
+                                label:"Период", 
+                            }
+                        },
+                        { 
+                            rows: [
+                                {  
+                                    view:"scrollview", 
+                                    scroll:"x",
+                                    body:{
+                                        view:"dataview", 
+                                        select: true,
+                                        xCount:8, // длина массива расписания
+                                        template:"<div class='webix_strong'>#date#</div><div>#schedule#</div>",
+                                        data: components.schedule("сотрудник 2"),
+                                    }
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id: "control_menu_1_2_3_data",
+                    container: "",
+                    hidden: true,
+                    // контент расписания
+                    rows: [
+                        { 
+                            template: "Сотрудник 3", 
+                            height: 40,
+                        },
+                        { 
+                            view:"scrollview", 
+                            scroll:false, 
+                            height: 40,
+                            body:{
+                                view:"daterangepicker",
+                                width: 300,
+                                label:"Период", 
+                            }
+                        },
+                        { 
+                            rows: [
+                                {  
+                                    view:"scrollview", 
+                                    scroll:"x",
+                                    body:{
+                                        view:"dataview", 
+                                        select: true,
+                                        xCount:8, // длина массива расписания
+                                        template:"<div class='webix_strong'>#date#</div><div>#schedule#</div>",
+                                        data: components.schedule("сотрудник 3"),
+                                    }
+                                },
+                            ]
+                        },
+                    ]
+                },
+            // кнопка "Редактирование" на панели управления
             {
                 id: "control_menu_2_data",
+                container: "",
+                autowidth: true,
                 hidden: true,
-                // контент редактирования
+                // контент расписания
                 rows: [
                     { 
                         template: "Редактирование", 
                         height: 40,
                     },
                     { 
-                        view:"toolbar", 
-                        type:"MainBar", 
+                        view:"scrollview", 
+                        scroll:false, 
                         height: 40,
-                        elements:[
-                            { 
-                                view:"datepicker", 
-                                label:"Start date", 
-                                name:"start", 
-                                width: 200,
-                                stringResult:true 
-                            },
-                            { 
-                                view:"datepicker", 
-                                label:"End date", 
-                                name:"end", 
-                                width: 200,
-                                stringResult:true 
+                        body:{
+                            view:"daterangepicker",
+                            width: 300,
+                            label:"Период", 
+                        }
+                    },
+                    { 
+                        rows: [
+                            {  
+                                view:"scrollview", 
+                                scroll:"x",
+                                body:{
+                                    view:"dataview", 
+                                    select: true,
+                                    xCount:8, // длина массива расписания
+                                    template:"<div class='webix_strong'>#date#</div><div>#schedule#</div>",
+                                    data: components.edit("self"),
+                                }
                             },
                         ]
                     },
-                    { 
-                        view:"scrollview", 
-                        id:"scrollview", 
-                        scroll:"x", 
-                        body:{
-                            cols: components.edit("self") 
-                        }
-                    },
                 ]
             },
+            // кнопка "Настройки" на панели управления
             {
                 id: "control_menu_3_data",
                 hidden: true,
                 // контент настроек
                 template: "Настройки",
             },
+            // кнопка "Помощь" на панели управления
             {
                 id: "control_menu_4_data",
                 hidden: true,
                 // контент помощи
                 template: "Помощь",
             },
+            // кнопка "Выход" на панели управления
             {
                 id: "control_menu_5_data",
                 hidden: true,
@@ -114,7 +225,7 @@ function render(components) {
 
 function components() {
     this.controlPanel = function () {
-        var currentContent = "control_menu_1_data";
+        var currentContent = "control_menu_1_1_data";
 
         return controlPanel = [
             {
@@ -160,23 +271,7 @@ function components() {
                                         }
                                     ],
                                 },
-                                {
-                                    id: "control_menu_1_3",
-                                    value: "Группа 2",
-                                    data: [{
-                                            id: "control_menu_1_3_1",
-                                            value: "Сотрудник 4"
-                                        },
-                                        {
-                                            id: "control_menu_1_3_2",
-                                            value: "Сотрудник 5"
-                                        },
-                                        {
-                                            id: "control_menu_1_3_3",
-                                            value: "Сотрудник 6"
-                                        }
-                                    ]
-                                }
+                                
                             ],
                         },
                     },
@@ -226,10 +321,12 @@ function components() {
                 on:{
                     onMenuItemClick:function(id){
                         if ($$(id+"_data") != undefined) {
-                            console.log(id);
                             $$(currentContent).hide();
                             $$(id+"_data").show();
                             currentContent = id+"_data";
+
+                            // console.log($$("control_menu").getMenuItem(id).value);
+                            // $$("content_title").setHTML($$("control_menu").getMenuItem(id).value);
                         }
                     }
                 },
@@ -243,265 +340,65 @@ function components() {
     /**
      * расписание - массив таблиц(для каждого дня своя таблица),
      */
-    this.schedule = function (key) {
-        switch (key) {
-            case "self":
-                return [
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"10.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable",
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"11.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"12.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"15.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-11", width:100 },
-                            { schedule:"14-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"16.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"17.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"18.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"19.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable",
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"22.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"23.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable",
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"24.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"25.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"26.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"27.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                ];
-        
-            default: break;
-        }
-            
-    }
     this.edit = function (key) {
         switch (key) {
             case "self":
                 return [
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"10.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable",
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"11.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"12.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"15.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-11", width:100 },
-                            { schedule:"14-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"16.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"17.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"18.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
-                    {
-                        view:"datatable", 
-                        scroll: false,
-                        autowidth: true,
-                        columns:[
-                            { id:"schedule", header:"19.04.2019", width:100 },
-                        ],
-                        data: [
-                            { schedule:"9-18", width:100 },
-                        ]
-                    },
+                    {date:"10.04.2019", schedule:"9-18"},
+                    {date:"11.04.2019", schedule:"9-18"},
+                    {date:"12.04.2019", schedule:"9-18"},
+                    {date:"15.04.2019", schedule:"9-14"},
+                    {date:"16.04.2019", schedule:"9-18"},
+                    {date:"17.04.2019", schedule:"9-18"},
+                    {date:"18.04.2019", schedule:"9-18"},
                 ];
+            default: break;
+        }
+            
+    }
+    this.schedule = function (key) {
+        switch (key) {
+            case "self":
+                return [
+                    {date:"10.04.2019", schedule:"9-18"},
+                    {date:"11.04.2019", schedule:"9-18"},
+                    {date:"12.04.2019", schedule:"9-18"},
+                    {date:"15.04.2019", schedule:"9-14"},
+                    {date:"16.04.2019", schedule:"9-18"},
+                    {date:"17.04.2019", schedule:"9-18"},
+                    {date:"18.04.2019", schedule:"9-18"},
+                    {date:"19.04.2019", schedule:"9-18"},
+                ];
+                case "сотрудник 1":
+                    return [
+                        {date:"10.04.2019", schedule:"14-18"},
+                        {date:"11.04.2019", schedule:"14-18"},
+                        {date:"12.04.2019", schedule:"14-18"},
+                        {date:"15.04.2019", schedule:"9-14"},
+                        {date:"16.04.2019", schedule:"14-18"},
+                        {date:"17.04.2019", schedule:"14-18"},
+                        {date:"18.04.2019", schedule:"14-18"},
+                    ];
+                case "сотрудник 2":
+                    return [
+                        {date:"10.04.2019", schedule:"9-18"},
+                        {date:"11.04.2019", schedule:"9-18"},
+                        {date:"12.04.2019", schedule:"9-18"},
+                        {date:"15.04.2019", schedule:"9-18"},
+                        {date:"16.04.2019", schedule:"9-18"},
+                        {date:"17.04.2019", schedule:"9-18"},
+                        {date:"18.04.2019", schedule:"9-18"},
+                    ];
+                case "сотрудник 3":
+                    return [
+                        {date:"10.04.2019", schedule:"14-18"},
+                        {date:"11.04.2019", schedule:"9-18"},
+                        {date:"12.04.2019", schedule:"9-18"},
+                        {date:"15.04.2019", schedule:"14-18"},
+                        {date:"16.04.2019", schedule:"9-18"},
+                        {date:"17.04.2019", schedule:"9-18"},
+                        {date:"18.04.2019", schedule:"14-18"},
+                    ];
         
             default: break;
         }
