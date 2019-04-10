@@ -17,7 +17,7 @@ function render(components) {
                 // контент расписания
                 rows: [
                     { 
-                        template: "Мое расписание", 
+                        template: "Расписание", 
                         height: 40,
                     },
                     { 
@@ -55,7 +55,41 @@ function render(components) {
                 id: "control_menu_2_data",
                 hidden: true,
                 // контент редактирования
-                template: "редактирование",
+                rows: [
+                    { 
+                        template: "Редактирование", 
+                        height: 40,
+                    },
+                    { 
+                        view:"toolbar", 
+                        type:"MainBar", 
+                        height: 40,
+                        elements:[
+                            { 
+                                view:"datepicker", 
+                                label:"Start date", 
+                                name:"start", 
+                                width: 200,
+                                stringResult:true 
+                            },
+                            { 
+                                view:"datepicker", 
+                                label:"End date", 
+                                name:"end", 
+                                width: 200,
+                                stringResult:true 
+                            },
+                        ]
+                    },
+                    { 
+                        view:"scrollview", 
+                        id:"scrollview", 
+                        scroll:"x", 
+                        body:{
+                            cols: components.edit("self") 
+                        }
+                    },
+                ]
             },
             {
                 id: "control_menu_3_data",
@@ -363,6 +397,105 @@ function components() {
                         autowidth: true,
                         columns:[
                             { id:"schedule", header:"27.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-18", width:100 },
+                        ]
+                    },
+                ];
+        
+            default: break;
+        }
+            
+    }
+    this.edit = function (key) {
+        switch (key) {
+            case "self":
+                return [
+                    {
+                        view:"datatable", 
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"10.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-18", width:100 },
+                        ]
+                    },
+                    {
+                        view:"datatable",
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"11.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-18", width:100 },
+                        ]
+                    },
+                    {
+                        view:"datatable", 
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"12.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-18", width:100 },
+                        ]
+                    },
+                    {
+                        view:"datatable", 
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"15.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-11", width:100 },
+                            { schedule:"14-18", width:100 },
+                        ]
+                    },
+                    {
+                        view:"datatable", 
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"16.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-18", width:100 },
+                        ]
+                    },
+                    {
+                        view:"datatable", 
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"17.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-18", width:100 },
+                        ]
+                    },
+                    {
+                        view:"datatable", 
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"18.04.2019", width:100 },
+                        ],
+                        data: [
+                            { schedule:"9-18", width:100 },
+                        ]
+                    },
+                    {
+                        view:"datatable", 
+                        scroll: false,
+                        autowidth: true,
+                        columns:[
+                            { id:"schedule", header:"19.04.2019", width:100 },
                         ],
                         data: [
                             { schedule:"9-18", width:100 },
