@@ -11,7 +11,7 @@ function render(components) {
                 rows: components.controlPanel(),
             },
             {
-                id: "control_menu_1_1_data",
+                id: "control_menu_1_data",
                 container: "",
                 hidden: false,
                 // контент расписания
@@ -21,8 +21,25 @@ function render(components) {
                         height: 40,
                     },
                     { 
-                        template: "промежутки", 
+                        view:"toolbar", 
+                        type:"MainBar", 
                         height: 40,
+                        elements:[
+                            { 
+                                view:"datepicker", 
+                                label:"Start date", 
+                                name:"start", 
+                                width: 200,
+                                stringResult:true 
+                            },
+                            { 
+                                view:"datepicker", 
+                                label:"End date", 
+                                name:"end", 
+                                width: 200,
+                                stringResult:true 
+                            },
+                        ]
                     },
                     { 
                         view:"scrollview", 
@@ -63,7 +80,7 @@ function render(components) {
 
 function components() {
     this.controlPanel = function () {
-        var currentContent = "control_menu_1_1_data";
+        var currentContent = "control_menu_1_data";
 
         return controlPanel = [
             {
