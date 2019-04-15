@@ -189,33 +189,7 @@ function render(components) {
                                         autowidth: true,
                                         hidden: true,
                                         // контент расписания
-                                        rows: [
-                                            {
-                                                view:"scrollview", 
-                                                scroll:"x",
-                                                body:{
-                                                    view:"dataview_edit",
-                                                    id: "control_menu_2_1_data_view",
-                                                    xCount: components.scheduleData("self").length, // длина массива расписания
-                                                    editable:true,
-                                                    editor:"text",
-                                                    editValue:"schedule",
-                                                    editaction:"click",
-                                                    template: function (item) {
-                                                        var date = new Date(item.date);
-                                                        return "<div class='webix_strong'>"+date.toLocaleDateString()+"</div><div>"+item.schedule+"</div>";
-                                                    },
-                                                    data: components.scheduleData("self"),
-                                                    on:{
-                                                        onBeforeEditStop:function(state, editor){
-                                                            if (state.old != state.value) {
-                                                                webix.message("data was changed<br>from "+state.old+"<br>  on "+state.value); // #Значение
-                                                            }
-                                                        },
-                                                    },
-                                                }
-                                            },
-                                        ]
+                                        rows: []
                                     },
                                 ]
                             },
@@ -364,7 +338,7 @@ function components() {
                     {
                         // Кнопка меню "Редактирование"
                         id: "control_menu_2",
-                        value: "Редактирование",
+                        value: "Шаблоны",
                         data: {
                             container: "box",
                             height: 300,
@@ -372,23 +346,10 @@ function components() {
                             view: "tree",
                             select: true,
                             data: [
-                                // Кнопка сабменю "Мое расписание"
+                                // Кнопка сабменю "Шаблон 1"
                                 {
-                                    id: "control_menu_2_1",
-                                    value: "Мое расписание ред."
-                                },
-                                {
-                                    // Кнопка сабменю "Шаблоны"
-                                    id: "control_menu_2_2",
-                                    open: false,
-                                    value: "Шаблоны",
-                                    data: [
-                                        // Кнопка сабменю "Шаблон 1"
-                                        {
-                                            id: "control_menu_2_2_1",
-                                            value: "Шаблон 1"
-                                        }
-                                    ]
+                                    id: "control_menu_2_2_1",
+                                    value: "Шаблон 1"
                                 }
                             ],
                         },
