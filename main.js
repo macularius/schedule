@@ -10,14 +10,17 @@ function render(components) {
     webix.ui({
         type: "wide",
         cols: [
-            // панель управления
+            // control panel
             {
                 id: "control",
                 rows: components.controlPanel(),
             },
+            // content place
             {
                 rows:[
+                    // content title
                     {template: "Мое расписание", id:"content_title", height: 40},
+                    // content body
                     {
                         id: "content_body",
                         rows:[
@@ -35,19 +38,34 @@ function render(components) {
                                     on:{
                                         onChange: function(date){
                                             if (date) {
-                                                let scheduleData = components.scheduleDataWithDate("self", date); // #TODO контекст данных от currentContent("self")
+                                                let currentContentId = components.getCurrentDataId();
+                                                let scheduleData = components.scheduleDataWithDate(currentContentId, date);
                                                 webix.message("выбранная дата "+date.toLocaleDateString()); // #Значение даты редактирование
 
+                                                // обновление расписания по дате
                                                 if (scheduleData != null) {
                                                     $$(components.getCurrentContent()+"_view").data.clearAll();
-                                                    $$(components.getCurrentContent()+"_view").add(scheduleData, 0);
+                                                    // если данные массив, то перебераем массив
+                                                    if (scheduleData[0]) {
+                                                        let index = 0;
+                                                        scheduleData.forEach(item => {
+                                                            $$(components.getCurrentContent()+"_view").add(item, i++);
+                                                        });
+                                                    }
+                                                    // если данные атом, то добавляем их в content
+                                                    else{
+                                                        $$(components.getCurrentContent()+"_view").add(scheduleData, 0);                                                        
+                                                    }
                                                 }
                                             }
                                         },
                                     },
                                 },
                             },
-                            // контент расписаний
+                            /**
+                             * контент расписаний
+                             * между сегментами данной строки происходит переключение контента
+                             */
                             {
                                 rows: [
                                     // контент для кнопки "Расписание" на панели управления
@@ -199,11 +217,15 @@ function render(components) {
     });
 
     /**
-     * при нажатии clear на календаре в content place обновляются данные расписания на default(вызов метода components.scheduleData())
+     * при нажатии clear на календаре в content place 
+     * обновляются данные расписания на default(вызов метода components.scheduleData()).
+     * 
+     * календарь создается автоматически, при создании datapicker.
      */
     $$("$suggest1_calendar").attachEvent("onDateClear", function() {
         let index = 0;
-        let scheduleData = components.scheduleData("self");
+        let currentContentId = components.getCurrentDataId();
+        let scheduleData = components.scheduleData(currentContentId);
         webix.message("clear");
         $$(components.getCurrentContent()+"_view").data.clearAll();
         scheduleData.forEach(item => {
@@ -259,7 +281,17 @@ function components() {
         return currentContent;
     }
 
-    // панель управления
+    /**
+     * получение id массива данных текущего контента
+     * "control_menu_1_1_data" -> "1_1"
+     */ 
+    this.getCurrentDataId = function() {
+        let start = "control_menu_".length;
+        let end = currentContent.indexOf("_data");
+        return currentContent.slice(start, end);
+    }
+
+    // ui панель управления
     this.controlPanel = function () {
 
         return controlPanel = [
@@ -410,6 +442,8 @@ function components() {
     this.scheduleData = function (key) {
         switch (key) {
             case "self":
+            case "1_1":
+            case "2_1":
                 return data[0];
             case "1_2_1":
                 return data[1];
