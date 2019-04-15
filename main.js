@@ -63,10 +63,6 @@ function render(components) {
                                                             $$(components.getCurrentContent()+"_view").add(item, index++);
                                                         });
                                                     }
-                                                    // если данные атом, то добавляем их в content
-                                                    else{
-                                                        $$(components.getCurrentContent()+"_view").add(scheduleData, 0);                                                        
-                                                    }
                                                     // изменение ширины блока по количеству элементов данных
                                                     $$(components.getCurrentContent()+"_view").config.xCount = scheduleData.length;
                                                     $$(components.getCurrentContent()+"_view").resize();
