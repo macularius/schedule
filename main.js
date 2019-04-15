@@ -31,7 +31,7 @@ function render(components) {
                                 height: 40,
                                 body:{
                                     id: "schedule_date",
-                                    view:"datepicker", // #TODO перевести в datarange
+                                    view:"daterangepicker", // #TODO перевести в datarange
                                     format:"%d.%m.%Y",
                                     width: 300,
                                     label:"Период", 
@@ -40,7 +40,15 @@ function render(components) {
                                             if (date) {
                                                 let currentContentId = components.getCurrentDataId();
                                                 let scheduleData = components.scheduleDataWithDate(currentContentId, date);
-                                                webix.message("выбранная дата "+date.toLocaleDateString()); // #Значение даты редактирование
+                                                if (date.end) {
+                                                    webix.message("выбран промежуток\nс "+
+                                                                  date.start.toLocaleDateString()+
+                                                                  "\nпо "+
+                                                                  date.end.toLocaleDateString()); // #Значение даты редактирование
+                                                }
+                                                else{
+                                                    webix.message("выбранная дата "+date.start.toLocaleDateString()); // #Значение даты редактирование
+                                                }
 
                                                 // обновление расписания по дате
                                                 if (scheduleData != null) {
@@ -222,7 +230,7 @@ function render(components) {
      * 
      * календарь создается автоматически, при создании datapicker.
      */
-    $$("$suggest1_calendar").attachEvent("onDateClear", function() {
+    $$("$daterangesuggest1_daterange").attachEvent("onDateClear", function() {
         let index = 0;
         let currentContentId = components.getCurrentDataId();
         let scheduleData = components.scheduleData(currentContentId);
