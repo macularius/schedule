@@ -39,7 +39,7 @@ function render(components) {
                                         onChange: function(date){
                                             if (date) {
                                                 let currentContentId = components.getCurrentDataId();
-                                                let scheduleData = components.scheduleDataWithDate(currentContentId, date);
+                                                let scheduleData = components.scheduleDataWithDate(currentContentId, date.start, date.end);
                                                 if (date.end) {
                                                     webix.message("выбран промежуток\nс "+
                                                                   date.start.toLocaleDateString()+
@@ -47,7 +47,10 @@ function render(components) {
                                                                   date.end.toLocaleDateString()); // #Значение даты редактирование
                                                 }
                                                 else{
-                                                    webix.message("выбранная дата "+date.start.toLocaleDateString()); // #Значение даты редактирование
+                                                    // при нажатии clear data.start == null, в этом случае сообщение не выводится
+                                                    if (date.start) { 
+                                                        webix.message("выбранная дата "+date.start.toLocaleDateString()); // #Значение даты редактирование
+                                                    }
                                                 }
 
                                                 // обновление расписания по дате
@@ -57,13 +60,16 @@ function render(components) {
                                                     if (scheduleData[0]) {
                                                         let index = 0;
                                                         scheduleData.forEach(item => {
-                                                            $$(components.getCurrentContent()+"_view").add(item, i++);
+                                                            $$(components.getCurrentContent()+"_view").add(item, index++);
                                                         });
                                                     }
                                                     // если данные атом, то добавляем их в content
                                                     else{
                                                         $$(components.getCurrentContent()+"_view").add(scheduleData, 0);                                                        
                                                     }
+                                                    // изменение ширины блока по количеству элементов данных
+                                                    $$(components.getCurrentContent()+"_view").config.xCount = scheduleData.length;
+                                                    $$(components.getCurrentContent()+"_view").resize();
                                                 }
                                             }
                                         },
@@ -239,6 +245,9 @@ function render(components) {
         scheduleData.forEach(item => {
             $$(components.getCurrentContent()+"_view").add(item, index++);
         });
+        // изменение ширины блока по количеству элементов данных
+        $$(components.getCurrentContent()+"_view").config.xCount = scheduleData.length;
+        $$(components.getCurrentContent()+"_view").resize();
     });
 }
 
@@ -462,16 +471,27 @@ function components() {
             default: break;
         } 
     }
-    this.scheduleDataWithDate = function (key, date) {
+    this.scheduleDataWithDate = function (key, startDate, endDate) {
         var schedule = this.scheduleData(key);
-        var returnItem;
+        var returnItems = [];
 
-        schedule.forEach(item => {
-            if (item.date == date) {
-                returnItem = item;
-            }
-        });
-        return returnItem;
+        //console.log(arguments);
+
+        if (endDate) {
+            schedule.forEach(item => {
+                if (Date.parse(item.date) >= Date.parse(startDate) && Date.parse(item.date) <= Date.parse(endDate)) {
+                    returnItems.push(item);
+                }
+            });
+        }
+        else{
+            schedule.forEach(item => {
+                if (item.date == startDate) {
+                    returnItems.push(item);
+                }
+            });
+        }
+        return returnItems;
     }
 
     this.editSchedule = function(value, editor) {
