@@ -28,26 +28,26 @@ function render(components) {
                                 height: 40,
                                 body:{
                                     id: "schedule_date",
-                                    view:"datepicker",
+                                    view:"datepicker", // #TODO перевести в datarange
                                     format:"%d.%m.%Y",
                                     width: 300,
                                     label:"Период", 
                                     on:{
                                         onChange: function(date){
-                                            if (date != "") {
+                                            if (date) {
+                                                let scheduleData = components.scheduleDataWithDate("self", date); // #TODO контекст данных от currentContent("self")
                                                 webix.message("выбранная дата "+date.toLocaleDateString()); // #Значение даты редактирование
 
-                                                if (components.scheduleDataWithDate("self", date) != null) {
+                                                if (scheduleData != null) {
                                                     $$(components.getCurrentContent()+"_view").data.clearAll();
-                                                    $$(components.getCurrentContent()+"_view").add(components.scheduleDataWithDate("self", date), 0);
-                                                    $$(components.getCurrentContent()+"_view").refresh();
+                                                    $$(components.getCurrentContent()+"_view").add(scheduleData, 0);
                                                 }
                                             }
-                                        }
+                                        },
                                     },
                                 },
                             },
-                            // таблицы расписаний
+                            // контент расписаний
                             {
                                 rows: [
                                     // контент для кнопки "Расписание" на панели управления
@@ -93,14 +93,15 @@ function render(components) {
                                                     view:"scrollview", 
                                                     scroll:"x",
                                                     body:{
-                                                        view:"dataview", 
+                                                        view:"dataview",
+                                                        id: "control_menu_1_2_1_data_view",
                                                         select: true,
-                                                        xCount: components.scheduleData("сотрудник 1").length, // длина массива расписания
+                                                        xCount: components.scheduleData("1_2_1").length, // длина массива расписания
                                                         template: function (item) {
                                                             var date = new Date(item.date);
                                                             return "<div class='webix_strong'>"+date.toLocaleDateString()+"</div><div>"+item.schedule+"</div>";
                                                         },
-                                                        data: components.scheduleData("сотрудник 1"),
+                                                        data: components.scheduleData("1_2_1"),
                                                     }
                                                 },
                                             ]
@@ -113,17 +114,18 @@ function render(components) {
                                             // контент расписания
                                             rows: [
                                                 {  
-                                                    view:"scrollview", 
+                                                    view:"scrollview",
+                                                    id: "control_menu_1_2_2_data_view",
                                                     scroll:"x",
                                                     body:{
                                                         view:"dataview", 
                                                         select: true,
-                                                        xCount: components.scheduleData("сотрудник 2").length, // длина массива расписания
+                                                        xCount: components.scheduleData("1_2_2").length, // длина массива расписания
                                                         template: function (item) {
                                                             var date = new Date(item.date);
                                                             return "<div class='webix_strong'>"+date.toLocaleDateString()+"</div><div>"+item.schedule+"</div>";
                                                         },
-                                                        data: components.scheduleData("сотрудник 2"),
+                                                        data: components.scheduleData("1_2_2"),
                                                     }
                                                 },
                                             ]
@@ -136,17 +138,18 @@ function render(components) {
                                             // контент расписания
                                             rows: [
                                                 {  
-                                                    view:"scrollview", 
+                                                    view:"scrollview",
+                                                    id: "control_menu_1_2_3_data_view",
                                                     scroll:"x",
                                                     body:{
                                                         view:"dataview", 
                                                         select: true,
-                                                        xCount: components.scheduleData("сотрудник 3").length, // длина массива расписания
+                                                        xCount: components.scheduleData("1_2_3").length, // длина массива расписания
                                                         template: function (item) {
                                                             var date = new Date(item.date);
                                                             return "<div class='webix_strong'>"+date.toLocaleDateString()+"</div><div>"+item.schedule+"</div>";
                                                         },
-                                                        data: components.scheduleData("сотрудник 3"),
+                                                        data: components.scheduleData("1_2_3"),
                                                     }
                                                 },
                                             ]
@@ -164,6 +167,7 @@ function render(components) {
                                                 scroll:"x",
                                                 body:{
                                                     view:"dataview_edit",
+                                                    id: "control_menu_2_1_data_view",
                                                     xCount: components.scheduleData("self").length, // длина массива расписания
                                                     editable:true,
                                                     editor:"text",
@@ -194,11 +198,23 @@ function render(components) {
         ],
     });
 
+    /**
+     * при нажатии clear на календаре в content place обновляются данные расписания на default(вызов метода components.scheduleData())
+     */
+    $$("$suggest1_calendar").attachEvent("onDateClear", function() {
+        let index = 0;
+        let scheduleData = components.scheduleData("self");
+        webix.message("clear");
+        $$(components.getCurrentContent()+"_view").data.clearAll();
+        scheduleData.forEach(item => {
+            $$(components.getCurrentContent()+"_view").add(item, index++);
+        });
+    });
 }
 
 function components() {
     var data = [
-        [
+        [ 
             {date:"Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", schedule:"9-18"},
             {date:"Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", schedule:"9-18"},
             {date:"Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", schedule:"9-18"},
@@ -238,10 +254,12 @@ function components() {
     ];
     var currentContent = "control_menu_1_1_data";
 
+    // текущий активный контент-блок
     this.getCurrentContent = function() {
         return currentContent;
     }
 
+    // панель управления
     this.controlPanel = function () {
 
         return controlPanel = [
@@ -393,11 +411,11 @@ function components() {
         switch (key) {
             case "self":
                 return data[0];
-            case "сотрудник 1":
+            case "1_2_1":
                 return data[1];
-            case "сотрудник 2":
+            case "1_2_2":
                 return data[2];
-            case "сотрудник 3":
+            case "1_2_3":
                 return data[3];
             default: break;
         } 
