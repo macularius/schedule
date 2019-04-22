@@ -1,6 +1,6 @@
 import { iUI } from "./iUI";
 
-export class UI implements iUI {
+export abstract class UI implements iUI {
     protected webixUI: any; 
     
     renderUI(): void {
