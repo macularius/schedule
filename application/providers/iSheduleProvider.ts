@@ -1,4 +1,4 @@
 export interface iSheduleProvider {
-    load();
-    update();
+    load(): any;
+    update(): any;
 }

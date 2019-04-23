@@ -1,9 +1,13 @@
 import { iComponent } from "./iComponent";
-import { iUI } from "../ui/iUI";
 import { iListner } from "./iListner";
+import { iUI } from "../ui/iUI";
 
 export abstract class Component implements iComponent, iListner {
-    protected ui: iUI;
+    protected UI: iUI;
+
+    constructor(UI: iUI){
+        this.UI = UI;
+    }
 
     // iListner
     handleEvent(): void {

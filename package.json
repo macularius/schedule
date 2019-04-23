@@ -1,0 +1,23 @@
+{
+  "name": "system-schedule",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macularius/schedule.git"
+  },
+  "keywords": [],
+  "author": "Igor Kovatsenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/macularius/schedule/issues"
+  },
+  "homepage": "https://github.com/macularius/schedule#readme",
+  "dependencies": {
+    "typescript": "^3.4.4"
+  }
+}
