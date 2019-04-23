@@ -14,16 +14,21 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
+var dateRangeUI_1 = require("./dateRangeUI");
+var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var DateRange = /** @class */ (function (_super) {
     __extends(DateRange, _super);
     function DateRange() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.UI = new dateRangeUI_1.DateRangeUI(new eventDispatcher_1.EventDispatcher([_this]));
+        return _this;
     }
     DateRange.prototype.handleEvent = function () {
     };
     DateRange.prototype.init = function () {
     };
-    DateRange.prototype.makeUI = function () {
+    DateRange.prototype.getUI = function () {
+        return { template: "date range", };
     };
     return DateRange;
 }(component_1.Component));

@@ -14,16 +14,20 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
+var menuUI_1 = require("../menu/menuUI");
+var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var SheduleTable = /** @class */ (function (_super) {
     __extends(SheduleTable, _super);
     function SheduleTable() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.UI = new menuUI_1.MenuUI(new eventDispatcher_1.EventDispatcher([_this]));
+        return _this;
     }
     SheduleTable.prototype.handleEvent = function () {
     };
     SheduleTable.prototype.init = function () {
     };
-    SheduleTable.prototype.makeUI = function () {
+    SheduleTable.prototype.getUI = function () {
     };
     return SheduleTable;
 }(component_1.Component));

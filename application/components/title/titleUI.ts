@@ -1,6 +1,6 @@
 import { UI } from "../../ui/UI";
 
-export class SheduleTableTitleUI extends UI {
+export class TitleUI extends UI {
     renderUI(): void {
     }
     event(e: string): void {

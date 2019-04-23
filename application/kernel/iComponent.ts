@@ -1,4 +1,4 @@
 export interface iComponent {
     init(): void;
-    makeUI(): void;
+    getUI(): void;
 }

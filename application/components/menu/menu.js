@@ -14,16 +14,21 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
+var menuUI_1 = require("./menuUI");
+var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var Menu = /** @class */ (function (_super) {
     __extends(Menu, _super);
     function Menu() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.call(this) || this;
+        _this.UI = new menuUI_1.MenuUI(new eventDispatcher_1.EventDispatcher([_this]));
+        return _this;
     }
     Menu.prototype.handleEvent = function () {
     };
     Menu.prototype.init = function () {
     };
-    Menu.prototype.makeUI = function () {
+    Menu.prototype.getUI = function () {
+        return { template: "menu", };
     };
     return Menu;
 }(component_1.Component));

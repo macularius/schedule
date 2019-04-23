@@ -14,17 +14,17 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
-var SheduleTableTitleUI = /** @class */ (function (_super) {
-    __extends(SheduleTableTitleUI, _super);
-    function SheduleTableTitleUI() {
+var TitleUI = /** @class */ (function (_super) {
+    __extends(TitleUI, _super);
+    function TitleUI() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    SheduleTableTitleUI.prototype.renderUI = function () {
+    TitleUI.prototype.renderUI = function () {
     };
-    SheduleTableTitleUI.prototype.event = function (e) {
+    TitleUI.prototype.event = function (e) {
     };
-    SheduleTableTitleUI.prototype.getWebixUI = function () {
+    TitleUI.prototype.getWebixUI = function () {
     };
-    return SheduleTableTitleUI;
+    return TitleUI;
 }(UI_1.UI));
-exports.SheduleTableTitleUI = SheduleTableTitleUI;
+exports.TitleUI = TitleUI;

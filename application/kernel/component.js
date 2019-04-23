@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Component = /** @class */ (function () {
-    function Component(UI) {
-        this.UI = UI;
+    function Component() {
     }
     // iListner
     Component.prototype.handleEvent = function () {
@@ -10,7 +9,7 @@ var Component = /** @class */ (function () {
     // iComponent
     Component.prototype.init = function () {
     };
-    Component.prototype.makeUI = function () {
+    Component.prototype.getUI = function () {
     };
     return Component;
 }());
