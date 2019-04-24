@@ -26,13 +26,13 @@ export class App{
     /**
      * 
      */
-    public init(): void{
+    public run(): void{
 
     }
     /**
      * собирает из UI компонентов единый Webix объект
      */
-    public run(): void{
+    public init(): void{
         // @ts-ignore js имеет доступ к webix в index.html
         webix.ui({
             type: "wide",

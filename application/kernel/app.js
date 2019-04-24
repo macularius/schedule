@@ -16,12 +16,12 @@ var App = /** @class */ (function () {
     /**
      *
      */
-    App.prototype.init = function () {
+    App.prototype.run = function () {
     };
     /**
      * собирает из UI компонентов единый Webix объект
      */
-    App.prototype.run = function () {
+    App.prototype.init = function () {
         // @ts-ignore js имеет доступ к webix в index.html
         webix.ui({
             type: "wide",

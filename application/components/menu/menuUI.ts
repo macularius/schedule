@@ -64,6 +64,9 @@ export class MenuUI extends UI {
                 type:{
                     subsign:true
                 },
+                on:{
+                    onMenuItemClick: this.event,
+                },
             },
         ];
         this.event("ready");

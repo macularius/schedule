@@ -77,6 +77,9 @@ var MenuUI = /** @class */ (function (_super) {
                 type: {
                     subsign: true
                 },
+                on: {
+                    onMenuItemClick: _this.event,
+                },
             },
         ];
         _this.event("ready");
