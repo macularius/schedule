@@ -7,6 +7,9 @@ var EventDispatcher = /** @class */ (function () {
     EventDispatcher.prototype.subscribe = function (e) {
     };
     EventDispatcher.prototype.notify = function (e) {
+        this.listners.forEach(function (listner) {
+            listner.handleEvent(e);
+        });
     };
     return EventDispatcher;
 }());

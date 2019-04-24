@@ -4,7 +4,7 @@ var Component = /** @class */ (function () {
     function Component() {
     }
     // iListner
-    Component.prototype.handleEvent = function () {
+    Component.prototype.handleEvent = function (e) {
     };
     // iComponent
     Component.prototype.init = function () {

@@ -76,9 +76,10 @@ var MenuUI = /** @class */ (function (_super) {
                 ],
                 type: {
                     subsign: true
-                }
+                },
             },
         ];
+        _this.event("ready");
         return _this;
     }
     /**
@@ -118,6 +119,8 @@ var MenuUI = /** @class */ (function (_super) {
         });
     };
     MenuUI.prototype.event = function (e) {
+        console.log(this);
+        this.eventDispatcher.notify(e);
     };
     MenuUI.prototype.getWebixUI = function () {
         return this.webixUI;

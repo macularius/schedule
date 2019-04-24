@@ -23,7 +23,8 @@ var Title = /** @class */ (function (_super) {
         _this.UI = new titleUI_1.TitleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
-    Title.prototype.handleEvent = function () {
+    Title.prototype.handleEvent = function (e) {
+        alert(e);
     };
     Title.prototype.init = function () {
     };

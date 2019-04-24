@@ -63,9 +63,10 @@ export class MenuUI extends UI {
                 ],
                 type:{
                     subsign:true
-                }
+                },
             },
         ];
+        this.event("ready");
     }
     
     /**
@@ -106,6 +107,8 @@ export class MenuUI extends UI {
         });
     }
     event(e: string): void {
+        console.log(this);
+        this.eventDispatcher.notify(e);
     }
     getWebixUI(): object[] {
         return this.webixUI;

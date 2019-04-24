@@ -18,7 +18,8 @@ export class Menu extends Component {
         this.UI.renderUI(this.provider.load());
     }
     
-    handleEvent(): void {
+    handleEvent(e: string): void {
+        alert(e);
     }
     
     init(): void {

@@ -12,7 +12,8 @@ export class DateRange extends Component {
 
         this.UI = new DateRangeUI(new EventDispatcher([this]));
     }
-    handleEvent(): void {
+    handleEvent(e: string): void {
+        alert(e);
     }
     
     init(): void {

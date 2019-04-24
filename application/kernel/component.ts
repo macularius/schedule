@@ -3,12 +3,12 @@ import { iListner } from "./iListner";
 
 export abstract class Component implements iComponent, iListner {
     // iListner
-    handleEvent(): void {
+    handleEvent(e: string): void {
     }
 
     // iComponent
     init(): void {
     }
-    getUI(): void {
+    getUI(): any {
     }
 }

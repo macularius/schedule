@@ -3,7 +3,7 @@ import { EventDispatcher } from "./../kernel/eventDispatcher";
 
 export abstract class UI implements iUI {
     protected webixUI: any; 
-    protected eventDispatcher: EventDispatcher;
+    public eventDispatcher: EventDispatcher;
 
     constructor(eventDispatcher: EventDispatcher){
         this.eventDispatcher = eventDispatcher;

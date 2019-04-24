@@ -23,7 +23,8 @@ var Shedule = /** @class */ (function (_super) {
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
-    Shedule.prototype.handleEvent = function () {
+    Shedule.prototype.handleEvent = function (e) {
+        alert(e);
     };
     Shedule.prototype.init = function () {
     };

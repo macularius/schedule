@@ -26,7 +26,8 @@ var Menu = /** @class */ (function (_super) {
         _this.UI.renderUI(_this.provider.load());
         return _this;
     }
-    Menu.prototype.handleEvent = function () {
+    Menu.prototype.handleEvent = function (e) {
+        alert(e);
     };
     Menu.prototype.init = function () {
     };

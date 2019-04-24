@@ -1,3 +1,3 @@
 export interface iListner{
-    handleEvent(): void;
+    handleEvent(e: string): void;
 }

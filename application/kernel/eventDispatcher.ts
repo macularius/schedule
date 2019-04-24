@@ -11,6 +11,8 @@ export class EventDispatcher {
 
     }
     notify(e: string){
-
+        this.listners.forEach(listner => {
+            listner.handleEvent(e);
+        });
     }
 }

@@ -12,7 +12,8 @@ export class Shedule extends Component {
         this.UI = new SheduleUI(new EventDispatcher([this]));
     }
 
-    handleEvent(): void {
+    handleEvent(e: string): void {
+        alert(e);
     }
     
     init(): void {

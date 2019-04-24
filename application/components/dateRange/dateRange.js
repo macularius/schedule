@@ -23,7 +23,8 @@ var DateRange = /** @class */ (function (_super) {
         _this.UI = new dateRangeUI_1.DateRangeUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
-    DateRange.prototype.handleEvent = function () {
+    DateRange.prototype.handleEvent = function (e) {
+        alert(e);
     };
     DateRange.prototype.init = function () {
     };

@@ -12,7 +12,8 @@ export class Title extends Component {
         this.UI = new TitleUI(new EventDispatcher([this]));
     }
     
-    handleEvent(): void {
+    handleEvent(e: string): void {
+        alert(e);
     }
     
     init(): void {
