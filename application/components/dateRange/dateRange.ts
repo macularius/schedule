@@ -17,6 +17,6 @@ export class DateRange extends Component {
     init(): void {
     }
     getUI(): any {
-        return { template: "date range", };
+        return this.UI.getWebixUI();
     }
 }

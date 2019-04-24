@@ -16,14 +16,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
 var MenuUI = /** @class */ (function (_super) {
     __extends(MenuUI, _super);
-    function MenuUI() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function MenuUI(ed) {
+        var _this = _super.call(this, ed) || this;
+        _this.webixUI = [
+            {
+                template: "account",
+                height: 80
+            },
+            {
+                view: "menu",
+                id: "control_menu",
+                layout: "y",
+                width: 200,
+                subMenuPos: "right",
+                select: false,
+                type: {
+                    subsign: true
+                }
+            },
+        ];
+        return _this;
     }
     MenuUI.prototype.renderUI = function () {
     };
     MenuUI.prototype.event = function (e) {
     };
     MenuUI.prototype.getWebixUI = function () {
+        return this.webixUI;
     };
     return MenuUI;
 }(UI_1.UI));

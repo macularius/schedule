@@ -16,14 +16,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
 var SheduleUI = /** @class */ (function (_super) {
     __extends(SheduleUI, _super);
-    function SheduleUI() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function SheduleUI(ed) {
+        var _this = _super.call(this, ed) || this;
+        _this.webixUI = [
+            {
+                view: "scrollview",
+                scroll: "x",
+                body: {
+                    view: "dataview_edit",
+                    id: "control_menu_1_1_data_view",
+                    xCount: 0,
+                    editable: true,
+                    editor: "text",
+                    editValue: "schedule",
+                    editaction: "click",
+                    template: function (item) {
+                        var date = new Date(item.date);
+                        return "<div class='webix_strong'>" + date.toLocaleDateString() + "</div><div>" + item.schedule + "</div>";
+                    },
+                    data: {},
+                }
+            }
+        ];
+        return _this;
     }
     SheduleUI.prototype.renderUI = function () {
     };
     SheduleUI.prototype.event = function (e) {
     };
     SheduleUI.prototype.getWebixUI = function () {
+        return this.webixUI;
     };
     return SheduleUI;
 }(UI_1.UI));

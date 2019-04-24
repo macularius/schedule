@@ -18,6 +18,6 @@ export class Menu extends Component {
     init(): void {
     }
     getUI(): any {
-        return { template: "menu", };
+        return this.UI.getWebixUI();
     }
 }

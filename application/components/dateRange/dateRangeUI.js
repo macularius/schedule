@@ -16,14 +16,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
 var DateRangeUI = /** @class */ (function (_super) {
     __extends(DateRangeUI, _super);
-    function DateRangeUI() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function DateRangeUI(ed) {
+        var _this = _super.call(this, ed) || this;
+        _this.webixUI = [
+            {
+                view: "scrollview",
+                scroll: false,
+                height: 40,
+                body: {
+                    id: "schedule_date",
+                    view: "daterangepicker",
+                    format: "%d.%m.%Y",
+                    width: 300,
+                    label: "Период",
+                },
+            },
+        ];
+        return _this;
     }
     DateRangeUI.prototype.renderUI = function () {
     };
     DateRangeUI.prototype.event = function (e) {
     };
     DateRangeUI.prototype.getWebixUI = function () {
+        return this.webixUI;
     };
     return DateRangeUI;
 }(UI_1.UI));

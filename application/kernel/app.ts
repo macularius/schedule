@@ -32,7 +32,7 @@ export class App{
 
     }
     /**
-     * собирает из UI компонентов в единый Webix объект
+     * собирает из UI компонентов единый Webix объект
      */
     public run(): void{
         // @ts-ignore js имеет доступ к webix в index.html
@@ -40,19 +40,27 @@ export class App{
             type: "wide",
             cols: [
                 // menu
-                this.components.menu.getUI(),
+                {
+                    rows: this.components.menu.getUI(),
+                },
                 {
                     rows:[
                         // title
-                        this.components.sheduleTableTitle.getUI(),
+                        {
+                            rows: this.components.sheduleTableTitle.getUI(),
+                        },
                         // shedule table
                         {
                             id: "content_body",
                             rows:[
                                 // выбор даты
-                                this.components.sheduleDateRange.getUI(),
+                                {
+                                    rows: this.components.sheduleDateRange.getUI(),
+                                },
                                 // расписание
-                                this.components.sheduleTableShedule.getUI(),
+                                {
+                                    rows: this.components.sheduleTableShedule.getUI(),
+                                },
                             ],
                         },
                     ],

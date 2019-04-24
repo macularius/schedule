@@ -16,14 +16,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
 var TitleUI = /** @class */ (function (_super) {
     __extends(TitleUI, _super);
-    function TitleUI() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function TitleUI(ed) {
+        var _this = _super.call(this, ed) || this;
+        _this.webixUI = [
+            {
+                template: "title",
+                height: 40,
+            }
+        ];
+        return _this;
     }
     TitleUI.prototype.renderUI = function () {
     };
     TitleUI.prototype.event = function (e) {
     };
     TitleUI.prototype.getWebixUI = function () {
+        return this.webixUI;
     };
     return TitleUI;
 }(UI_1.UI));

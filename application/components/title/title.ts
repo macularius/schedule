@@ -1,7 +1,7 @@
 import { Component } from "../../kernel/component";
 import { iUI } from "../../ui/iUI";
-import { MenuUI } from "../menu/menuUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
+import { TitleUI } from "./titleUI";
 
 export class Title extends Component {
     private UI: iUI;
@@ -9,7 +9,7 @@ export class Title extends Component {
     constructor(){
         super();
 
-        this.UI = new MenuUI(new EventDispatcher([this]));
+        this.UI = new TitleUI(new EventDispatcher([this]));
     }
     
     handleEvent(): void {
@@ -18,6 +18,6 @@ export class Title extends Component {
     init(): void {
     }
     getUI(): any {
-        return { template: "title", };
+        return this.UI.getWebixUI();
     }
 }

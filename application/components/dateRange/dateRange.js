@@ -28,7 +28,7 @@ var DateRange = /** @class */ (function (_super) {
     DateRange.prototype.init = function () {
     };
     DateRange.prototype.getUI = function () {
-        return { template: "date range", };
+        return this.UI.getWebixUI();
     };
     return DateRange;
 }(component_1.Component));

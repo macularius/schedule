@@ -14,13 +14,13 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
-var menuUI_1 = require("../menu/menuUI");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
+var titleUI_1 = require("./titleUI");
 var Title = /** @class */ (function (_super) {
     __extends(Title, _super);
     function Title() {
         var _this = _super.call(this) || this;
-        _this.UI = new menuUI_1.MenuUI(new eventDispatcher_1.EventDispatcher([_this]));
+        _this.UI = new titleUI_1.TitleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
     Title.prototype.handleEvent = function () {
@@ -28,7 +28,7 @@ var Title = /** @class */ (function (_super) {
     Title.prototype.init = function () {
     };
     Title.prototype.getUI = function () {
-        return { template: "title", };
+        return this.UI.getWebixUI();
     };
     return Title;
 }(component_1.Component));

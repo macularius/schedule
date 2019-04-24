@@ -31,7 +31,7 @@ function render(components) {
                                 height: 40,
                                 body:{
                                     id: "schedule_date",
-                                    view:"daterangepicker", // #TODO перевести в datarange
+                                    view:"daterangepicker", // #TODO перевести в daterange
                                     format:"%d.%m.%Y",
                                     width: 300,
                                     label:"Период", 

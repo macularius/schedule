@@ -28,7 +28,7 @@ var Menu = /** @class */ (function (_super) {
     Menu.prototype.init = function () {
     };
     Menu.prototype.getUI = function () {
-        return { template: "menu", };
+        return this.UI.getWebixUI();
     };
     return Menu;
 }(component_1.Component));
