@@ -9,7 +9,7 @@ export abstract class UI implements iUI {
         this.eventDispatcher = eventDispatcher;
     }
     
-    renderUI(): void {
+    renderUI(d: any): void {
         
     }   
     event(e: string): void {

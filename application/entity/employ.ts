@@ -2,7 +2,7 @@ export class Employ {
     id: number;
     firstname: string;
     lastname: string;
-    patronymic: string;
+    middlename: string;
     birthday: string;
     position: string;
     email: string;
@@ -11,7 +11,7 @@ export class Employ {
     constructor(id: number,
                 firstname: string,
                 lastname: string,
-                patronymic: string,
+                middlename: string,
                 birthday: string,
                 position: string,
                 email: string,
@@ -19,7 +19,7 @@ export class Employ {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.patronymic = patronymic;
+        this.middlename = middlename;
         this.birthday = birthday;
         this.position = position;
         this.email = email;

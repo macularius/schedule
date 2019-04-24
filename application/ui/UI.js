@@ -4,7 +4,7 @@ var UI = /** @class */ (function () {
     function UI(eventDispatcher) {
         this.eventDispatcher = eventDispatcher;
     }
-    UI.prototype.renderUI = function () {
+    UI.prototype.renderUI = function (d) {
     };
     UI.prototype.event = function (e) {
     };

@@ -1,6 +1,6 @@
-import { iSheduleProvider } from "./iSheduleProvider";
+import { iProvider } from "./iProvider";
 
-export class SheduleProvider implements iSheduleProvider {
+export class SheduleProvider implements iProvider {
     load() {
     }
     update() {

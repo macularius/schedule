@@ -21,8 +21,6 @@ export class App{
             sheduleDateRange: new DateRange(),
             sheduleTableShedule: new Shedule(),
         };
-
-        console.log(this.components);
     }
 
     /**

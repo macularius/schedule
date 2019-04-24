@@ -25,11 +25,55 @@ var MenuUI = /** @class */ (function (_super) {
             },
             {
                 view: "menu",
-                id: "control_menu",
+                id: "menu",
                 layout: "y",
                 width: 200,
                 subMenuPos: "right",
                 select: false,
+                data: [
+                    // Кнопка меню "Расписание"
+                    {
+                        id: "menu_1",
+                        value: "Расписание",
+                        data: {
+                            container: "box",
+                            height: 300,
+                            width: 200,
+                            view: "tree",
+                            data: [
+                                // Кнопка сабменю "Мое расписание"
+                                {
+                                    id: "menu_1_0",
+                                    value: "Мое расписание"
+                                },
+                            ],
+                        },
+                    },
+                    {
+                        // Кнопка меню "Шаблоны"
+                        id: "menu_2",
+                        value: "Шаблоны",
+                        data: [],
+                    },
+                    {
+                        $template: "Separator"
+                    },
+                    // Кнопка меню "Настройки"
+                    {
+                        id: "menu_3",
+                        value: "Настройки",
+                    },
+                    // Кнопка меню "Помощь"
+                    {
+                        id: "menu_4",
+                        value: "Помощь"
+                    },
+                    // Кнопка меню "Выход"
+                    {
+                        id: "menu_5",
+                        value: "Выход"
+                    },
+                ],
                 type: {
                     subsign: true
                 }
@@ -37,7 +81,42 @@ var MenuUI = /** @class */ (function (_super) {
         ];
         return _this;
     }
-    MenuUI.prototype.renderUI = function () {
+    /**
+     * обновляет webixUI, в соответствии с заданными данными групп
+     * @param groups массив групп, содержащих имена сотрудников
+     * @param menuSheduleItems указатель на область данных, соотвутствующих пункту меню с группами
+     *                         webixUI[1]              - панель управления меню
+     *                         webixUI[1].data[0]      - submenu "Расписание"
+     *                         webixUI[1].data[0].data - контейнер массива расписаний групп
+     */
+    MenuUI.prototype.renderUI = function (groups) {
+        var menuSheduleItems = this.webixUI[1].data[0].data.data;
+        var g = 1; // group counter
+        var e = 1; // employees counter
+        /**
+         * добавляет каждого сотрудника, каждой группы в меню
+         */
+        groups.forEach(function (group) {
+            var groupui = {
+                id: "menu_1_" + g,
+                open: false,
+                value: "Группа " + group.id,
+                data: new Array(),
+            };
+            group.employees.forEach(function (employee) {
+                var empui = {
+                    id: "control_menu_1_" + g + "_" + e++,
+                    value: employee.lastname + " " +
+                        employee.firstname.slice(0, 1) + " " +
+                        employee.middlename.slice(0, 1),
+                };
+                groupui.data.push(empui);
+            });
+            menuSheduleItems.push(groupui);
+            e = 1;
+            g++;
+        });
+        console.log(menuSheduleItems);
     };
     MenuUI.prototype.event = function (e) {
     };

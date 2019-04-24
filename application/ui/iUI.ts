@@ -1,5 +1,5 @@
 export interface iUI{
-    renderUI(): void;
+    renderUI(d: any): void;
     event(e: string): void;
-    getWebixUI(): Array<object>;
+    getWebixUI(): any;
 }

@@ -12,7 +12,6 @@ var App = /** @class */ (function () {
             sheduleDateRange: new dateRange_1.DateRange(),
             sheduleTableShedule: new shedule_1.Shedule(),
         };
-        console.log(this.components);
     }
     /**
      *
