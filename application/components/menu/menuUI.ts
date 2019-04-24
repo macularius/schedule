@@ -104,12 +104,10 @@ export class MenuUI extends UI {
             e = 1;
             g++;
         });
-
-        console.log(menuSheduleItems);
     }
     event(e: string): void {
     }
-    getWebixUI(): object | Array<object> {
+    getWebixUI(): object[] {
         return this.webixUI;
     }
 }

@@ -116,7 +116,6 @@ var MenuUI = /** @class */ (function (_super) {
             e = 1;
             g++;
         });
-        console.log(menuSheduleItems);
     };
     MenuUI.prototype.event = function (e) {
     };

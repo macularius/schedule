@@ -29,7 +29,7 @@ export class SheduleUI extends UI {
     }
     event(e: string): void {
     }
-    getWebixUI(): Array<object> {
+    getWebixUI(): object[] {
         return this.webixUI;
     }
 }

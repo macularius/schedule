@@ -15,7 +15,7 @@ export class TitleUI extends UI {
     }
     event(e: string): void {
     }
-    getWebixUI(): void {
+    getWebixUI(): object[] {
         return this.webixUI;
     }
 }

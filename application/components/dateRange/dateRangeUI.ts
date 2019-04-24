@@ -24,7 +24,7 @@ export class DateRangeUI extends UI {
     }
     event(e: string): void {
     }
-    getWebixUI(): object {
+    getWebixUI(): object[] {
         return this.webixUI;
     }
 }
