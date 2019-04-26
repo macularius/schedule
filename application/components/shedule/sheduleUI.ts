@@ -12,26 +12,46 @@ export class SheduleUI extends UI {
     renderUI(timetable: EmployTimetable[]): void {
         let sheduleItems: any[] = [];
 
-        timetable[0].shedule.days.forEach(day => {
-            sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
-        });
+        /**
+         * проверка на пустоту арсписания
+         */
+        if (timetable.length > 0) {
+            
+            timetable[0].shedule.days.forEach(day => {
+                sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
+            });
 
-        //@ts-ignore
-        webix.ui({
-            id: "shedule table shedule",
-            view:"dataview_edit",
-            xCount: timetable[0].shedule.days.length,
-            editable:true,
-            editor:"text",
-            editValue:"schedule",
-            editaction:"click",
-            template: function (item: any) {
-                var date = new Date(item.date);
-                return "<div class='webix_strong'>"+date.toLocaleDateString()+"</div><div>"+item.shedule+"</div>";
-            },
-            data: sheduleItems,
             //@ts-ignore
-        }, $$("shedule table shedule"));
+            webix.ui({
+                id: "shedule table shedule",
+                view:"scrollview", 
+                scroll:"x",
+                body: {
+                    view:"dataview_edit",
+                    xCount: timetable[0].shedule.days.length,
+                    editable:true,
+                    editor:"text",
+                    editValue:"schedule",
+                    editaction:"click",
+                    template: function (item: any) {
+                        var date = new Date(item.date);
+                        return "<div class='webix_strong'>"+date.toLocaleDateString()+"</div><div>"+item.shedule+"</div>";
+                    },
+                    data: sheduleItems,
+                }
+                //@ts-ignore
+            }, $$("shedule table shedule"));
+        }
+        else {
+            //@ts-ignore
+            webix.ui({
+                id: "shedule table shedule",
+                view:"scrollview", 
+                scroll:"x",
+                body: {}
+                //@ts-ignore
+            }, $$("shedule table shedule"));
+        }
     }
     event(e: string): void {
         //@ts-ignore
@@ -42,5 +62,7 @@ export class SheduleUI extends UI {
     }
     getEventDispatcher(): EventDispatcher {
         return this.eventDispatcher;
+    }
+    init() {
     }
 }

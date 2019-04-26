@@ -36,6 +36,13 @@ export class DateRangeUI extends UI {
         ];
     }
 
+    init(){
+        let ed = this.eventDispatcher;
+        //@ts-ignore
+        $$("$daterangesuggest1_daterange").attachEvent("onDateClear", function() {
+            ed.notify("cleared");
+        });
+    }
     renderUI(): void {
     }
     event(e: string): void {

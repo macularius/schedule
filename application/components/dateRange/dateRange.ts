@@ -2,8 +2,8 @@ import { Component } from "../../kernel/component";
 import { iUI } from "../../ui/iUI";
 import { DateRangeUI } from "./dateRangeUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
-import { iProvider } from "../../providers/iProvider";
 import { DaterangeProvider } from "../../providers/daterangeProvider";
+import { iListner } from "../../kernel/iListner";
 
 export class DateRange extends Component {
     private UI: iUI;
@@ -16,10 +16,14 @@ export class DateRange extends Component {
     handleEvent(e: string): void {
         this.UI.event(e);
     }
-    
     init(): void {
+        this.UI.init();
+        console.log(this.UI.getEventDispatcher());
     }
     getUI(): any {
         return this.UI.getWebixUI();
+    }
+    subscribeOnUI(e: iListner): void{
+        this.UI.getEventDispatcher().subscribe(e);
     }
 }

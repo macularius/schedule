@@ -24,4 +24,6 @@ export class TitleUI extends UI {
     getEventDispatcher(): EventDispatcher {
         return this.eventDispatcher;
     }
+    init() {
+    }
 }

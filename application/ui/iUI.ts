@@ -5,4 +5,5 @@ export interface iUI{
     event(e: string): void;
     getWebixUI(): any;
     getEventDispatcher(): EventDispatcher;
+    init(): void;
 }

@@ -15,6 +15,8 @@ export abstract class UI implements iUI {
     }
     getWebixUI(): any {
     }
-    getEventDispatcher(): any{
+    getEventDispatcher(): any {
+    }
+    init(): void {
     }
 }

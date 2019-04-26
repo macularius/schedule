@@ -15,6 +15,11 @@ export class Shedule extends Component {
     }
 
     handleEvent(e: string): void {
+
+        if (e == "cleared") {
+            this.UI.renderUI([]);
+        }
+
         let id = e.slice(7);
         let menuPos = id.slice(0, 1);
 
