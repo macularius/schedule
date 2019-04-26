@@ -2,21 +2,18 @@ import { Component } from "../../kernel/component";
 import { iUI } from "../../ui/iUI";
 import { MenuUI } from "./menuUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
-import { iProvider } from "../../providers/iProvider";
 import { MenuProvider } from "../../providers/menuProvider";
 import { iListner } from "../../kernel/iListner";
 
 export class Menu extends Component {
     private UI: iUI;
-    private provider: iProvider;
     
     constructor(){
-        super();
+        super(new MenuProvider());
 
-        this.provider = new MenuProvider();
         this.UI = new MenuUI(new EventDispatcher([this]));
 
-        this.UI.renderUI(this.provider.load());
+        this.UI.renderUI(this.provider.load("all"));
     }
     
     handleEvent(e: string): void {
