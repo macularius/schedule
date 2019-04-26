@@ -1,7 +1,13 @@
 import { iProvider } from "./iProvider";
 
 export abstract class Provider implements iProvider {
-    load(): any {
+    protected data: any[];
+
+    constructor(data: any[]){
+        this.data = data;
+    }
+
+    load(p :any): any {
     }
     update(...params: any[]): any {
     }

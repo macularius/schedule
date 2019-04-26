@@ -1,4 +1,4 @@
 export interface iProvider {
-    load(): any;
+    load(p: any): any;
     update(...params: any[]): any;
 }
