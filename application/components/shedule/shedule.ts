@@ -3,14 +3,18 @@ import { SheduleUI } from "./sheduleUI";
 import { iUI } from "../../ui/iUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { iListner } from "../../kernel/iListner";
+import { SheduleProvider } from "../../providers/sheduleProvider";
 
 export class Shedule extends Component {
     private UI: iUI;
     
     constructor(){
-        super();
+        super(new SheduleProvider());
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
+
+        this.UI.renderUI(this.provider.load("my"));
+        // console.log(this.provider.load("my"));
     }
 
     handleEvent(e: string): void {
