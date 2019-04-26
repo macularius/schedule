@@ -13,12 +13,15 @@ export class Shedule extends Component {
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
 
-        this.UI.renderUI(this.provider.load("1_0"));
+        // this.UI.renderUI(this.provider.load("1_0"));
         // console.log(this.provider.load("1_0"));
     }
 
     handleEvent(e: string): void {
-        this.UI.event(e);
+        // this.UI.event(e);
+        let id = e.slice(7);
+        this.UI.renderUI(this.provider.load(id));
+        // alert(id);
     }
     
     init(): void {

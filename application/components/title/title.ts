@@ -3,12 +3,13 @@ import { iUI } from "../../ui/iUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { TitleUI } from "./titleUI";
 import { iListner } from "../../kernel/iListner";
+import { TitleProvider } from "../../providers/titleProvider";
 
 export class Title extends Component {
     private UI: iUI;
     
     constructor(){
-        super();
+        super(new TitleProvider());
 
         this.UI = new TitleUI(new EventDispatcher([this]));
     }

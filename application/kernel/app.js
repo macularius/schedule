@@ -46,7 +46,7 @@ var App = /** @class */ (function () {
                         },
                         // shedule table
                         {
-                            id: "content_body",
+                            id: "shedule table",
                             rows: [
                                 // выбор даты
                                 {
@@ -54,6 +54,7 @@ var App = /** @class */ (function () {
                                 },
                                 // расписание
                                 {
+                                    id: "shedule table shedule",
                                     rows: this.components.sheduleTableShedule.getUI(),
                                 },
                             ],

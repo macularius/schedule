@@ -3,12 +3,13 @@ import { iUI } from "../../ui/iUI";
 import { DateRangeUI } from "./dateRangeUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { iProvider } from "../../providers/iProvider";
+import { DaterangeProvider } from "../../providers/daterangeProvider";
 
 export class DateRange extends Component {
     private UI: iUI;
     
     constructor(){
-        super();
+        super(new DaterangeProvider());
 
         this.UI = new DateRangeUI(new EventDispatcher([this]));
     }

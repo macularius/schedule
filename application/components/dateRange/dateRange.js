@@ -16,10 +16,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
 var dateRangeUI_1 = require("./dateRangeUI");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
+var daterangeProvider_1 = require("../../providers/daterangeProvider");
 var DateRange = /** @class */ (function (_super) {
     __extends(DateRange, _super);
     function DateRange() {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, new daterangeProvider_1.DaterangeProvider()) || this;
         _this.UI = new dateRangeUI_1.DateRangeUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }

@@ -51,7 +51,7 @@ export class App{
                         },
                         // shedule table
                         {
-                            id: "content_body",
+                            id: "shedule table",
                             rows:[
                                 // выбор даты
                                 {
@@ -59,6 +59,7 @@ export class App{
                                 },
                                 // расписание
                                 {
+                                    id: "shedule table shedule",
                                     rows: this.components.sheduleTableShedule.getUI(),
                                 },
                             ],

@@ -23,7 +23,7 @@ var SheduleProvider = /** @class */ (function (_super) {
     __extends(SheduleProvider, _super);
     function SheduleProvider() {
         return _super.call(this, {
-            "1_0": new employTimetable_1.EmployTimetable(new employ_1.Employ(1, "Коваценко", "Игорь", "Николаевич", "23.07.1998", "position", "email", "phone number"), new timetable_1.Timetable([
+            "0": new employTimetable_1.EmployTimetable(new employ_1.Employ(1, "Коваценко", "Игорь", "Николаевич", "23.07.1998", "position", "email", "phone number"), new timetable_1.Timetable([
                 new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
                 new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
                 new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),

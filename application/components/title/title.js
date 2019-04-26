@@ -16,10 +16,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var titleUI_1 = require("./titleUI");
+var titleProvider_1 = require("../../providers/titleProvider");
 var Title = /** @class */ (function (_super) {
     __extends(Title, _super);
     function Title() {
-        var _this = _super.call(this) || this;
+        var _this = _super.call(this, new titleProvider_1.TitleProvider()) || this;
         _this.UI = new titleUI_1.TitleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }

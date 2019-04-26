@@ -22,12 +22,15 @@ var Shedule = /** @class */ (function (_super) {
     function Shedule() {
         var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
-        _this.UI.renderUI(_this.provider.load("1_0"));
         return _this;
+        // this.UI.renderUI(this.provider.load("1_0"));
         // console.log(this.provider.load("1_0"));
     }
     Shedule.prototype.handleEvent = function (e) {
-        this.UI.event(e);
+        // this.UI.event(e);
+        var id = e.slice(7);
+        this.UI.renderUI(this.provider.load(id));
+        // alert(id);
     };
     Shedule.prototype.init = function () {
     };

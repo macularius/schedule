@@ -18,34 +18,32 @@ var SheduleUI = /** @class */ (function (_super) {
     __extends(SheduleUI, _super);
     function SheduleUI(ed) {
         var _this = _super.call(this, ed) || this;
-        _this.webixUI = [
-            {
-                view: "scrollview",
-                scroll: "x",
-                body: {
-                    view: "dataview_edit",
-                    id: "shedule table shedule",
-                    xCount: 0,
-                    editable: true,
-                    editor: "text",
-                    editValue: "schedule",
-                    editaction: "click",
-                    template: function (item) {
-                        var date = new Date(item.date);
-                        return "<div class='webix_strong'>" + date.toLocaleDateString() + "</div><div>" + item.shedule + "</div>";
-                    },
-                    data: [],
-                }
-            }
-        ];
+        _this.webixUI = [];
         return _this;
     }
     SheduleUI.prototype.renderUI = function (timetable) {
-        var sheduleItems = this.webixUI[0].body.data;
-        this.webixUI[0].body.xCount = timetable[0].shedule.days.length;
+        var sheduleItems = [];
+        console.log(timetable);
         timetable[0].shedule.days.forEach(function (day) {
             sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
         });
+        // //@ts-ignore
+        // $$("shedule table shedule container").removeView("shedule table shedule");
+        //@ts-ignore
+        webix.ui({
+            id: "shedule table shedule",
+            view: "dataview_edit",
+            xCount: timetable[0].shedule.days.length,
+            editable: true,
+            editor: "text",
+            editValue: "schedule",
+            editaction: "click",
+            template: function (item) {
+                var date = new Date(item.date);
+                return "<div class='webix_strong'>" + date.toLocaleDateString() + "</div><div>" + item.shedule + "</div>";
+            },
+            data: sheduleItems,
+        }, $$("shedule table shedule"));
     };
     SheduleUI.prototype.event = function (e) {
         //@ts-ignore
