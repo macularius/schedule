@@ -1,1 +1,7 @@
 node_modules
+application/providers/menuProvider.js
+bundle.js
+application/entity/employ.js
+application/providers/iSheduleProvider.js
+application/providers/provider.js
+application/providers/sheduleProvider.js
