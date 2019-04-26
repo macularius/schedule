@@ -6,8 +6,6 @@ export class MenuUI extends UI {
     constructor(ed: EventDispatcher){
         super(ed);
 
-        console.log(this.eventDispatcher);
-
         this.webixUI = [
             {
                 template: "account",
@@ -114,6 +112,8 @@ export class MenuUI extends UI {
         });
     }
     event(e: string): void {
+        //@ts-ignore
+        webix.message("menu:\n" + e);
     }
     getWebixUI(): object[] {
         return this.webixUI;

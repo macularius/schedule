@@ -23,6 +23,8 @@ export class DateRangeUI extends UI {
     renderUI(): void {
     }
     event(e: string): void {
+        //@ts-ignore
+        webix.message("daterange:\n" + e);
     }
     getWebixUI(): object[] {
         return this.webixUI;

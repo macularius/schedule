@@ -43,6 +43,8 @@ var SheduleUI = /** @class */ (function (_super) {
     SheduleUI.prototype.renderUI = function () {
     };
     SheduleUI.prototype.event = function (e) {
+        //@ts-ignore
+        webix.message("shedule:\n" + e);
     };
     SheduleUI.prototype.getWebixUI = function () {
         return this.webixUI;

@@ -18,7 +18,6 @@ var MenuUI = /** @class */ (function (_super) {
     __extends(MenuUI, _super);
     function MenuUI(ed) {
         var _this = _super.call(this, ed) || this;
-        console.log(_this.eventDispatcher);
         _this.webixUI = [
             {
                 template: "account",
@@ -124,6 +123,8 @@ var MenuUI = /** @class */ (function (_super) {
         });
     };
     MenuUI.prototype.event = function (e) {
+        //@ts-ignore
+        webix.message("menu:\n" + e);
     };
     MenuUI.prototype.getWebixUI = function () {
         return this.webixUI;

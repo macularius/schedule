@@ -37,6 +37,8 @@ var DateRangeUI = /** @class */ (function (_super) {
     DateRangeUI.prototype.renderUI = function () {
     };
     DateRangeUI.prototype.event = function (e) {
+        //@ts-ignore
+        webix.message("daterange:\n" + e);
     };
     DateRangeUI.prototype.getWebixUI = function () {
         return this.webixUI;

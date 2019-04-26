@@ -28,6 +28,8 @@ export class SheduleUI extends UI {
     renderUI(): void {
     }
     event(e: string): void {
+        //@ts-ignore
+        webix.message("shedule:\n" + e);
     }
     getWebixUI(): object[] {
         return this.webixUI;
