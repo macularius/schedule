@@ -5,3 +5,9 @@ application/entity/employ.js
 application/providers/iSheduleProvider.js
 application/providers/provider.js
 application/providers/sheduleProvider.js
+application/kernel/component.js
+bundle.js
+application/components/menu/menu.js
+application/components/shedule/shedule.js
+application/components/shedule/sheduleUI.js
+application/providers/sheduleProvider.js
