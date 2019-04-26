@@ -6,12 +6,12 @@ export class MenuProvider extends Provider {
     constructor(){
         super([
             new Group("1", [
-                new Employ(1, "Иван", "Иванов", "Иванович", "birthday", "position", "email", "phone number"),
-                new Employ(2, "Петр", "Петров", "Петрович", "birthday", "position", "email", "phone number"),
+                new Employ(1, "Иванов", "Иван", "Иванович", "birthday", "position", "email", "phone number"),
+                new Employ(2, "Петров", "Петр", "Петрович", "birthday", "position", "email", "phone number"),
             ]),
             new Group("2", [
-                new Employ(3, "Сидор", "Сидоров", "Сидорович", "birthday", "position", "email", "phone number"),
-                new Employ(2, "Федор", "Федоров", "Федорович", "birthday", "position", "email", "phone number"),
+                new Employ(3, "Сидоров", "Сидор", "Сидорович", "birthday", "position", "email", "phone number"),
+                new Employ(2, "Федоров", "Федор", "Федорович", "birthday", "position", "email", "phone number"),
             ]),
         ]);
     }
