@@ -1,7 +1,7 @@
 export class Employ {
     id: number;
-    firstname: string;
     lastname: string;
+    firstname: string;
     middlename: string;
     birthday: string;
     position: string;
@@ -9,16 +9,16 @@ export class Employ {
     phone: string;
 
     constructor(id: number,
-                firstname: string,
                 lastname: string,
+                firstname: string,
                 middlename: string,
                 birthday: string,
                 position: string,
                 email: string,
                 phone: string,) {
         this.id = id;
-        this.firstname = firstname;
         this.lastname = lastname;
+        this.firstname = firstname;
         this.middlename = middlename;
         this.birthday = birthday;
         this.position = position;
