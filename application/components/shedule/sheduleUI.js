@@ -18,11 +18,7 @@ var SheduleUI = /** @class */ (function (_super) {
     __extends(SheduleUI, _super);
     function SheduleUI(ed) {
         var _this = _super.call(this, ed) || this;
-        _this.webixUI = [{}];
-        return _this;
-    }
-    SheduleUI.prototype.renderUI = function () {
-        this.webixUI = [
+        _this.webixUI = [
             {
                 view: "scrollview",
                 scroll: "x",
@@ -36,12 +32,20 @@ var SheduleUI = /** @class */ (function (_super) {
                     editaction: "click",
                     template: function (item) {
                         var date = new Date(item.date);
-                        return "<div class='webix_strong'>" + date.toLocaleDateString() + "</div><div>" + item.schedule + "</div>";
+                        return "<div class='webix_strong'>" + date.toLocaleDateString() + "</div><div>" + item.shedule + "</div>";
                     },
-                    data: {},
+                    data: [],
                 }
             }
         ];
+        return _this;
+    }
+    SheduleUI.prototype.renderUI = function (timetable) {
+        var sheduleItems = this.webixUI[0].body.data;
+        this.webixUI[0].body.xCount = timetable[0].shedule.days.length;
+        timetable[0].shedule.days.forEach(function (day) {
+            sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
+        });
     };
     SheduleUI.prototype.event = function (e) {
         //@ts-ignore

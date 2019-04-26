@@ -20,10 +20,9 @@ var menuProvider_1 = require("../../providers/menuProvider");
 var Menu = /** @class */ (function (_super) {
     __extends(Menu, _super);
     function Menu() {
-        var _this = _super.call(this) || this;
-        _this.provider = new menuProvider_1.MenuProvider();
+        var _this = _super.call(this, new menuProvider_1.MenuProvider()) || this;
         _this.UI = new menuUI_1.MenuUI(new eventDispatcher_1.EventDispatcher([_this]));
-        _this.UI.renderUI(_this.provider.load());
+        _this.UI.renderUI(_this.provider.load("all"));
         return _this;
     }
     Menu.prototype.handleEvent = function (e) {

@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Component = /** @class */ (function () {
-    function Component() {
+    function Component(p) {
+        this.provider = p;
     }
     // iListner
     Component.prototype.handleEvent = function (e) {
