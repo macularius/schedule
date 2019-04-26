@@ -23,19 +23,20 @@ var Shedule = /** @class */ (function (_super) {
         var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
-        // this.UI.renderUI(this.provider.load("1_0"));
-        // console.log(this.provider.load("1_0"));
     }
     Shedule.prototype.handleEvent = function (e) {
-        // this.UI.event(e);
         var id = e.slice(7);
-        this.UI.renderUI(this.provider.load(id));
-        // alert(id);
+        var menuPos = id.slice(0, 1);
+        /**
+         * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+         */
+        if (id != "" && Number(menuPos) == 0 || id.indexOf("_") != -1) {
+            this.UI.renderUI(this.provider.load(id));
+        }
     };
     Shedule.prototype.init = function () {
     };
     Shedule.prototype.getUI = function () {
-        // return { template: "shedule" };
         return this.UI.getWebixUI();
     };
     Shedule.prototype.subscribeOnUI = function (e) {

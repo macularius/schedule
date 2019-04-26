@@ -12,14 +12,10 @@ export class SheduleUI extends UI {
     renderUI(timetable: EmployTimetable[]): void {
         let sheduleItems: any[] = [];
 
-        console.log(timetable);
-
         timetable[0].shedule.days.forEach(day => {
             sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
         });
 
-        // //@ts-ignore
-        // $$("shedule table shedule container").removeView("shedule table shedule");
         //@ts-ignore
         webix.ui({
             id: "shedule table shedule",

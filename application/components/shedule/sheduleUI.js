@@ -23,12 +23,9 @@ var SheduleUI = /** @class */ (function (_super) {
     }
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
-        console.log(timetable);
         timetable[0].shedule.days.forEach(function (day) {
             sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
         });
-        // //@ts-ignore
-        // $$("shedule table shedule container").removeView("shedule table shedule");
         //@ts-ignore
         webix.ui({
             id: "shedule table shedule",

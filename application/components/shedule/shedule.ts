@@ -12,22 +12,23 @@ export class Shedule extends Component {
         super(new SheduleProvider());
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
-
-        // this.UI.renderUI(this.provider.load("1_0"));
-        // console.log(this.provider.load("1_0"));
     }
 
     handleEvent(e: string): void {
-        // this.UI.event(e);
         let id = e.slice(7);
-        this.UI.renderUI(this.provider.load(id));
-        // alert(id);
+        let menuPos = id.slice(0, 1);
+
+        /**
+         * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+         */
+        if (id != "" && Number(menuPos) == 0 || id.indexOf("_") != -1) {
+            this.UI.renderUI(this.provider.load(id));
+        }
     }
     
     init(): void {
     }
     getUI(): any {
-        // return { template: "shedule" };
         return this.UI.getWebixUI();
     }
     subscribeOnUI(e: iListner) {
