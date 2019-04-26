@@ -82,7 +82,7 @@ export class MenuUI extends UI {
      *                         webixUI[1].data[0]      - submenu "Расписание"
      *                         webixUI[1].data[0].data - контейнер массива расписаний групп
      */
-    renderUI(groups: Array<Group>): void {
+    renderUI(groups: Group[]): void {
         let menuSheduleItems: Array<object> = this.webixUI[1].data[0].data.data;
         let g: number = 1; // group counter
         let e: number = 1; // employees counter
