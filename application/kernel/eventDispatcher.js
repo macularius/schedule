@@ -8,7 +8,6 @@ var EventDispatcher = /** @class */ (function () {
         this.listners.push(e);
     };
     EventDispatcher.prototype.notify = function (e) {
-        console.log(this.listners);
         this.listners.forEach(function (listner) {
             listner.handleEvent(e);
         });

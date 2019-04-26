@@ -110,7 +110,7 @@ var MenuUI = /** @class */ (function (_super) {
             };
             group.employees.forEach(function (employee) {
                 var empui = {
-                    id: "control_menu_1_" + g + "_" + e++,
+                    id: "menu_1_" + g + "_" + e++,
                     value: employee.lastname + " " +
                         employee.firstname.slice(0, 1) + " " +
                         employee.middlename.slice(0, 1),

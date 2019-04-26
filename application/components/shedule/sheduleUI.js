@@ -18,13 +18,17 @@ var SheduleUI = /** @class */ (function (_super) {
     __extends(SheduleUI, _super);
     function SheduleUI(ed) {
         var _this = _super.call(this, ed) || this;
-        _this.webixUI = [
+        _this.webixUI = [{}];
+        return _this;
+    }
+    SheduleUI.prototype.renderUI = function () {
+        this.webixUI = [
             {
                 view: "scrollview",
                 scroll: "x",
                 body: {
                     view: "dataview_edit",
-                    id: "control_menu_1_1_data_view",
+                    id: "shedule table shedule",
                     xCount: 0,
                     editable: true,
                     editor: "text",
@@ -38,9 +42,6 @@ var SheduleUI = /** @class */ (function (_super) {
                 }
             }
         ];
-        return _this;
-    }
-    SheduleUI.prototype.renderUI = function () {
     };
     SheduleUI.prototype.event = function (e) {
         //@ts-ignore

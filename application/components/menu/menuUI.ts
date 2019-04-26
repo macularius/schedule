@@ -99,7 +99,7 @@ export class MenuUI extends UI {
             };
             group.employees.forEach(employee => {
                 let empui = {
-                    id: "control_menu_1_" + g + "_" + e++,
+                    id: "menu_1_" + g + "_" + e++,
                     value: employee.lastname + " " + 
                            employee.firstname.slice(0, 1) + " " +
                            employee.middlename.slice(0, 1),

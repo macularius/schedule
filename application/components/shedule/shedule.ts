@@ -20,7 +20,8 @@ export class Shedule extends Component {
     init(): void {
     }
     getUI(): any {
-        return { template: "shedule", };
+        // return { template: "shedule" };
+        return this.UI.getWebixUI();
     }
     subscribeOnUI(e: iListner) {
         this.UI.getEventDispatcher().subscribe(e);

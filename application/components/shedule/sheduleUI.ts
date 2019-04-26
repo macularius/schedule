@@ -4,13 +4,17 @@ import { EventDispatcher } from "../../kernel/eventDispatcher";
 export class SheduleUI extends UI {
     constructor(ed: EventDispatcher){
         super(ed);
-        this.webixUI = [
+
+        this.webixUI = [{}];
+    }
+
+    renderUI(): void {this.webixUI = [
         {
             view:"scrollview", 
             scroll:"x",
             body:{
                 view:"dataview_edit",
-                id: "control_menu_1_1_data_view",
+                id: "shedule table shedule",
                 xCount: 0,
                 editable:true,
                 editor:"text",
@@ -23,9 +27,6 @@ export class SheduleUI extends UI {
                 data: {},
             }
         }];
-    }
-
-    renderUI(): void {
     }
     event(e: string): void {
         //@ts-ignore

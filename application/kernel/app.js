@@ -25,6 +25,11 @@ var App = /** @class */ (function () {
      * собирает из UI компонентов единый Webix объект
      */
     App.prototype.init = function () {
+        //@ts-ignore
+        webix.protoUI({
+            name: "dataview_edit"
+            //@ts-ignore
+        }, webix.EditAbility, webix.ui.dataview);
         // @ts-ignore js имеет доступ к webix в index.html
         webix.ui({
             type: "wide",

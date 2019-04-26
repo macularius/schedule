@@ -29,7 +29,8 @@ var Shedule = /** @class */ (function (_super) {
     Shedule.prototype.init = function () {
     };
     Shedule.prototype.getUI = function () {
-        return { template: "shedule", };
+        // return { template: "shedule" };
+        return this.UI.getWebixUI();
     };
     Shedule.prototype.subscribeOnUI = function (e) {
         this.UI.getEventDispatcher().subscribe(e);
