@@ -5,6 +5,9 @@ import { Group } from "../../entity/group";
 export class MenuUI extends UI {
     constructor(ed: EventDispatcher){
         super(ed);
+
+        console.log(this.eventDispatcher);
+
         this.webixUI = [
             {
                 template: "account",
@@ -65,11 +68,12 @@ export class MenuUI extends UI {
                     subsign:true
                 },
                 on:{
-                    onMenuItemClick: this.event,
+                    onMenuItemClick: function(id: any) {
+                        ed.notify(id);
+                    },
                 },
             },
         ];
-        this.event("ready");
     }
     
     /**
@@ -110,10 +114,11 @@ export class MenuUI extends UI {
         });
     }
     event(e: string): void {
-        console.log(this);
-        this.eventDispatcher.notify(e);
     }
     getWebixUI(): object[] {
         return this.webixUI;
+    }
+    getEventDispatcher(): EventDispatcher {
+        return this.eventDispatcher;
     }
 }

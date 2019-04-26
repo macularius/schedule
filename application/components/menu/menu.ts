@@ -4,6 +4,7 @@ import { MenuUI } from "./menuUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { iProvider } from "../../providers/iProvider";
 import { MenuProvider } from "../../providers/menuProvider";
+import { iListner } from "../../kernel/iListner";
 
 export class Menu extends Component {
     private UI: iUI;
@@ -19,12 +20,15 @@ export class Menu extends Component {
     }
     
     handleEvent(e: string): void {
-        alert(e);
+        this.UI.event(e);
     }
     
     init(): void {
     }
     getUI(): any {
         return this.UI.getWebixUI();
+    }
+    subscribeOnUI(e: iListner) {
+        this.UI.getEventDispatcher().subscribe(e);
     }
 }

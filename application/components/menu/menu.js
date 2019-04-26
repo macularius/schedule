@@ -27,12 +27,15 @@ var Menu = /** @class */ (function (_super) {
         return _this;
     }
     Menu.prototype.handleEvent = function (e) {
-        alert(e);
+        this.UI.event(e);
     };
     Menu.prototype.init = function () {
     };
     Menu.prototype.getUI = function () {
         return this.UI.getWebixUI();
+    };
+    Menu.prototype.subscribeOnUI = function (e) {
+        this.UI.getEventDispatcher().subscribe(e);
     };
     return Menu;
 }(component_1.Component));

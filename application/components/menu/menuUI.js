@@ -18,6 +18,7 @@ var MenuUI = /** @class */ (function (_super) {
     __extends(MenuUI, _super);
     function MenuUI(ed) {
         var _this = _super.call(this, ed) || this;
+        console.log(_this.eventDispatcher);
         _this.webixUI = [
             {
                 template: "account",
@@ -78,11 +79,12 @@ var MenuUI = /** @class */ (function (_super) {
                     subsign: true
                 },
                 on: {
-                    onMenuItemClick: _this.event,
+                    onMenuItemClick: function (id) {
+                        ed.notify(id);
+                    },
                 },
             },
         ];
-        _this.event("ready");
         return _this;
     }
     /**
@@ -122,11 +124,12 @@ var MenuUI = /** @class */ (function (_super) {
         });
     };
     MenuUI.prototype.event = function (e) {
-        console.log(this);
-        this.eventDispatcher.notify(e);
     };
     MenuUI.prototype.getWebixUI = function () {
         return this.webixUI;
+    };
+    MenuUI.prototype.getEventDispatcher = function () {
+        return this.eventDispatcher;
     };
     return MenuUI;
 }(UI_1.UI));

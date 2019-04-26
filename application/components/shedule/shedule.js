@@ -24,12 +24,15 @@ var Shedule = /** @class */ (function (_super) {
         return _this;
     }
     Shedule.prototype.handleEvent = function (e) {
-        alert(e);
+        this.UI.event(e);
     };
     Shedule.prototype.init = function () {
     };
     Shedule.prototype.getUI = function () {
         return { template: "shedule", };
+    };
+    Shedule.prototype.subscribeOnUI = function (e) {
+        this.UI.getEventDispatcher().subscribe(e);
     };
     return Shedule;
 }(component_1.Component));

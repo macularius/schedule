@@ -24,12 +24,15 @@ var Title = /** @class */ (function (_super) {
         return _this;
     }
     Title.prototype.handleEvent = function (e) {
-        alert(e);
+        this.UI.event(e);
     };
     Title.prototype.init = function () {
     };
     Title.prototype.getUI = function () {
         return this.UI.getWebixUI();
+    };
+    Title.prototype.subscribeOnUI = function (e) {
+        this.UI.getEventDispatcher().subscribe(e);
     };
     return Title;
 }(component_1.Component));

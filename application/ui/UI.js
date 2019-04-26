@@ -10,6 +10,8 @@ var UI = /** @class */ (function () {
     };
     UI.prototype.getWebixUI = function () {
     };
+    UI.prototype.getEventDispatcher = function () {
+    };
     return UI;
 }());
 exports.UI = UI;

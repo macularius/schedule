@@ -20,6 +20,7 @@ var TitleUI = /** @class */ (function (_super) {
         var _this = _super.call(this, ed) || this;
         _this.webixUI = [
             {
+                id: "shedule table title",
                 template: "title",
                 height: 40,
             }
@@ -29,9 +30,14 @@ var TitleUI = /** @class */ (function (_super) {
     TitleUI.prototype.renderUI = function () {
     };
     TitleUI.prototype.event = function (e) {
+        //@ts-ignore
+        $$("shedule table title").setHTML(e);
     };
     TitleUI.prototype.getWebixUI = function () {
         return this.webixUI;
+    };
+    TitleUI.prototype.getEventDispatcher = function () {
+        return this.eventDispatcher;
     };
     return TitleUI;
 }(UI_1.UI));

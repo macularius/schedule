@@ -47,6 +47,9 @@ var SheduleUI = /** @class */ (function (_super) {
     SheduleUI.prototype.getWebixUI = function () {
         return this.webixUI;
     };
+    SheduleUI.prototype.getEventDispatcher = function () {
+        return this.eventDispatcher;
+    };
     return SheduleUI;
 }(UI_1.UI));
 exports.SheduleUI = SheduleUI;

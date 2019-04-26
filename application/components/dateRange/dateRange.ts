@@ -13,7 +13,7 @@ export class DateRange extends Component {
         this.UI = new DateRangeUI(new EventDispatcher([this]));
     }
     handleEvent(e: string): void {
-        alert(e);
+        this.UI.event(e);
     }
     
     init(): void {

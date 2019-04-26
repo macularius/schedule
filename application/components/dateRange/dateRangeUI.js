@@ -41,6 +41,9 @@ var DateRangeUI = /** @class */ (function (_super) {
     DateRangeUI.prototype.getWebixUI = function () {
         return this.webixUI;
     };
+    DateRangeUI.prototype.getEventDispatcher = function () {
+        return this.eventDispatcher;
+    };
     return DateRangeUI;
 }(UI_1.UI));
 exports.DateRangeUI = DateRangeUI;

@@ -17,6 +17,9 @@ var App = /** @class */ (function () {
      *
      */
     App.prototype.run = function () {
+        this.components.menu.subscribeOnUI(this.components.sheduleTableTitle);
+        this.components.menu.subscribeOnUI(this.components.sheduleTableShedule);
+        this.components.sheduleDateRange.subscribeOnUI(this.components.sheduleTableShedule);
     };
     /**
      * собирает из UI компонентов единый Webix объект

@@ -6,6 +6,7 @@ export class TitleUI extends UI {
         super(ed);
         this.webixUI = [
         {
+            id: "shedule table title",
             template: "title", 
             height: 40,
         }];
@@ -14,8 +15,13 @@ export class TitleUI extends UI {
     renderUI(): void {
     }
     event(e: string): void {
+        //@ts-ignore
+        $$("shedule table title").setHTML(e);
     }
     getWebixUI(): object[] {
         return this.webixUI;
+    }
+    getEventDispatcher(): EventDispatcher {
+        return this.eventDispatcher;
     }
 }

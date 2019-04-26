@@ -10,12 +10,11 @@ export abstract class UI implements iUI {
     }
     
     renderUI(d: any): void {
-        
     }   
     event(e: string): void {
-        
     }
     getWebixUI(): any {
-
+    }
+    getEventDispatcher(): any{
     }
 }

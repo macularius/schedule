@@ -8,9 +8,10 @@ export class EventDispatcher {
     }
 
     subscribe(e: iListner){
-
+        this.listners.push(e);
     }
     notify(e: string){
+        console.log(this.listners);
         this.listners.forEach(listner => {
             listner.handleEvent(e);
         });

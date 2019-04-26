@@ -27,4 +27,7 @@ export class DateRangeUI extends UI {
     getWebixUI(): object[] {
         return this.webixUI;
     }
+    getEventDispatcher(): EventDispatcher {
+        return this.eventDispatcher;
+    }
 }

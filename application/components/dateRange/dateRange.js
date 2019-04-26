@@ -24,7 +24,7 @@ var DateRange = /** @class */ (function (_super) {
         return _this;
     }
     DateRange.prototype.handleEvent = function (e) {
-        alert(e);
+        this.UI.event(e);
     };
     DateRange.prototype.init = function () {
     };

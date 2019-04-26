@@ -11,4 +11,6 @@ export abstract class Component implements iComponent, iListner {
     }
     getUI(): any {
     }
+    subscribeOnUI(e: iListner): void{
+    }
 }

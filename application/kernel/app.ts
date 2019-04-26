@@ -1,18 +1,11 @@
-import {iComponent} from "./iComponent";
 import { Menu } from "../components/menu/menu";
-import { SheduleTable } from "../components/sheduleTable/sheduleTable";
 import { DateRange } from "../components/dateRange/dateRange";
 import { Shedule } from "../components/shedule/shedule";
 import { Title } from "../components/title/title";
-import { MenuUI } from "../components/menu/menuUI";
-import { SheduleTableUI } from "../components/sheduleTable/sheduleTableUI";
-import { TitleUI } from "../components/title/titleUI";
-import { DateRangeUI } from "../components/dateRange/dateRangeUI";
-import { SheduleUI } from "../components/shedule/sheduleUI";
-import { EventDispatcher } from "./eventDispatcher";
+import { Component } from "./component";
 
 export class App{
-    private components: { [key:string]:iComponent; };
+    private components: { [key:string]:Component; };
 
     constructor(){
         this.components = {
@@ -27,7 +20,10 @@ export class App{
      * 
      */
     public run(): void{
-
+        this.components.menu.subscribeOnUI(this.components.sheduleTableTitle);
+        this.components.menu.subscribeOnUI(this.components.sheduleTableShedule);
+        
+        this.components.sheduleDateRange.subscribeOnUI(this.components.sheduleTableShedule);
     }
     /**
      * собирает из UI компонентов единый Webix объект

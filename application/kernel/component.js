@@ -11,6 +11,8 @@ var Component = /** @class */ (function () {
     };
     Component.prototype.getUI = function () {
     };
+    Component.prototype.subscribeOnUI = function (e) {
+    };
     return Component;
 }());
 exports.Component = Component;
