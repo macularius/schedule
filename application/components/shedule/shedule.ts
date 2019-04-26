@@ -13,8 +13,8 @@ export class Shedule extends Component {
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
 
-        this.UI.renderUI(this.provider.load("my"));
-        // console.log(this.provider.load("my"));
+        this.UI.renderUI(this.provider.load("1_0"));
+        // console.log(this.provider.load("1_0"));
     }
 
     handleEvent(e: string): void {

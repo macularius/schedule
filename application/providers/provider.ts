@@ -1,9 +1,9 @@
 import { iProvider } from "./iProvider";
 
 export abstract class Provider implements iProvider {
-    protected data: any[];
+    protected data: any;
 
-    constructor(data: any[]){
+    constructor(data: any){
         this.data = data;
     }
 
