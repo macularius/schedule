@@ -86,6 +86,8 @@ var MenuUI = /** @class */ (function (_super) {
         ];
         return _this;
     }
+    MenuUI.prototype.init = function () {
+    };
     /**
      * обновляет webixUI, в соответствии с заданными данными групп
      * @param groups массив групп, содержащих имена сотрудников

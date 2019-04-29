@@ -17,20 +17,17 @@ var App = /** @class */ (function () {
      *
      */
     App.prototype.run = function () {
-        this.components.menu.subscribeOnUI(this.components.sheduleTableTitle);
-        this.components.menu.subscribeOnUI(this.components.sheduleTableShedule);
-        this.components.sheduleDateRange.subscribeOnUI(this.components.sheduleTableShedule);
     };
     /**
      * собирает из UI компонентов единый Webix объект
      */
     App.prototype.init = function () {
-        //@ts-ignore
+        // @ts-ignore
         webix.protoUI({
             name: "dataview_edit"
             //@ts-ignore
         }, webix.EditAbility, webix.ui.dataview);
-        // @ts-ignore js имеет доступ к webix в index.html
+        // @ts-ignore
         webix.ui({
             type: "wide",
             cols: [
@@ -63,6 +60,16 @@ var App = /** @class */ (function () {
                 },
             ],
         });
+        /**
+         * добавление слушателей на связанные компоненты
+         */
+        this.components.menu.subscribeOnUI(this.components.sheduleTableTitle);
+        this.components.menu.subscribeOnUI(this.components.sheduleTableShedule);
+        this.components.sheduleDateRange.subscribeOnUI(this.components.sheduleTableShedule);
+        /**
+         * инициализация слушателя календаря в dateRange компоненте
+         */
+        this.components.sheduleDateRange.init();
     };
     return App;
 }());

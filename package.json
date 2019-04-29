@@ -19,8 +19,7 @@
   },
   "homepage": "https://github.com/macularius/schedule#readme",
   "dependencies": {
-    "typescript": "^3.4.4",
-    "webix": "^6.2.1"
+    "typescript": "^3.4.4"
   },
   "devDependencies": {
     "webpack": "^4.30.0",

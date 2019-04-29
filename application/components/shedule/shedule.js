@@ -25,6 +25,9 @@ var Shedule = /** @class */ (function (_super) {
         return _this;
     }
     Shedule.prototype.handleEvent = function (e) {
+        if (e == "cleared") {
+            this.UI.renderUI([]);
+        }
         var id = e.slice(7);
         var menuPos = id.slice(0, 1);
         /**

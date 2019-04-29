@@ -39,6 +39,8 @@ var TitleUI = /** @class */ (function (_super) {
     TitleUI.prototype.getEventDispatcher = function () {
         return this.eventDispatcher;
     };
+    TitleUI.prototype.init = function () {
+    };
     return TitleUI;
 }(UI_1.UI));
 exports.TitleUI = TitleUI;

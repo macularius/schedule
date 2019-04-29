@@ -12,6 +12,8 @@ var UI = /** @class */ (function () {
     };
     UI.prototype.getEventDispatcher = function () {
     };
+    UI.prototype.init = function () {
+    };
     return UI;
 }());
 exports.UI = UI;

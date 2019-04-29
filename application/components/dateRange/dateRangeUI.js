@@ -50,6 +50,13 @@ var DateRangeUI = /** @class */ (function (_super) {
         ];
         return _this;
     }
+    DateRangeUI.prototype.init = function () {
+        var ed = this.eventDispatcher;
+        //@ts-ignore
+        $$("$daterangesuggest1_daterange").attachEvent("onDateClear", function () {
+            ed.notify("cleared");
+        });
+    };
     DateRangeUI.prototype.renderUI = function () {
     };
     DateRangeUI.prototype.event = function (e) {

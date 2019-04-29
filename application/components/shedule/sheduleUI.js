@@ -23,24 +23,44 @@ var SheduleUI = /** @class */ (function (_super) {
     }
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
-        timetable[0].shedule.days.forEach(function (day) {
-            sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
-        });
-        //@ts-ignore
-        webix.ui({
-            id: "shedule table shedule",
-            view: "dataview_edit",
-            xCount: timetable[0].shedule.days.length,
-            editable: true,
-            editor: "text",
-            editValue: "schedule",
-            editaction: "click",
-            template: function (item) {
-                var date = new Date(item.date);
-                return "<div class='webix_strong'>" + date.toLocaleDateString() + "</div><div>" + item.shedule + "</div>";
-            },
-            data: sheduleItems,
-        }, $$("shedule table shedule"));
+        /**
+         * проверка на пустоту арсписания
+         */
+        if (timetable.length > 0) {
+            timetable[0].shedule.days.forEach(function (day) {
+                sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
+            });
+            //@ts-ignore
+            webix.ui({
+                id: "shedule table shedule",
+                view: "scrollview",
+                scroll: "x",
+                body: {
+                    view: "dataview_edit",
+                    xCount: timetable[0].shedule.days.length,
+                    editable: true,
+                    editor: "text",
+                    editValue: "schedule",
+                    editaction: "click",
+                    template: function (item) {
+                        var date = new Date(item.date);
+                        return "<div class='webix_strong'>" + date.toLocaleDateString() + "</div><div>" + item.shedule + "</div>";
+                    },
+                    data: sheduleItems,
+                }
+                //@ts-ignore
+            }, $$("shedule table shedule"));
+        }
+        else {
+            //@ts-ignore
+            webix.ui({
+                id: "shedule table shedule",
+                view: "scrollview",
+                scroll: "x",
+                body: {}
+                //@ts-ignore
+            }, $$("shedule table shedule"));
+        }
     };
     SheduleUI.prototype.event = function (e) {
         //@ts-ignore
@@ -51,6 +71,8 @@ var SheduleUI = /** @class */ (function (_super) {
     };
     SheduleUI.prototype.getEventDispatcher = function () {
         return this.eventDispatcher;
+    };
+    SheduleUI.prototype.init = function () {
     };
     return SheduleUI;
 }(UI_1.UI));
