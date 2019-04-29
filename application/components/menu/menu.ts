@@ -21,6 +21,7 @@ export class Menu extends Component {
     }
     
     init(): void {
+        this.UI.init();
     }
     getUI(): any {
         return this.UI.getWebixUI();

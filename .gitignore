@@ -11,3 +11,11 @@ application/components/menu/menu.js
 application/components/shedule/shedule.js
 application/components/shedule/sheduleUI.js
 application/providers/sheduleProvider.js
+bundle.js
+application/components/dateRange/dateRange.js
+application/components/dateRange/dateRangeUI.js
+application/components/menu/menu.js
+application/components/menu/menuUI.js
+application/components/shedule/shedule.js
+application/components/shedule/sheduleUI.js
+application/kernel/app.js

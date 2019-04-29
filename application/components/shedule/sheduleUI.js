@@ -24,7 +24,7 @@ var SheduleUI = /** @class */ (function (_super) {
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
         /**
-         * проверка на пустоту арсписания
+         * проверка на пустоту расписания
          */
         if (timetable.length > 0) {
             timetable[0].shedule.days.forEach(function (day) {

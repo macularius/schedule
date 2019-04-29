@@ -77,16 +77,16 @@ var MenuUI = /** @class */ (function (_super) {
                 type: {
                     subsign: true
                 },
-                on: {
-                    onMenuItemClick: function (id) {
-                        ed.notify(id);
-                    },
-                },
             },
         ];
         return _this;
     }
     MenuUI.prototype.init = function () {
+        var ed = this.eventDispatcher;
+        //@ts-ignore
+        $$("menu").attachEvent("onMenuItemClick", function (id) {
+            ed.notify(id);
+        });
     };
     /**
      * обновляет webixUI, в соответствии с заданными данными групп

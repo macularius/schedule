@@ -7,17 +7,23 @@ import { SheduleProvider } from "../../providers/sheduleProvider";
 
 export class Shedule extends Component {
     private UI: iUI;
+    private currentID: string;
     
     constructor(){
         super(new SheduleProvider());
+
+        this.currentID = '';
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
     }
 
     handleEvent(e: string): void {
+        this.UI.event(e);
 
         if (e == "cleared") {
-            this.UI.renderUI([]);
+            if (this.currentID != "") {
+                this.UI.renderUI(this.provider.load(this.currentID));
+            }
         }
 
         let id = e.slice(7);
@@ -27,7 +33,8 @@ export class Shedule extends Component {
          * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
          */
         if (id != "" && Number(menuPos) == 0 || id.indexOf("_") != -1) {
-            this.UI.renderUI(this.provider.load(id));
+            this.currentID = id;
+            this.UI.renderUI(this.provider.load(this.currentID));
         }
     }
     

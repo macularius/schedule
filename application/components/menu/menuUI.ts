@@ -65,16 +65,17 @@ export class MenuUI extends UI {
                 type:{
                     subsign:true
                 },
-                on:{
-                    onMenuItemClick: function(id: any) {
-                        ed.notify(id);
-                    },
-                },
             },
         ];
     }
     
     init(){
+        let ed = this.eventDispatcher;
+
+        //@ts-ignore
+        $$("menu").attachEvent("onMenuItemClick", function(id: any) {
+            ed.notify(id)
+        });
     }
     /**
      * обновляет webixUI, в соответствии с заданными данными групп

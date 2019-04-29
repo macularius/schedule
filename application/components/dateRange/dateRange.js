@@ -29,7 +29,6 @@ var DateRange = /** @class */ (function (_super) {
     };
     DateRange.prototype.init = function () {
         this.UI.init();
-        console.log(this.UI.getEventDispatcher());
     };
     DateRange.prototype.getUI = function () {
         return this.UI.getWebixUI();

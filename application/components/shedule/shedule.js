@@ -21,12 +21,16 @@ var Shedule = /** @class */ (function (_super) {
     __extends(Shedule, _super);
     function Shedule() {
         var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
+        _this.currentID = '';
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
     Shedule.prototype.handleEvent = function (e) {
+        this.UI.event(e);
         if (e == "cleared") {
-            this.UI.renderUI([]);
+            if (this.currentID != "") {
+                this.UI.renderUI(this.provider.load(this.currentID));
+            }
         }
         var id = e.slice(7);
         var menuPos = id.slice(0, 1);
@@ -34,7 +38,8 @@ var Shedule = /** @class */ (function (_super) {
          * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
          */
         if (id != "" && Number(menuPos) == 0 || id.indexOf("_") != -1) {
-            this.UI.renderUI(this.provider.load(id));
+            this.currentID = id;
+            this.UI.renderUI(this.provider.load(this.currentID));
         }
     };
     Shedule.prototype.init = function () {

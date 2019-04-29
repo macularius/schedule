@@ -18,7 +18,6 @@ export class DateRange extends Component {
     }
     init(): void {
         this.UI.init();
-        console.log(this.UI.getEventDispatcher());
     }
     getUI(): any {
         return this.UI.getWebixUI();

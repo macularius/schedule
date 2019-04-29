@@ -24,27 +24,11 @@ var DateRangeUI = /** @class */ (function (_super) {
                 scroll: false,
                 height: 40,
                 body: {
-                    id: "schedule_date",
+                    id: "shedule_date",
                     view: "daterangepicker",
                     format: "%d.%m.%Y",
                     width: 300,
                     label: "Период",
-                    on: {
-                        onChange: function (date) {
-                            if (date) {
-                                if (date.end) {
-                                    ed.notify("\nс " + date.start.toLocaleDateString() +
-                                        "\nпо " + date.end.toLocaleDateString());
-                                }
-                                else {
-                                    // при нажатии clear data.start == null, в этом случае сообщение не выводится
-                                    if (date.start) {
-                                        ed.notify("выбранная дата " + date.start.toLocaleDateString());
-                                    }
-                                }
-                            }
-                        },
-                    },
                 },
             },
         ];
@@ -55,6 +39,10 @@ var DateRangeUI = /** @class */ (function (_super) {
         //@ts-ignore
         $$("$daterangesuggest1_daterange").attachEvent("onDateClear", function () {
             ed.notify("cleared");
+        });
+        //@ts-ignore
+        $$("$button1").attachEvent("onItemClick", function () {
+            ed.notify("обновление расписания");
         });
     };
     DateRangeUI.prototype.renderUI = function () {

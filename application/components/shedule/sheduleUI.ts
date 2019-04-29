@@ -11,9 +11,8 @@ export class SheduleUI extends UI {
 
     renderUI(timetable: EmployTimetable[]): void {
         let sheduleItems: any[] = [];
-
         /**
-         * проверка на пустоту арсписания
+         * проверка на пустоту расписания
          */
         if (timetable.length > 0) {
             

@@ -29,6 +29,7 @@ var Menu = /** @class */ (function (_super) {
         this.UI.event(e);
     };
     Menu.prototype.init = function () {
+        this.UI.init();
     };
     Menu.prototype.getUI = function () {
         return this.UI.getWebixUI();

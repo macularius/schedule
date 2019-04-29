@@ -70,6 +70,9 @@ var App = /** @class */ (function () {
          * инициализация слушателя календаря в dateRange компоненте
          */
         this.components.sheduleDateRange.init();
+        this.components.sheduleTableShedule.init();
+        this.components.sheduleTableTitle.init();
+        this.components.menu.init();
     };
     return App;
 }());
