@@ -1,5 +1,7 @@
 import { UI } from "../../ui/UI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
+import { Event } from "../../kernel/event";
+import { Events } from "../../kernel/events";
 
 export class TitleUI extends UI {
     constructor(ed: EventDispatcher){
@@ -14,9 +16,7 @@ export class TitleUI extends UI {
 
     renderUI(): void {
     }
-    event(e: string): void {
-        //@ts-ignore
-        $$("shedule table title").setHTML(e);
+    event(e: Event): void {
     }
     getWebixUI(): object[] {
         return this.webixUI;

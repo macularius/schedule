@@ -31,7 +31,7 @@ export class App{
             //@ts-ignore
         }, webix.EditAbility, webix.ui.dataview);
         
-        // @ts-ignore
+        //@ts-ignore
         webix.ui({
             type: "wide",
             cols: [

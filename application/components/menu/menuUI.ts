@@ -1,6 +1,8 @@
 import { UI } from "../../ui/UI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { Group } from "../../entity/group";
+import { Event } from "../../kernel/event";
+import { Events } from "../../kernel/events";
 
 export class MenuUI extends UI {
     constructor(ed: EventDispatcher){
@@ -71,10 +73,11 @@ export class MenuUI extends UI {
     
     init(){
         let ed = this.eventDispatcher;
+        let context = this;
 
         //@ts-ignore
         $$("menu").attachEvent("onMenuItemClick", function(id: any) {
-            ed.notify(id)
+            ed.notify(new Event(Events.menuItemClick, id, context));
         });
     }
     /**
@@ -114,7 +117,7 @@ export class MenuUI extends UI {
             g++;
         });
     }
-    event(e: string): void {
+    event(e: Event): void {
         //@ts-ignore
         webix.message("menu:\n" + e);
     }

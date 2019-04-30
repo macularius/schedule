@@ -14,6 +14,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
+var event_1 = require("../../kernel/event");
+var events_1 = require("../../kernel/events");
 var MenuUI = /** @class */ (function (_super) {
     __extends(MenuUI, _super);
     function MenuUI(ed) {
@@ -83,9 +85,10 @@ var MenuUI = /** @class */ (function (_super) {
     }
     MenuUI.prototype.init = function () {
         var ed = this.eventDispatcher;
+        var context = this;
         //@ts-ignore
         $$("menu").attachEvent("onMenuItemClick", function (id) {
-            ed.notify(id);
+            ed.notify(new event_1.Event(events_1.Events.menuItemClick, id, context));
         });
     };
     /**

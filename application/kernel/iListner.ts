@@ -1,3 +1,5 @@
+import { Event } from "./event";
+
 export interface iListner{
-    handleEvent(e: string): void;
+    handleEvent(e: Event): void;
 }

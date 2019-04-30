@@ -26,7 +26,10 @@ var Menu = /** @class */ (function (_super) {
         return _this;
     }
     Menu.prototype.handleEvent = function (e) {
-        this.UI.event(e);
+        switch (e.type) {
+            default:
+                break;
+        }
     };
     Menu.prototype.init = function () {
         this.UI.init();
@@ -36,6 +39,9 @@ var Menu = /** @class */ (function (_super) {
     };
     Menu.prototype.subscribeOnUI = function (e) {
         this.UI.getEventDispatcher().subscribe(e);
+    };
+    Menu.prototype.getProvider = function () {
+        return this.provider;
     };
     return Menu;
 }(component_1.Component));

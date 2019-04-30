@@ -4,6 +4,9 @@ import { MenuUI } from "./menuUI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { MenuProvider } from "../../providers/menuProvider";
 import { iListner } from "../../kernel/iListner";
+import { Event } from "../../kernel/event";
+import { iProvider } from "../../providers/iProvider";
+import { Events } from "../../kernel/events";
 
 export class Menu extends Component {
     private UI: iUI;
@@ -16,8 +19,11 @@ export class Menu extends Component {
         this.UI.renderUI(this.provider.load("all"));
     }
     
-    handleEvent(e: string): void {
-        this.UI.event(e);
+    handleEvent(e: Event): void {
+        switch (e.type) {        
+            default:
+                break;
+        }
     }
     
     init(): void {
@@ -28,5 +34,8 @@ export class Menu extends Component {
     }
     subscribeOnUI(e: iListner) {
         this.UI.getEventDispatcher().subscribe(e);
+    }
+    getProvider(): iProvider {
+        return this.provider;
     }
 }

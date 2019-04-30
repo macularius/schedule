@@ -14,6 +14,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
+var event_1 = require("../../kernel/event");
+var events_1 = require("../../kernel/events");
 var DateRangeUI = /** @class */ (function (_super) {
     __extends(DateRangeUI, _super);
     function DateRangeUI(ed) {
@@ -36,20 +38,23 @@ var DateRangeUI = /** @class */ (function (_super) {
     }
     DateRangeUI.prototype.init = function () {
         var ed = this.eventDispatcher;
+        var context = this;
         //@ts-ignore
         $$("$daterangesuggest1_daterange").attachEvent("onDateClear", function () {
-            ed.notify("cleared");
+            ed.notify(new event_1.Event(events_1.Events.dateClear, "", context));
         });
         //@ts-ignore
         $$("$button1").attachEvent("onItemClick", function () {
-            ed.notify("обновление расписания");
+            //@ts-ignore
+            var date = $$("shedule_date").getValue();
+            ed.notify(new event_1.Event(events_1.Events.calendarDone, date, context));
         });
     };
     DateRangeUI.prototype.renderUI = function () {
     };
     DateRangeUI.prototype.event = function (e) {
         //@ts-ignore
-        webix.message("daterange:\n" + e);
+        webix.message("daterange:\n" + e.body.start.toLocaleDateString() + " - " + e.body.end.toLocaleDateString());
     };
     DateRangeUI.prototype.getWebixUI = function () {
         return this.webixUI;

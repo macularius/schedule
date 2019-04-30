@@ -1,5 +1,6 @@
 import { iUI } from "./iUI";
 import { EventDispatcher } from "./../kernel/eventDispatcher";
+import { Event } from "../kernel/event";
 
 export abstract class UI implements iUI {
     protected webixUI: any; 
@@ -11,7 +12,7 @@ export abstract class UI implements iUI {
     
     renderUI(d: any): void {
     }   
-    event(e: string): void {
+    event(e: Event): void {
     }
     getWebixUI(): any {
     }

@@ -1,5 +1,7 @@
 import { UI } from "../../ui/UI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
+import { Event } from "../../kernel/event";
+import { Events } from "../../kernel/events";
 
 export class DateRangeUI extends UI {
     constructor(ed: EventDispatcher){
@@ -22,21 +24,24 @@ export class DateRangeUI extends UI {
 
     init(){
         let ed = this.eventDispatcher;
+        let context = this;
         
         //@ts-ignore
         $$("$daterangesuggest1_daterange").attachEvent("onDateClear", function() {
-            ed.notify("cleared");
+            ed.notify(new Event(Events.dateClear, "", context));
         });
         //@ts-ignore
         $$("$button1").attachEvent("onItemClick", function() {
-            ed.notify("обновление расписания");
+            //@ts-ignore
+            let date = $$("shedule_date").getValue();
+            ed.notify(new Event(Events.calendarDone, date, context));
         })
     }
     renderUI(): void {
     }
-    event(e: string): void {
+    event(e: Event): void {
         //@ts-ignore
-        webix.message("daterange:\n" + e);
+        webix.message("daterange:\n" + e.body.start.toLocaleDateString() + " - " + e.body.end.toLocaleDateString());
     }
     getWebixUI(): object[] {
         return this.webixUI;

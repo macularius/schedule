@@ -30,8 +30,6 @@ var TitleUI = /** @class */ (function (_super) {
     TitleUI.prototype.renderUI = function () {
     };
     TitleUI.prototype.event = function (e) {
-        //@ts-ignore
-        $$("shedule table title").setHTML(e);
     };
     TitleUI.prototype.getWebixUI = function () {
         return this.webixUI;

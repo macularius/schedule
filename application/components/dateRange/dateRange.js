@@ -17,6 +17,7 @@ var component_1 = require("../../kernel/component");
 var dateRangeUI_1 = require("./dateRangeUI");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var daterangeProvider_1 = require("../../providers/daterangeProvider");
+var events_1 = require("../../kernel/events");
 var DateRange = /** @class */ (function (_super) {
     __extends(DateRange, _super);
     function DateRange() {
@@ -25,6 +26,18 @@ var DateRange = /** @class */ (function (_super) {
         return _this;
     }
     DateRange.prototype.handleEvent = function (e) {
+        switch (e.type) {
+            case events_1.Events.calendarDone:
+                break;
+            case events_1.Events.dateClear:
+                console.log("[dateRange, dateClear]", e.body);
+                break;
+            case events_1.Events.menuItemClick:
+                console.log("[dateRange, menuItemClick]", e.body);
+                break;
+            default:
+                break;
+        }
         this.UI.event(e);
     };
     DateRange.prototype.init = function () {
@@ -35,6 +48,9 @@ var DateRange = /** @class */ (function (_super) {
     };
     DateRange.prototype.subscribeOnUI = function (e) {
         this.UI.getEventDispatcher().subscribe(e);
+    };
+    DateRange.prototype.getProvider = function () {
+        return this.provider;
     };
     return DateRange;
 }(component_1.Component));

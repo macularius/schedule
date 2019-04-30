@@ -17,6 +17,7 @@ var component_1 = require("../../kernel/component");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var titleUI_1 = require("./titleUI");
 var titleProvider_1 = require("../../providers/titleProvider");
+var events_1 = require("../../kernel/events");
 var Title = /** @class */ (function (_super) {
     __extends(Title, _super);
     function Title() {
@@ -25,6 +26,15 @@ var Title = /** @class */ (function (_super) {
         return _this;
     }
     Title.prototype.handleEvent = function (e) {
+        switch (e.type) {
+            case events_1.Events.menuItemClick:
+                //@ts-ignore
+                $$("shedule table title").setHTML(e.body);
+                // console.log("[title, menuItemClick]", e.body);
+                break;
+            default:
+                break;
+        }
         this.UI.event(e);
     };
     Title.prototype.init = function () {
@@ -34,6 +44,9 @@ var Title = /** @class */ (function (_super) {
     };
     Title.prototype.subscribeOnUI = function (e) {
         this.UI.getEventDispatcher().subscribe(e);
+    };
+    Title.prototype.getProvider = function () {
+        return this.provider;
     };
     return Title;
 }(component_1.Component));

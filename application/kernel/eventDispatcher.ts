@@ -1,4 +1,5 @@
 import { iListner } from "./iListner";
+import { Event } from "./event";
 
 export class EventDispatcher {
     listners: iListner[];
@@ -10,7 +11,7 @@ export class EventDispatcher {
     subscribe(e: iListner){
         this.listners.push(e);
     }
-    notify(e: string){
+    notify(e: Event){
         this.listners.forEach(listner => {
             listner.handleEvent(e);
         });

@@ -1,6 +1,8 @@
 import { UI } from "../../ui/UI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { EmployTimetable } from "../../entity/employTimetable";
+import { Event } from "../../kernel/event";
+import { Events } from "../../kernel/events";
 
 export class SheduleUI extends UI {
     constructor(ed: EventDispatcher){
@@ -52,9 +54,7 @@ export class SheduleUI extends UI {
             }, $$("shedule table shedule"));
         }
     }
-    event(e: string): void {
-        //@ts-ignore
-        webix.message("shedule:\n" + e);
+    event(e: Event): void {
     }
     getWebixUI(): object[] {
         return this.webixUI;

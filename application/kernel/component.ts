@@ -1,6 +1,7 @@
 import { iComponent } from "./iComponent";
 import { iListner } from "./iListner";
 import { iProvider } from "../providers/iProvider";
+import { Event } from "./event";
 
 export abstract class Component implements iComponent, iListner {
     protected provider: iProvider;
@@ -10,7 +11,7 @@ export abstract class Component implements iComponent, iListner {
     }
 
     // iListner
-    handleEvent(e: string): void {
+    handleEvent(e: Event): void {
     }
 
     // iComponent
