@@ -77,7 +77,27 @@ export class MenuUI extends UI {
 
         //@ts-ignore
         $$("menu").attachEvent("onMenuItemClick", function(id: any) {
-            ed.notify(new Event(Events.menuItemClick, id, context));
+            id = id.slice(7);
+            let eventBody;
+            
+            if (id.indexOf("_") != -1) {
+                eventBody = {
+                    groupId: id.slice(0, id.indexOf("_")),
+                    employeeId: id.slice(id.indexOf("_")+1),
+                };
+            }
+            else{
+                if (id == "0") {
+                    eventBody = {
+                        groupId: "0",
+                        employeeId: id.slice(id.indexOf("_")+1),
+                    };
+                }
+            }
+            
+            if (eventBody) {
+                ed.notify(new Event(Events.menuItemClick, eventBody, context));
+            }
         });
     }
     /**

@@ -1,7 +1,6 @@
 import { UI } from "../../ui/UI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { Event } from "../../kernel/event";
-import { Events } from "../../kernel/events";
 
 export class TitleUI extends UI {
     constructor(ed: EventDispatcher){

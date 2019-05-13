@@ -2,7 +2,6 @@ import { UI } from "../../ui/UI";
 import { EventDispatcher } from "../../kernel/eventDispatcher";
 import { EmployTimetable } from "../../entity/employTimetable";
 import { Event } from "../../kernel/event";
-import { Events } from "../../kernel/events";
 
 export class SheduleUI extends UI {
     constructor(ed: EventDispatcher){
@@ -23,8 +22,8 @@ export class SheduleUI extends UI {
             });
 
             //@ts-ignore
-            webix.ui({
-                id: "shedule table shedule",
+            let status = webix.ui({
+                id: "shedule list",
                 view:"scrollview", 
                 scroll:"x",
                 body: {
@@ -41,17 +40,21 @@ export class SheduleUI extends UI {
                     data: sheduleItems,
                 }
                 //@ts-ignore
-            }, $$("shedule table shedule"));
+            }, $$("shedule list"));
+
+            //@ts-ignore
+            console.log($$("shedule list"));
+            
         }
         else {
             //@ts-ignore
             webix.ui({
-                id: "shedule table shedule",
+                id: "shedule list",
                 view:"scrollview", 
                 scroll:"x",
                 body: {}
                 //@ts-ignore
-            }, $$("shedule table shedule"));
+            }, $$("shedule list"));
         }
     }
     event(e: Event): void {

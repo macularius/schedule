@@ -53,8 +53,15 @@ var DateRangeUI = /** @class */ (function (_super) {
     DateRangeUI.prototype.renderUI = function () {
     };
     DateRangeUI.prototype.event = function (e) {
-        //@ts-ignore
-        webix.message("daterange:\n" + e.body.start.toLocaleDateString() + " - " + e.body.end.toLocaleDateString());
+        // console.log(e);
+        if (e.body.end == null) {
+            //@ts-ignore
+            webix.message("daterange:\n" + e.body.start.toLocaleDateString());
+        }
+        else {
+            //@ts-ignore
+            webix.message("daterange:\n" + e.body.start.toLocaleDateString() + " - " + e.body.end.toLocaleDateString());
+        }
     };
     DateRangeUI.prototype.getWebixUI = function () {
         return this.webixUI;

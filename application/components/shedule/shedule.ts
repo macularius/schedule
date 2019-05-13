@@ -24,8 +24,18 @@ export class Shedule extends Component {
         switch (e.type) {
             case Events.calendarDone:
                 if (this.currentID != "") {
-                    
-                    // this.UI.renderUI(this.provider.loadWithDate(this.currentID, date));
+                    /**
+                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+                     */
+                    if (this.currentID != '') {
+
+                        let date = {
+                            start: e.body.start,
+                            end: e.body.end
+                        };
+                        
+                        // this.UI.renderUI(this.provider.loadWithDate(this.currentID, date));
+                    }
                 }
                 break;
             case Events.dateClear:
@@ -38,16 +48,28 @@ export class Shedule extends Component {
              * обновление расписания по нажатию кнопки меню
              */
             case Events.menuItemClick:
-                let id = e.body.slice(7);
-                let menuPos = id.slice(0, 1);
+                let id, menuPos;
+                /**
+                 * если расписание сотрудника, то указывать группу
+                 * иначе мое расписание
+                 */
+                if (e.body.groupId != "") {
+                    id = e.body.groupId + "_" + e.body.employeeId;
+                    menuPos = e.body.groupId;
+                }
+                else {
+                    id = e.body.employeeId;
+                    menuPos = e.body.groupId;
+                }
                 /**
                  * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
                  */
-                if (id != "" && Number(menuPos) == 0 || id.indexOf("_") != -1) {
+                if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
                     this.currentID = id;
+                    console.log(this.currentID);
+                    
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
-                // console.log("[shedule, menuItemClick]", e.body, e.context, e.type);
                 break;
         
             default:

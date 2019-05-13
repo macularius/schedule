@@ -88,7 +88,25 @@ var MenuUI = /** @class */ (function (_super) {
         var context = this;
         //@ts-ignore
         $$("menu").attachEvent("onMenuItemClick", function (id) {
-            ed.notify(new event_1.Event(events_1.Events.menuItemClick, id, context));
+            id = id.slice(7);
+            var eventBody;
+            if (id.indexOf("_") != -1) {
+                eventBody = {
+                    groupId: id.slice(0, id.indexOf("_")),
+                    employeeId: id.slice(id.indexOf("_") + 1),
+                };
+            }
+            else {
+                if (id == "0") {
+                    eventBody = {
+                        groupId: "0",
+                        employeeId: id.slice(id.indexOf("_") + 1),
+                    };
+                }
+            }
+            if (eventBody) {
+                ed.notify(new event_1.Event(events_1.Events.menuItemClick, eventBody, context));
+            }
         });
     };
     /**

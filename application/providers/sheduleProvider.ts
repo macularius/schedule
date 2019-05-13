@@ -8,7 +8,7 @@ import { TimeRange } from "../entity/timeRange";
 export class SheduleProvider extends Provider {
     constructor(){
         super({
-                "0": new EmployTimetable(
+                "0_0": new EmployTimetable(
                     new Employ(1, "Коваценко", "Игорь", "Николаевич", "23.07.1998", "position", "email", "phone number"),
                     new Timetable([
                         new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
@@ -77,8 +77,8 @@ export class SheduleProvider extends Provider {
         );
     }
 
-    load(c: string) {
-        return [this.data[c]];
+    load(id: string) {
+        return [this.data[id]];
     }
     update() {
     }
