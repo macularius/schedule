@@ -22,8 +22,8 @@ export class SheduleUI extends UI {
             });
 
             //@ts-ignore
-            let status = webix.ui({
-                id: "shedule list",
+            webix.ui({
+                id: "shedule table shedule",
                 view:"scrollview", 
                 scroll:"x",
                 body: {
@@ -40,21 +40,18 @@ export class SheduleUI extends UI {
                     data: sheduleItems,
                 }
                 //@ts-ignore
-            }, $$("shedule list"));
+            }, $$("shedule table"), $$("shedule table shedule"));
 
-            //@ts-ignore
-            console.log($$("shedule list"));
-            
         }
         else {
             //@ts-ignore
             webix.ui({
-                id: "shedule list",
+                id: "shedule table shedule",
                 view:"scrollview", 
                 scroll:"x",
                 body: {}
                 //@ts-ignore
-            }, $$("shedule list"));
+            }, $$("shedule table"), $$("shedule table shedule"));
         }
     }
     event(e: Event): void {

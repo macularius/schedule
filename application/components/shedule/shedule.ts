@@ -66,8 +66,8 @@ export class Shedule extends Component {
                  */
                 if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
                     this.currentID = id;
-                    console.log(this.currentID);
                     
+                    console.log(this.currentID);
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
                 break;

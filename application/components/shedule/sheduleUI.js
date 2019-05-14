@@ -31,13 +31,12 @@ var SheduleUI = /** @class */ (function (_super) {
                 sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
             });
             //@ts-ignore
-            var status_1 = webix.ui({
+            webix.ui({
                 id: "shedule table shedule",
                 view: "scrollview",
                 scroll: "x",
                 body: {
                     view: "dataview_edit",
-                    id: "shedules",
                     xCount: timetable[0].shedule.days.length,
                     editable: true,
                     editor: "text",
@@ -50,9 +49,7 @@ var SheduleUI = /** @class */ (function (_super) {
                     data: sheduleItems,
                 }
                 //@ts-ignore
-            }, $$("shedule table shedule"));
-            //@ts-ignore
-            console.log($$("shedule table shedule"));
+            }, $$("shedule table"), $$("shedule table shedule"));
         }
         else {
             //@ts-ignore
@@ -62,7 +59,7 @@ var SheduleUI = /** @class */ (function (_super) {
                 scroll: "x",
                 body: {}
                 //@ts-ignore
-            }, $$("shedule table shedule"));
+            }, $$("shedule table"), $$("shedule table shedule"));
         }
     };
     SheduleUI.prototype.event = function (e) {
