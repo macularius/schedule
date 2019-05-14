@@ -77,8 +77,44 @@ export class SheduleProvider extends Provider {
         );
     }
 
-    load(id: string) {
-        return [this.data[id]];
+    /**
+     * 
+     * @param id id сотрудника, чье расписание будет загружено
+     * @param date 
+     */
+    load(id: string, date?: any): any {
+        if (date != null) {
+            let employTimetable = {
+                employ: this.data[id].employ,
+                shedule: {
+                    days: new Array(),
+                },
+            };
+    
+            if (date.end) {                
+                this.data[id].shedule.days.forEach((day: Day) => {
+                    if (Date.parse(day.date) >= Date.parse(date.start) 
+                     && Date.parse(day.date) <= Date.parse(date.end)) {
+                        employTimetable.shedule.days.push(day);
+                    }
+                });
+            }
+            else {
+                this.data[id].shedule.days.forEach((day: Day) => {
+                    if (Date.parse(day.date) == Date.parse(date.start)) {
+                        employTimetable.shedule.days.push(day);
+                    }
+                });
+            }
+            console.log([employTimetable]);
+
+            return [employTimetable];
+        }
+        else {
+            console.log([this.data[id]]);
+            
+            return [this.data[id]];
+        }
     }
     update() {
     }

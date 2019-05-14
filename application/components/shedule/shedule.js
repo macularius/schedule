@@ -22,6 +22,7 @@ var Shedule = /** @class */ (function (_super) {
     __extends(Shedule, _super);
     function Shedule() {
         var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
+        _this.provider = new sheduleProvider_1.SheduleProvider();
         _this.currentID = '';
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
@@ -38,7 +39,7 @@ var Shedule = /** @class */ (function (_super) {
                             start: e.body.start,
                             end: e.body.end
                         };
-                        // this.UI.renderUI(this.provider.loadWithDate(this.currentID, date));
+                        this.UI.renderUI(this.provider.load(this.currentID, date));
                     }
                 }
                 break;
@@ -46,7 +47,6 @@ var Shedule = /** @class */ (function (_super) {
                 if (this.currentID != "") {
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
-                // console.log("[shedule, dateClear]", e.body, e.context, e.type);
                 break;
             /**
              * обновление расписания по нажатию кнопки меню
@@ -70,7 +70,6 @@ var Shedule = /** @class */ (function (_super) {
                  */
                 if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
                     this.currentID = id;
-                    console.log(this.currentID);
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
                 break;

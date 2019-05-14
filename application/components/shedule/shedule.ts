@@ -15,6 +15,8 @@ export class Shedule extends Component {
     constructor(){
         super(new SheduleProvider());
 
+        this.provider = new SheduleProvider();
+
         this.currentID = '';
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
@@ -34,7 +36,7 @@ export class Shedule extends Component {
                             end: e.body.end
                         };
                         
-                        // this.UI.renderUI(this.provider.loadWithDate(this.currentID, date));
+                        this.UI.renderUI(this.provider.load(this.currentID, date));
                     }
                 }
                 break;
@@ -42,7 +44,6 @@ export class Shedule extends Component {
                 if (this.currentID != "") {
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
-                // console.log("[shedule, dateClear]", e.body, e.context, e.type);
                 break;
             /**
              * обновление расписания по нажатию кнопки меню
@@ -67,7 +68,6 @@ export class Shedule extends Component {
                 if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
                     this.currentID = id;
                     
-                    console.log(this.currentID);
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
                 break;

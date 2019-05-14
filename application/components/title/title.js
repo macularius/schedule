@@ -32,11 +32,11 @@ var Title = /** @class */ (function (_super) {
                 if (e.body.groupId != "" || id.indexOf("_") != -1) {
                     if (e.body.groupId == "0") {
                         //@ts-ignore
-                        $$("shedule table title").setHTML("мое расписание");
+                        $$("shedule table title").setHTML("<b>мое расписание</b>");
                     }
                     else {
                         //@ts-ignore
-                        $$("shedule table title").setHTML("<b>" + this.provider.load(id) + "</b>, группа: " + e.body.groupId);
+                        $$("shedule table title").setHTML("<b>" + this.provider.load(id) + "</b> группа: " + e.body.groupId);
                     }
                 }
                 // console.log("[title, menuItemClick]", e.body);

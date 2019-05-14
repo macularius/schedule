@@ -75,8 +75,41 @@ var SheduleProvider = /** @class */ (function (_super) {
             ])),
         }) || this;
     }
-    SheduleProvider.prototype.load = function (id) {
-        return [this.data[id]];
+    /**
+     *
+     * @param id id сотрудника, чье расписание будет загружено
+     * @param date
+     */
+    SheduleProvider.prototype.load = function (id, date) {
+        if (date != null) {
+            var employTimetable_2 = {
+                employ: this.data[id].employ,
+                shedule: {
+                    days: new Array(),
+                },
+            };
+            if (date.end) {
+                this.data[id].shedule.days.forEach(function (day) {
+                    if (Date.parse(day.date) >= Date.parse(date.start)
+                        && Date.parse(day.date) <= Date.parse(date.end)) {
+                        employTimetable_2.shedule.days.push(day);
+                    }
+                });
+            }
+            else {
+                this.data[id].shedule.days.forEach(function (day) {
+                    if (Date.parse(day.date) == Date.parse(date.start)) {
+                        employTimetable_2.shedule.days.push(day);
+                    }
+                });
+            }
+            console.log([employTimetable_2]);
+            return [employTimetable_2];
+        }
+        else {
+            console.log([this.data[id]]);
+            return [this.data[id]];
+        }
     };
     SheduleProvider.prototype.update = function () {
     };
