@@ -103,11 +103,9 @@ var SheduleProvider = /** @class */ (function (_super) {
                     }
                 });
             }
-            console.log([employTimetable_2]);
             return [employTimetable_2];
         }
         else {
-            console.log([this.data[id]]);
             return [this.data[id]];
         }
     };

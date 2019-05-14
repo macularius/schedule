@@ -106,13 +106,9 @@ export class SheduleProvider extends Provider {
                     }
                 });
             }
-            console.log([employTimetable]);
-
             return [employTimetable];
         }
         else {
-            console.log([this.data[id]]);
-            
             return [this.data[id]];
         }
     }
