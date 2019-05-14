@@ -40,15 +40,15 @@ export class DateRangeUI extends UI {
     renderUI(): void {
     }
     event(e: Event): void {
-        // console.log(e);
-        
-        if (e.body.end == null) {
-            //@ts-ignore
-            webix.message("daterange:\n" + e.body.start.toLocaleDateString());
-        }
-        else {
-            //@ts-ignore
-            webix.message("daterange:\n" + e.body.start.toLocaleDateString() + " - " + e.body.end.toLocaleDateString());
+        if (e.body.start != null) {
+            if (e.body.end == null) {
+                //@ts-ignore
+                webix.message("daterange:\n" + e.body.start.toLocaleDateString());
+            }
+            else {
+                //@ts-ignore
+                webix.message("daterange:\n" + e.body.start.toLocaleDateString() + " - " + e.body.end.toLocaleDateString());
+            }
         }
     }
     getWebixUI(): object[] {

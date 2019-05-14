@@ -43,6 +43,8 @@ export class Title extends Component {
     }
     
     init(): void {
+        //@ts-ignore
+        $$("shedule table title").setHTML("<b>мое расписание</b>");
     }
     getUI(): any {
         return this.UI.getWebixUI();

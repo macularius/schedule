@@ -30,16 +30,18 @@ var Shedule = /** @class */ (function (_super) {
     Shedule.prototype.handleEvent = function (e) {
         switch (e.type) {
             case events_1.Events.calendarDone:
-                if (this.currentID != "") {
-                    /**
-                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                     */
-                    if (this.currentID != '') {
-                        var date = {
-                            start: e.body.start,
-                            end: e.body.end
-                        };
-                        this.UI.renderUI(this.provider.load(this.currentID, date));
+                if (e.body.start != null) {
+                    if (this.currentID != "") {
+                        /**
+                         * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+                         */
+                        if (this.currentID != '') {
+                            var date = {
+                                start: e.body.start,
+                                end: e.body.end
+                            };
+                            this.UI.renderUI(this.provider.load(this.currentID, date));
+                        }
                     }
                 }
                 break;
@@ -80,6 +82,7 @@ var Shedule = /** @class */ (function (_super) {
         // }
     };
     Shedule.prototype.init = function () {
+        this.UI.renderUI(this.provider.load("0_0", null));
     };
     Shedule.prototype.getUI = function () {
         return this.UI.getWebixUI();

@@ -28,9 +28,9 @@ var DateRange = /** @class */ (function (_super) {
     DateRange.prototype.handleEvent = function (e) {
         switch (e.type) {
             case events_1.Events.calendarDone:
+                this.UI.event(e);
                 break;
             case events_1.Events.dateClear:
-                console.log("[dateRange, dateClear]", e.body);
                 break;
             case events_1.Events.menuItemClick:
                 console.log("[dateRange, menuItemClick]", e.body);
@@ -38,7 +38,6 @@ var DateRange = /** @class */ (function (_super) {
             default:
                 break;
         }
-        this.UI.event(e);
     };
     DateRange.prototype.init = function () {
         this.UI.init();

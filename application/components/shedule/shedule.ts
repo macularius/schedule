@@ -25,18 +25,20 @@ export class Shedule extends Component {
     handleEvent(e: Event): void {
         switch (e.type) {
             case Events.calendarDone:
-                if (this.currentID != "") {
-                    /**
-                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                     */
-                    if (this.currentID != '') {
+                if (e.body.start != null) {
+                    if (this.currentID != "") {
+                        /**
+                         * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+                         */
+                        if (this.currentID != '') {
 
-                        let date = {
-                            start: e.body.start,
-                            end: e.body.end
-                        };
-                        
-                        this.UI.renderUI(this.provider.load(this.currentID, date));
+                            let date = {
+                                start: e.body.start,
+                                end: e.body.end
+                            };
+                            
+                            this.UI.renderUI(this.provider.load(this.currentID, date));
+                        }
                     }
                 }
                 break;
@@ -82,6 +84,7 @@ export class Shedule extends Component {
     }
     
     init(): void {
+        this.UI.renderUI(this.provider.load("0_0", null));
     }
     getUI(): any {
         return this.UI.getWebixUI();

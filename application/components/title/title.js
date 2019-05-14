@@ -47,6 +47,8 @@ var Title = /** @class */ (function (_super) {
         this.UI.event(e);
     };
     Title.prototype.init = function () {
+        //@ts-ignore
+        $$("shedule table title").setHTML("<b>мое расписание</b>");
     };
     Title.prototype.getUI = function () {
         return this.UI.getWebixUI();

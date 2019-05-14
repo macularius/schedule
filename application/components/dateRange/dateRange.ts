@@ -19,9 +19,9 @@ export class DateRange extends Component {
     handleEvent(e: Event): void {
         switch (e.type) {
             case Events.calendarDone:
+                this.UI.event(e);
                 break;
             case Events.dateClear:
-                console.log("[dateRange, dateClear]", e.body);
                 break;
             case Events.menuItemClick:
                 console.log("[dateRange, menuItemClick]", e.body);
@@ -30,7 +30,6 @@ export class DateRange extends Component {
             default:
                 break;
         }
-        this.UI.event(e);
     }
     init(): void {
         this.UI.init();
