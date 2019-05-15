@@ -5,6 +5,7 @@ import { Event } from "../../kernel/event";
 import { Events } from "../../kernel/events";
 
 export class SheduleUI extends UI {
+    private counter: number;
     public userID: number;
     constructor(ed: EventDispatcher){
         super(ed);
@@ -12,6 +13,8 @@ export class SheduleUI extends UI {
         this.webixUI = [];
 
         this.userID = 0;
+
+        this.counter = 0;
     }
 
     /**
@@ -48,6 +51,17 @@ export class SheduleUI extends UI {
             };
             ed.notify(new Event(Events.itemCnahge, eventBody, context));
         });
+        
+        //@ts-ignore
+        $$("shedule items").attachEvent("onAfterRender", function(){
+            if (context.counter > 1) {
+                //@ts-ignore
+                $$("shedule items").$view.children[0].children[0].innerHTML = 
+                "<div style='float: left; width: "+(160*context.counter-1)+"px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>"
+                //@ts-ignore
+                +$$("shedule items").$view.children[0].children[0].innerHTML;
+            }    
+        });
     }
     renderUI(timetable: EmployTimetable[]): void {
         let sheduleItems: any[] = [];
@@ -69,19 +83,16 @@ export class SheduleUI extends UI {
             let options = {
                 weekday: 'short',
             };
-
                 
             /**
-             * проверка на пустоту расписаний в timetable
+             * дополнение расписания пустым пространством до понедельника
              */
+            let mainDate = Date.parse(sheduleItems[0].date);
             if (sheduleItems.length > 0) {
-                while (new Date(Date.parse(sheduleItems[0].date)).getDay() != 1) {
-                    let newDate = new Date(sheduleItems[0].date).setDate(new Date(sheduleItems[0].date).getDate() - i);
-    
-                    sheduleItems.unshift({ 
-                        date: new Date(newDate).toString(), 
-                        shedule: "" 
-                    });
+                while (new Date(mainDate).getDay() != 1) {
+                    mainDate = new Date(mainDate).setDate(new Date(mainDate).getDate() - i);
+                    
+                    this.counter++;
                 }
             }
 
@@ -122,12 +133,11 @@ export class SheduleUI extends UI {
 
         /**
          * пустое пространство на месте, добавленных пустых дней
-         * (дни добавляются дополняя выборку так, чтобы первый день был понедельник)
+         * (дни добавляются дополняя выборку так, чтобы первый день был понедельником)
          */
         let elements = new Array(), element, c = 0;
         //@ts-ignore
         for(let item in $$('shedule items').data.pull) {
-
             //@ts-ignore
             if ($$('shedule items').data.pull[item].shedule == "") {
                 //@ts-ignore
@@ -139,11 +149,13 @@ export class SheduleUI extends UI {
             }
             else break;
         }
-        if (elements.length > 1) {
-            for (let i = 0; i < elements.length-1; i++) {
-                elements[i].outerHTML = "<div style='float: left; width: 160px; height: 49px; border-bottom: 1px solid #EDEFF0;'><br></div>";
-            }
-            elements[elements.length-1].outerHTML = "<div style='float: left; width: 159px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>";    
+        if (this.counter > 1) {
+            let div = "";
+            //@ts-ignore
+            $$("shedule items").$view.children[0].children[0].innerHTML = 
+             "<div style='float: left; width: "+(160*this.counter-1)+"px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>"
+            //@ts-ignore
+             +$$("shedule items").$view.children[0].children[0].innerHTML;    
         }    
     }
     event(e: Event): void {

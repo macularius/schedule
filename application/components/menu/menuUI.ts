@@ -11,42 +11,36 @@ export class MenuUI extends UI {
         this.webixUI = [
             {
                 template: "account",
-                height: 80
+                height: 80,
             },
             {
-                view: "menu",
+                view: "tree",
                 id: "menu",
-                layout: "y",
                 width: 200,
-                subMenuPos: "right",
-                select: false,
+                select:true,
+                css: {
+                    "-webkit-user-select": "none",
+                    "-moz-user-select": "none",
+                    "-ms-user-select": "none", 
+                },
                 data: [
                     // Кнопка меню "Расписание"
                     {
                         id: "menu_1",
                         value: "Расписание",
-                        data: {
-                            container: "box",
-                            height: 300,
-                            width: 200,
-                            view: "tree",
-                            data: [
-                                // Кнопка сабменю "Мое расписание"
-                                {
-                                    id: "menu_1_0",
-                                    value: "Мое расписание"
-                                },
-                            ],
-                        },
+                        data: [
+                            // Кнопка сабменю "Мое расписание"
+                            {
+                                id: "menu_1_0",
+                                value: "Мое расписание"
+                            },
+                        ],
                     },
                     {
                         // Кнопка меню "Шаблоны"
                         id: "menu_2",
                         value: "Шаблоны",
                         data: [],
-                    },
-                    {
-                        $template: "Separator"
                     },
                     // Кнопка меню "Настройки"
                     {
@@ -76,7 +70,7 @@ export class MenuUI extends UI {
         let context = this;
 
         //@ts-ignore
-        $$("menu").attachEvent("onMenuItemClick", function(id: any) {
+        $$("menu").attachEvent("onItemClick", function(id: any) {
             id = id.slice(7);
             let eventBody;
             
@@ -106,10 +100,9 @@ export class MenuUI extends UI {
      * @param menuSheduleItems указатель на область данных, соотвутствующих пункту меню с группами
      *                         webixUI[1]              - панель управления меню
      *                         webixUI[1].data[0]      - submenu "Расписание"
-     *                         webixUI[1].data[0].data - контейнер массива расписаний групп
      */
     renderUI(groups: Group[]): void {
-        let menuSheduleItems: Array<object> = this.webixUI[1].data[0].data.data;
+        let menuSheduleItems: Array<object> = this.webixUI[1].data[0].data;
         let g: number = 1; // group counter
         let e: number = 1; // employees counter
 
@@ -120,7 +113,7 @@ export class MenuUI extends UI {
             let groupui = {
                 id: "menu_1_"+g,
                 open: false,
-                value: "Группа " + group.id,
+                value: group.name,
                 data: new Array(),
             };
             group.employees.forEach(employee => {

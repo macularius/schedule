@@ -23,42 +23,36 @@ var MenuUI = /** @class */ (function (_super) {
         _this.webixUI = [
             {
                 template: "account",
-                height: 80
+                height: 80,
             },
             {
-                view: "menu",
+                view: "tree",
                 id: "menu",
-                layout: "y",
                 width: 200,
-                subMenuPos: "right",
-                select: false,
+                select: true,
+                css: {
+                    "-webkit-user-select": "none",
+                    "-moz-user-select": "none",
+                    "-ms-user-select": "none",
+                },
                 data: [
                     // Кнопка меню "Расписание"
                     {
                         id: "menu_1",
                         value: "Расписание",
-                        data: {
-                            container: "box",
-                            height: 300,
-                            width: 200,
-                            view: "tree",
-                            data: [
-                                // Кнопка сабменю "Мое расписание"
-                                {
-                                    id: "menu_1_0",
-                                    value: "Мое расписание"
-                                },
-                            ],
-                        },
+                        data: [
+                            // Кнопка сабменю "Мое расписание"
+                            {
+                                id: "menu_1_0",
+                                value: "Мое расписание"
+                            },
+                        ],
                     },
                     {
                         // Кнопка меню "Шаблоны"
                         id: "menu_2",
                         value: "Шаблоны",
                         data: [],
-                    },
-                    {
-                        $template: "Separator"
                     },
                     // Кнопка меню "Настройки"
                     {
@@ -87,7 +81,7 @@ var MenuUI = /** @class */ (function (_super) {
         var ed = this.eventDispatcher;
         var context = this;
         //@ts-ignore
-        $$("menu").attachEvent("onMenuItemClick", function (id) {
+        $$("menu").attachEvent("onItemClick", function (id) {
             id = id.slice(7);
             var eventBody;
             if (id.indexOf("_") != -1) {
@@ -115,10 +109,9 @@ var MenuUI = /** @class */ (function (_super) {
      * @param menuSheduleItems указатель на область данных, соотвутствующих пункту меню с группами
      *                         webixUI[1]              - панель управления меню
      *                         webixUI[1].data[0]      - submenu "Расписание"
-     *                         webixUI[1].data[0].data - контейнер массива расписаний групп
      */
     MenuUI.prototype.renderUI = function (groups) {
-        var menuSheduleItems = this.webixUI[1].data[0].data.data;
+        var menuSheduleItems = this.webixUI[1].data[0].data;
         var g = 1; // group counter
         var e = 1; // employees counter
         /**
@@ -128,7 +121,7 @@ var MenuUI = /** @class */ (function (_super) {
             var groupui = {
                 id: "menu_1_" + g,
                 open: false,
-                value: "Группа " + group.id,
+                value: group.name,
                 data: new Array(),
             };
             group.employees.forEach(function (employee) {
