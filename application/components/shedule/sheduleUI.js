@@ -34,6 +34,8 @@ var SheduleUI = /** @class */ (function (_super) {
         else
             return false;
     };
+    SheduleUI.prototype.meaningful = function () {
+    };
     SheduleUI.prototype.init = function () {
         var ed = this.eventDispatcher;
         var context = this;
@@ -60,15 +62,15 @@ var SheduleUI = /** @class */ (function (_super) {
                     sheduleItems.push({ date: day.date, shedule: "" });
                 }
             });
-            var vereficate = this.verefication(timetable[0].employ.id);
+            var isEdit = this.verefication(timetable[0].employ.id);
             var i = 1;
             var options_1 = {
                 weekday: 'short',
             };
-            while (new Date(sheduleItems[0].date).getDay() != 1) {
+            while (new Date(Date.parse(sheduleItems[0].date)).getDay() != 1) {
                 var newDate = new Date(sheduleItems[0].date).setDate(new Date(sheduleItems[0].date).getDate() - i);
                 sheduleItems.unshift({
-                    date: newDate,
+                    date: new Date(newDate).toString(),
                     shedule: ""
                 });
             }
@@ -81,7 +83,7 @@ var SheduleUI = /** @class */ (function (_super) {
                     view: "dataview_edit",
                     id: "shedule items",
                     xCount: 7,
-                    editable: vereficate,
+                    editable: isEdit,
                     editor: "text",
                     editValue: "shedule",
                     editaction: "click",
@@ -95,6 +97,10 @@ var SheduleUI = /** @class */ (function (_super) {
                 }
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
+            //@ts-ignore
+            console.log($$("shedule items").data);
+            //@ts-ignore
+            console.log($$("shedule items").data.getItem(1557908327285));
         }
         else {
             //@ts-ignore

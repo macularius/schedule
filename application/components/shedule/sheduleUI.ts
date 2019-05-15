@@ -22,6 +22,9 @@ export class SheduleUI extends UI {
         if (id == this.userID) return true;
         else                   return false;
     }
+    private meaningful() {
+
+    }
 
     init() {
         let ed = this.eventDispatcher;
@@ -52,16 +55,16 @@ export class SheduleUI extends UI {
                 }
             });
 
-            let vereficate = this.verefication(timetable[0].employ.id);
+            let isEdit = this.verefication(timetable[0].employ.id);
             let i = 1;
             let options = {
                 weekday: 'short',
             };
-            while (new Date(sheduleItems[0].date).getDay() != 1) {
+            while (new Date(Date.parse(sheduleItems[0].date)).getDay() != 1) {
                 let newDate = new Date(sheduleItems[0].date).setDate(new Date(sheduleItems[0].date).getDate() - i);
 
                 sheduleItems.unshift({ 
-                    date: newDate, 
+                    date: new Date(newDate).toString(), 
                     shedule: "" 
                 });
             }
@@ -75,7 +78,7 @@ export class SheduleUI extends UI {
                     view:"dataview_edit",
                     id: "shedule items",
                     xCount: 7,
-                    editable: vereficate,
+                    editable: isEdit,
                     editor:"text",
                     editValue:"shedule",
                     editaction:"click",
@@ -90,6 +93,10 @@ export class SheduleUI extends UI {
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
 
+            //@ts-ignore
+            console.log($$("shedule items").data);
+            //@ts-ignore
+            console.log($$("shedule items").data.getItem(1557908327285));
         }
         else {
             //@ts-ignore
