@@ -13,3 +13,7 @@ application/components/menu/menu.js
 application/components/menu/menuUI.js
 application/kernel/app.js
 application/kernel/component.js
+application/components/shedule/shedule.js
+application/components/shedule/shedule.ts
+application/kernel/events.js
+application/providers/sheduleProvider.js

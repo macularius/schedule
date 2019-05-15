@@ -73,7 +73,9 @@ export class Shedule extends Component {
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
                 break;
-        
+            case Events.itemCnahge:
+                this.provider.update(e.body.value, e.body.editor, this.currentID);
+                break;
             default:
                 break;
         }
@@ -85,6 +87,7 @@ export class Shedule extends Component {
     
     init(): void {
         this.UI.renderUI(this.provider.load("0_0", null));
+        this.UI.init();
     }
     getUI(): any {
         return this.UI.getWebixUI();

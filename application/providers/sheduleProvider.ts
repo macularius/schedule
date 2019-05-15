@@ -9,11 +9,13 @@ export class SheduleProvider extends Provider {
     constructor(){
         super({
                 "0_0": new EmployTimetable(
-                    new Employ(1, "Коваценко", "Игорь", "Николаевич", "23.07.1998", "position", "email", "phone number"),
+                    new Employ(0, "Коваценко", "Игорь", "Николаевич", "23.07.1998", "position", "email", "phone number"),
                     new Timetable([
                         new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
                         new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
                         new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
                         new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
                         new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
                         new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
@@ -27,6 +29,8 @@ export class SheduleProvider extends Provider {
                         new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
                         new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
                         new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
                         new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
                         new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
                         new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
@@ -35,11 +39,13 @@ export class SheduleProvider extends Provider {
                     ])
                 ),
                 "1_2": new EmployTimetable(
-                    new Employ(1, "Петров", "Петр", "Петрович", "23.07.1998", "position", "email", "phone number"),
+                    new Employ(2, "Петров", "Петр", "Петрович", "23.07.1998", "position", "email", "phone number"),
                     new Timetable([
                         new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
                         new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
                         new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
                         new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
                         new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
                         new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
@@ -48,11 +54,13 @@ export class SheduleProvider extends Provider {
                     ])
                 ),
                 "2_1": new EmployTimetable(
-                    new Employ(1, "Сидоров", "Сидр", "Сидорович", "23.07.1998", "position", "email", "phone number"),
+                    new Employ(3, "Сидоров", "Сидр", "Сидорович", "23.07.1998", "position", "email", "phone number"),
                     new Timetable([
                         new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
                         new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
                         new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
                         new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
                         new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
                         new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
@@ -61,11 +69,13 @@ export class SheduleProvider extends Provider {
                     ])
                 ),
                 "2_2": new EmployTimetable(
-                    new Employ(1, "Федоров", "Федр", "Федорович", "23.07.1998", "position", "email", "phone number"),
+                    new Employ(4, "Федоров", "Федр", "Федорович", "23.07.1998", "position", "email", "phone number"),
                     new Timetable([
                         new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
                         new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
                         new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
                         new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
                         new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
                         new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
@@ -106,12 +116,44 @@ export class SheduleProvider extends Provider {
                     }
                 });
             }
+            console.log([employTimetable]);
+            
             return [employTimetable];
         }
         else {
             return [this.data[id]];
         }
     }
-    update() {
+    update(value: any, editor: any, id: any): void {
+        let editableDayDate: any;
+        let editablesDay: any;
+        let data: Day[];
+
+        var newItem;
+
+        editor.config.data.forEach((item: any) => {
+            if (item.id == editor.id) {
+                editableDayDate = item.date;
+            }
+        });
+
+        for(let item in this.data){
+            if (this.data[item].employ.id == id) {
+                editablesDay = this.data[item].shedule.days;
+                break;
+            }
+        }
+        
+        editablesDay.forEach((day: Day) => {
+            if (day.date == editableDayDate) {
+                let range = {
+                    start: value.split(" - ")[0],
+                    end: value.split(" - ")[1],
+                }
+                day.ranges = [range];
+                return;
+            }
+        });
     }
+    
 }

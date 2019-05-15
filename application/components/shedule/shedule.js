@@ -75,6 +75,9 @@ var Shedule = /** @class */ (function (_super) {
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
                 break;
+            case events_1.Events.itemCnahge:
+                this.provider.update(e.body.value, e.body.editor, this.currentID);
+                break;
             default:
                 break;
         }
@@ -83,6 +86,7 @@ var Shedule = /** @class */ (function (_super) {
     };
     Shedule.prototype.init = function () {
         this.UI.renderUI(this.provider.load("0_0", null));
+        this.UI.init();
     };
     Shedule.prototype.getUI = function () {
         return this.UI.getWebixUI();
