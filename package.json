@@ -7,7 +7,8 @@
     "build": "webpack -p",
     "watch": "webpack --watch",
     "dev": "webpack -w",
-    "start": "http-server"
+    "start": "http-server",
+    "ts": "cd application && tsc -w"
   },
   "repository": {
     "type": "git",
