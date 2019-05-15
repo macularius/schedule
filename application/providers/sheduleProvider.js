@@ -27,8 +27,8 @@ var SheduleProvider = /** @class */ (function (_super) {
                 new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
                 new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
                 new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
+                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
                 new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
                 new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
                 new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
@@ -39,8 +39,8 @@ var SheduleProvider = /** @class */ (function (_super) {
                 new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
                 new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
                 new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
+                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
                 new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
                 new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
                 new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
@@ -51,8 +51,8 @@ var SheduleProvider = /** @class */ (function (_super) {
                 new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
                 new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
                 new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
+                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
                 new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
                 new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
                 new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
@@ -63,8 +63,8 @@ var SheduleProvider = /** @class */ (function (_super) {
                 new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
                 new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
                 new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
+                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
                 new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
                 new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
                 new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
@@ -75,8 +75,8 @@ var SheduleProvider = /** @class */ (function (_super) {
                 new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
                 new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
                 new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", []),
+                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
+                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
                 new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
                 new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
                 new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
@@ -113,7 +113,6 @@ var SheduleProvider = /** @class */ (function (_super) {
                     }
                 });
             }
-            console.log([employTimetable_2]);
             return [employTimetable_2];
         }
         else {
@@ -121,31 +120,40 @@ var SheduleProvider = /** @class */ (function (_super) {
         }
     };
     SheduleProvider.prototype.update = function (value, editor, id) {
+        console.log(arguments);
         var editableDayDate;
         var editablesDay;
-        var data;
-        var newItem;
+        /**
+         * получение даты изменяемого расписания
+         */
         editor.config.data.forEach(function (item) {
             if (item.id == editor.id) {
                 editableDayDate = item.date;
+                return;
             }
         });
+        /**
+         * получение массива дней расписания, запрошенного сотрудника
+         */
         for (var item in this.data) {
-            if (this.data[item].employ.id == id) {
+            if (item == id) {
                 editablesDay = this.data[item].shedule.days;
                 break;
             }
         }
-        editablesDay.forEach(function (day) {
+        var editStatus = editablesDay.forEach(function (day) {
             if (day.date == editableDayDate) {
                 var range = {
                     start: value.split(" - ")[0],
                     end: value.split(" - ")[1],
                 };
                 day.ranges = [range];
-                return;
+                return true;
             }
+            return false;
         });
+        if (!editStatus) {
+        }
     };
     return SheduleProvider;
 }(provider_1.Provider));

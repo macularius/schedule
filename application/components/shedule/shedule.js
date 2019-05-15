@@ -23,7 +23,7 @@ var Shedule = /** @class */ (function (_super) {
     function Shedule() {
         var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
         _this.provider = new sheduleProvider_1.SheduleProvider();
-        _this.currentID = '';
+        _this.currentID = "0_0";
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
@@ -31,17 +31,15 @@ var Shedule = /** @class */ (function (_super) {
         switch (e.type) {
             case events_1.Events.calendarDone:
                 if (e.body.start != null) {
-                    if (this.currentID != "") {
-                        /**
-                         * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                         */
-                        if (this.currentID != '') {
-                            var date = {
-                                start: e.body.start,
-                                end: e.body.end
-                            };
-                            this.UI.renderUI(this.provider.load(this.currentID, date));
-                        }
+                    /**
+                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+                     */
+                    if (this.currentID != null) {
+                        var date = {
+                            start: e.body.start,
+                            end: e.body.end
+                        };
+                        this.UI.renderUI(this.provider.load(this.currentID, date));
                     }
                 }
                 break;
@@ -58,6 +56,8 @@ var Shedule = /** @class */ (function (_super) {
                 /**
                  * если расписание сотрудника, то указывать группу
                  * иначе мое расписание
+                 *
+                 * только "мое расписание" не имеет группы
                  */
                 if (e.body.groupId != "") {
                     id = e.body.groupId + "_" + e.body.employeeId;

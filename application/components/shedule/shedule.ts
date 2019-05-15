@@ -17,7 +17,7 @@ export class Shedule extends Component {
 
         this.provider = new SheduleProvider();
 
-        this.currentID = '';
+        this.currentID = "0_0";
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
     }
@@ -26,19 +26,16 @@ export class Shedule extends Component {
         switch (e.type) {
             case Events.calendarDone:
                 if (e.body.start != null) {
-                    if (this.currentID != "") {
-                        /**
-                         * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                         */
-                        if (this.currentID != '') {
-
-                            let date = {
-                                start: e.body.start,
-                                end: e.body.end
-                            };
-                            
-                            this.UI.renderUI(this.provider.load(this.currentID, date));
-                        }
+                    /**
+                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+                     */
+                    if (this.currentID != null) {
+                        let date = {
+                            start: e.body.start,
+                            end: e.body.end
+                        };
+                        
+                        this.UI.renderUI(this.provider.load(this.currentID, date));
                     }
                 }
                 break;
@@ -55,6 +52,8 @@ export class Shedule extends Component {
                 /**
                  * если расписание сотрудника, то указывать группу
                  * иначе мое расписание
+                 * 
+                 * только "мое расписание" не имеет группы
                  */
                 if (e.body.groupId != "") {
                     id = e.body.groupId + "_" + e.body.employeeId;
@@ -73,7 +72,7 @@ export class Shedule extends Component {
                     this.UI.renderUI(this.provider.load(this.currentID));
                 }
                 break;
-            case Events.itemCnahge:
+            case Events.itemCnahge:            
                 this.provider.update(e.body.value, e.body.editor, this.currentID);
                 break;
             default:

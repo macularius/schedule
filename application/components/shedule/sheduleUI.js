@@ -34,7 +34,16 @@ var SheduleUI = /** @class */ (function (_super) {
         else
             return false;
     };
-    SheduleUI.prototype.meaningful = function () {
+    SheduleUI.prototype.getDataviewItemById = function (id) {
+        var elements = document.getElementsByClassName("webix_dataview_item");
+        for (var element in elements) {
+            if (elements[element].getAttribute('webix_l_id') != null
+                && Number(elements[element].getAttribute('webix_l_id')) == id) {
+                // console.log(elements[element]);
+                return elements[element];
+            }
+        }
+        return null;
     };
     SheduleUI.prototype.init = function () {
         var ed = this.eventDispatcher;
@@ -51,11 +60,11 @@ var SheduleUI = /** @class */ (function (_super) {
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
         /**
-         * проверка на пустоту расписания
+         * проверка на пустоту timetable сотрудника
          */
         if (timetable.length > 0) {
             timetable[0].shedule.days.forEach(function (day) {
-                if (day.ranges[0]) {
+                if (day.ranges[0].start != "") {
                     sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
                 }
                 else {
@@ -67,12 +76,17 @@ var SheduleUI = /** @class */ (function (_super) {
             var options_1 = {
                 weekday: 'short',
             };
-            while (new Date(Date.parse(sheduleItems[0].date)).getDay() != 1) {
-                var newDate = new Date(sheduleItems[0].date).setDate(new Date(sheduleItems[0].date).getDate() - i);
-                sheduleItems.unshift({
-                    date: new Date(newDate).toString(),
-                    shedule: ""
-                });
+            /**
+             * проверка на пустоту расписаний в timetable
+             */
+            if (sheduleItems.length > 0) {
+                while (new Date(Date.parse(sheduleItems[0].date)).getDay() != 1) {
+                    var newDate = new Date(sheduleItems[0].date).setDate(new Date(sheduleItems[0].date).getDate() - i);
+                    sheduleItems.unshift({
+                        date: new Date(newDate).toString(),
+                        shedule: ""
+                    });
+                }
             }
             //@ts-ignore
             webix.ui({
@@ -97,10 +111,6 @@ var SheduleUI = /** @class */ (function (_super) {
                 }
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
-            //@ts-ignore
-            console.log($$("shedule items").data);
-            //@ts-ignore
-            console.log($$("shedule items").data.getItem(1557908327285));
         }
         else {
             //@ts-ignore
@@ -111,6 +121,31 @@ var SheduleUI = /** @class */ (function (_super) {
                 body: {}
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
+        }
+        /**
+         * пустое пространство на месте, добавленных пустых дней
+         * (дни добавляются дополняя выборку так, чтобы первый день был понедельник)
+         */
+        var elements = new Array(), element, c = 0;
+        //@ts-ignore
+        for (var item in $$('shedule items').data.pull) {
+            //@ts-ignore
+            if ($$('shedule items').data.pull[item].shedule == "") {
+                //@ts-ignore
+                element = this.getDataviewItemById($$('shedule items').data.pull[item].id);
+                if (element != null) {
+                    elements.push(element);
+                    c++;
+                }
+            }
+            else
+                break;
+        }
+        if (elements.length > 1) {
+            for (var i = 0; i < elements.length - 1; i++) {
+                elements[i].outerHTML = "<div style='float: left; width: 160px; height: 49px; border-bottom: 1px solid #EDEFF0;'><br></div>";
+            }
+            elements[elements.length - 1].outerHTML = "<div style='float: left; width: 159px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>";
         }
     };
     SheduleUI.prototype.event = function (e) {
