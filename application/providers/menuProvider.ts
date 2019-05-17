@@ -8,11 +8,11 @@ export class MenuProvider extends Provider {
             new Group("1", [
                 new Employ(1, "Иванов", "Иван", "Иванович", "birthday", "position", "email", "phone number"),
                 new Employ(2, "Петров", "Петр", "Петрович", "birthday", "position", "email", "phone number"),
-            ]),
+            ], "Группа 1"),
             new Group("2", [
                 new Employ(3, "Сидоров", "Сидор", "Сидорович", "birthday", "position", "email", "phone number"),
                 new Employ(2, "Федоров", "Федор", "Федорович", "birthday", "position", "email", "phone number"),
-            ]),
+            ], "Группа 2"),
         ]);
     }
 
