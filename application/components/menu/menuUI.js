@@ -51,7 +51,7 @@ var MenuUI = /** @class */ (function (_super) {
                     {
                         // Кнопка меню "Шаблоны"
                         id: "menu_2",
-                        value: "Шаблоны",
+                        value: "Редактирование",
                         data: [],
                     },
                     // Кнопка меню "Настройки"
@@ -82,21 +82,35 @@ var MenuUI = /** @class */ (function (_super) {
         var context = this;
         //@ts-ignore
         $$("menu").attachEvent("onItemClick", function (id) {
+            var menuPos = id.slice(5, 6);
             id = id.slice(7);
             var eventBody;
-            if (id.indexOf("_") != -1) {
-                eventBody = {
-                    groupId: id.slice(0, id.indexOf("_")),
-                    employeeId: id.slice(id.indexOf("_") + 1),
-                };
-            }
-            else {
-                if (id == "0") {
+            switch (menuPos) {
+                case "1":
+                    if (id.indexOf("_") != -1) {
+                        eventBody = {
+                            context: "shedule",
+                            groupId: id.slice(0, id.indexOf("_")),
+                            employeeId: id.slice(id.indexOf("_") + 1),
+                        };
+                    }
+                    else {
+                        if (id == "0") {
+                            eventBody = {
+                                context: "shedule",
+                                groupId: "0",
+                                employeeId: id.slice(id.indexOf("_") + 1),
+                            };
+                        }
+                    }
+                    break;
+                case "2":
                     eventBody = {
-                        groupId: "0",
-                        employeeId: id.slice(id.indexOf("_") + 1),
+                        context: "edit",
                     };
-                }
+                    break;
+                default:
+                    break;
             }
             if (eventBody) {
                 ed.notify(new event_1.Event(events_1.Events.menuItemClick, eventBody, context));
@@ -106,11 +120,13 @@ var MenuUI = /** @class */ (function (_super) {
     /**
      * обновляет webixUI, в соответствии с заданными данными групп
      * @param groups массив групп, содержащих имена сотрудников
-     * @param menuSheduleItems указатель на область данных, соотвутствующих пункту меню с группами
-     *                         webixUI[1]              - панель управления меню
-     *                         webixUI[1].data[0]      - submenu "Расписание"
      */
     MenuUI.prototype.renderUI = function (groups) {
+        /**
+         * menuSheduleItems указатель на область данных, соотвутствующих пункту меню с группами
+         *                         webixUI[1]              - панель управления меню
+         *                         webixUI[1].data[0]      - submenu "Расписание"
+         */
         var menuSheduleItems = this.webixUI[1].data[0].data;
         var g = 1; // group counter
         var e = 1; // employees counter

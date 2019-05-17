@@ -14,59 +14,50 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
-var dateRangeUI_1 = require("./dateRangeUI");
+var sheduleProvider_1 = require("../../providers/sheduleProvider");
+var editingUI_1 = require("./editingUI");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
-var daterangeProvider_1 = require("../../providers/daterangeProvider");
 var events_1 = require("../../kernel/events");
-var DateRange = /** @class */ (function (_super) {
-    __extends(DateRange, _super);
-    function DateRange() {
-        var _this = _super.call(this, new daterangeProvider_1.DaterangeProvider()) || this;
-        _this.UI = new dateRangeUI_1.DateRangeUI(new eventDispatcher_1.EventDispatcher([_this]));
+var Editing = /** @class */ (function (_super) {
+    __extends(Editing, _super);
+    function Editing() {
+        var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
+        _this.UI = new editingUI_1.EditingUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
-    DateRange.prototype.switch = function (status) {
-        if (status) {
-            //@ts-ignore
-            $$("shedule table date").show();
-        }
-        else {
-            //@ts-ignore
-            $$("shedule table date").hide();
-        }
-    };
-    DateRange.prototype.handleEvent = function (e) {
+    Editing.prototype.handleEvent = function (e) {
         switch (e.type) {
             case events_1.Events.calendarDone:
-                this.UI.event(e);
+                console.log("editing, calendarDone");
                 break;
             case events_1.Events.dateClear:
+                console.log("editing, dateClear");
                 break;
             case events_1.Events.menuItemClick:
                 if (e.body.context == "edit") {
-                    this.switch(false);
+                    console.log("editing, menuItemClick");
                 }
-                else {
-                    this.switch(true);
-                }
-                this.UI.event(e);
+                break;
+            case events_1.Events.itemCnahge:
+                console.log("editing, itemCnahge");
                 break;
             default:
                 break;
         }
     };
-    DateRange.prototype.init = function () {
+    Editing.prototype.init = function () {
+        this.UI.renderUI(this.provider.load("0_0", null));
         this.UI.init();
     };
-    DateRange.prototype.getUI = function () {
+    Editing.prototype.getUI = function () {
         return this.UI.getWebixUI();
     };
-    DateRange.prototype.subscribeOnUI = function (e) {
+    Editing.prototype.subscribeOnUI = function (e) {
         this.UI.getEventDispatcher().subscribe(e);
     };
-    DateRange.prototype.getProvider = function () {
+    Editing.prototype.getProvider = function () {
         return this.provider;
     };
-    return DateRange;
+    return Editing;
 }(component_1.Component));
-exports.DateRange = DateRange;
+exports.Editing = Editing;

@@ -14,6 +14,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
+var event_1 = require("../../kernel/event");
+var events_1 = require("../../kernel/events");
 var SheduleUI = /** @class */ (function (_super) {
     __extends(SheduleUI, _super);
     function SheduleUI(ed) {
@@ -72,6 +74,14 @@ var SheduleUI = /** @class */ (function (_super) {
                 }
             });
         }
+        //@ts-ignore
+        $$("shedule items").attachEvent("onBeforeEditStop", function (value, editor) {
+            var eventBody = {
+                value: value.value,
+                editor: editor,
+            };
+            ed.notify(new event_1.Event(events_1.Events.itemCnahge, eventBody, context));
+        });
     };
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];

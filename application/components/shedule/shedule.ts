@@ -21,6 +21,16 @@ export class Shedule extends Component {
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
     }
+    private switch(status: boolean){
+        if(status) {
+            //@ts-ignore
+            $$("shedule table shedule").show();
+        }
+        else {
+            //@ts-ignore
+            $$("shedule table shedule").hide();
+        }
+    }
 
     handleEvent(e: Event): void {
         switch (e.type) {
@@ -57,25 +67,32 @@ export class Shedule extends Component {
                  * 
                  * только "мое расписание" не имеет группы
                  */
-                if (e.body.groupId != "") {
-                    id = e.body.groupId + "_" + e.body.employeeId;
-                    menuPos = e.body.groupId;
+                if(e.body.context == "edit"){
+                    this.switch(false);
                 }
-                else {
-                    id = e.body.employeeId;
-                    menuPos = e.body.groupId;
-                }
-                /**
-                 * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                 */
-                if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
-                    this.currentID = id;
-                    
-                    this.UI.renderUI(this.provider.load(this.currentID), 0);
-                    this.UI.init();
+
+                if (e.body.context == "shedule") {
+                    this.switch(true);
+                    if (e.body.groupId != "") {
+                        id = e.body.groupId + "_" + e.body.employeeId;
+                        menuPos = e.body.groupId;
+                    }
+                    else {
+                        id = e.body.employeeId;
+                        menuPos = e.body.groupId;
+                    }
+                    /**
+                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+                     */
+                    if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
+                        this.currentID = id;
+                        
+                        this.UI.renderUI(this.provider.load(this.currentID), 0);
+                        this.UI.init();
+                    }
                 }
                 break;
-            case Events.itemCnahge:            
+            case Events.itemCnahge:
                 this.provider.update(e.body.value, e.body.editor, this.currentID);
                 break;
             default:

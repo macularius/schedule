@@ -27,6 +27,16 @@ var Shedule = /** @class */ (function (_super) {
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
+    Shedule.prototype.switch = function (status) {
+        if (status) {
+            //@ts-ignore
+            $$("shedule table shedule").show();
+        }
+        else {
+            //@ts-ignore
+            $$("shedule table shedule").hide();
+        }
+    };
     Shedule.prototype.handleEvent = function (e) {
         switch (e.type) {
             case events_1.Events.calendarDone:
@@ -61,21 +71,27 @@ var Shedule = /** @class */ (function (_super) {
                  *
                  * только "мое расписание" не имеет группы
                  */
-                if (e.body.groupId != "") {
-                    id = e.body.groupId + "_" + e.body.employeeId;
-                    menuPos = e.body.groupId;
+                if (e.body.context == "edit") {
+                    this.switch(false);
                 }
-                else {
-                    id = e.body.employeeId;
-                    menuPos = e.body.groupId;
-                }
-                /**
-                 * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                 */
-                if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
-                    this.currentID = id;
-                    this.UI.renderUI(this.provider.load(this.currentID), 0);
-                    this.UI.init();
+                if (e.body.context == "shedule") {
+                    this.switch(true);
+                    if (e.body.groupId != "") {
+                        id = e.body.groupId + "_" + e.body.employeeId;
+                        menuPos = e.body.groupId;
+                    }
+                    else {
+                        id = e.body.employeeId;
+                        menuPos = e.body.groupId;
+                    }
+                    /**
+                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
+                     */
+                    if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
+                        this.currentID = id;
+                        this.UI.renderUI(this.provider.load(this.currentID), 0);
+                        this.UI.init();
+                    }
                 }
                 break;
             case events_1.Events.itemCnahge:

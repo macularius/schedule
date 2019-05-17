@@ -124,8 +124,6 @@ export class SheduleProvider extends Provider {
         }
     }
     update(value: any, editor: any, id: any): void {
-        console.log(arguments);
-        
         let editableDayDate: any;
         let editablesDay: any;
 

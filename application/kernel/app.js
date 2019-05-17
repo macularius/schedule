@@ -4,6 +4,7 @@ var menu_1 = require("../components/menu/menu");
 var dateRange_1 = require("../components/dateRange/dateRange");
 var shedule_1 = require("../components/shedule/shedule");
 var title_1 = require("../components/title/title");
+var editing_1 = require("../components/editing/editing");
 var App = /** @class */ (function () {
     function App() {
         this.components = {
@@ -11,6 +12,7 @@ var App = /** @class */ (function () {
             sheduleTableTitle: new title_1.Title(),
             sheduleDateRange: new dateRange_1.DateRange(),
             sheduleTableShedule: new shedule_1.Shedule(),
+            editing: new editing_1.Editing(),
         };
     }
     /**
@@ -36,6 +38,7 @@ var App = /** @class */ (function () {
                     rows: this.components.menu.getUI(),
                 },
                 {
+                    id: "worked place",
                     rows: [
                         // title
                         {
@@ -47,6 +50,7 @@ var App = /** @class */ (function () {
                             rows: [
                                 // выбор даты
                                 {
+                                    id: "shedule table date",
                                     rows: this.components.sheduleDateRange.getUI(),
                                 },
                                 // расписание
@@ -66,14 +70,13 @@ var App = /** @class */ (function () {
         this.components.menu.subscribeOnUI(this.components.sheduleTableTitle);
         this.components.menu.subscribeOnUI(this.components.sheduleTableShedule);
         this.components.menu.subscribeOnUI(this.components.sheduleDateRange);
+        this.components.menu.subscribeOnUI(this.components.editing);
         this.components.sheduleDateRange.subscribeOnUI(this.components.sheduleTableShedule);
-        /**
-         * инициализация слушателя календаря в dateRange компоненте
-         */
         this.components.sheduleDateRange.init();
         this.components.sheduleTableShedule.init();
         this.components.sheduleTableTitle.init();
         this.components.menu.init();
+        this.components.editing.init();
     };
     return App;
 }());

@@ -16,6 +16,17 @@ export class DateRange extends Component {
 
         this.UI = new DateRangeUI(new EventDispatcher([this]));
     }
+    private switch(status: boolean){
+        if(status) {
+            //@ts-ignore
+            $$("shedule table date").show();
+        }
+        else {
+            //@ts-ignore
+            $$("shedule table date").hide();
+        }
+    }
+
     handleEvent(e: Event): void {
         switch (e.type) {
             case Events.calendarDone:
@@ -24,6 +35,12 @@ export class DateRange extends Component {
             case Events.dateClear:
                 break;
             case Events.menuItemClick:
+                if(e.body.context == "edit"){
+                    this.switch(false);
+                }
+                else {
+                    this.switch(true);
+                }
                 this.UI.event(e);
                 break;
         

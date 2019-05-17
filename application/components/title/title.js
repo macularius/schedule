@@ -29,17 +29,22 @@ var Title = /** @class */ (function (_super) {
         switch (e.type) {
             case events_1.Events.menuItemClick:
                 var id = e.body.groupId + "_" + e.body.employeeId;
-                if (e.body.groupId != "" || id.indexOf("_") != -1) {
-                    if (e.body.groupId == "0") {
-                        //@ts-ignore
-                        $$("shedule table title").setHTML("<b>мое расписание</b>");
-                    }
-                    else {
-                        //@ts-ignore
-                        $$("shedule table title").setHTML("<b>" + this.provider.load(id) + "</b> группа: " + e.body.groupId);
+                if (e.body.context == "shedule") {
+                    if (e.body.groupId != "" || id.indexOf("_") != -1) {
+                        if (e.body.groupId == "0") {
+                            //@ts-ignore
+                            $$("shedule table title").setHTML("<b>Мое расписание</b>");
+                        }
+                        else {
+                            //@ts-ignore
+                            $$("shedule table title").setHTML("<b>" + this.provider.load(id) + "</b> группа: " + e.body.groupId);
+                        }
                     }
                 }
-                // console.log("[title, menuItemClick]", e.body);
+                if (e.body.context == "edit") {
+                    //@ts-ignore
+                    $$("shedule table title").setHTML("<b>Редактирование</b>");
+                }
                 break;
             default:
                 break;

@@ -3,6 +3,7 @@ import { DateRange } from "../components/dateRange/dateRange";
 import { Shedule } from "../components/shedule/shedule";
 import { Title } from "../components/title/title";
 import { Component } from "./component";
+import { Editing } from "../components/editing/editing";
 
 export class App{
     private components: { [key:string]:Component; };
@@ -13,6 +14,7 @@ export class App{
             sheduleTableTitle: new Title(),
             sheduleDateRange: new DateRange(),
             sheduleTableShedule: new Shedule(),
+            editing: new Editing(),
         };
     }
 
@@ -40,6 +42,7 @@ export class App{
                     rows: this.components.menu.getUI(),
                 },
                 {
+                    id: "worked place",
                     rows:[
                         // title
                         {
@@ -51,6 +54,7 @@ export class App{
                             rows:[
                                 // выбор даты
                                 {
+                                    id: "shedule table date",
                                     rows: this.components.sheduleDateRange.getUI(),
                                 },
                                 // расписание
@@ -71,15 +75,14 @@ export class App{
         this.components.menu.subscribeOnUI(this.components.sheduleTableTitle);
         this.components.menu.subscribeOnUI(this.components.sheduleTableShedule);
         this.components.menu.subscribeOnUI(this.components.sheduleDateRange);
+        this.components.menu.subscribeOnUI(this.components.editing);
         
         this.components.sheduleDateRange.subscribeOnUI(this.components.sheduleTableShedule);
 
-        /**
-         * инициализация слушателя календаря в dateRange компоненте
-         */
         this.components.sheduleDateRange.init();
         this.components.sheduleTableShedule.init();
         this.components.sheduleTableTitle.init();
         this.components.menu.init();
+        this.components.editing.init();
     }
 }

@@ -67,6 +67,15 @@ export class SheduleUI extends UI {
                 }
             })
         }
+        
+        //@ts-ignore
+        $$("shedule items").attachEvent("onBeforeEditStop", function(value: any, editor: any) {
+            let eventBody = {
+                value: value.value,
+                editor: editor,
+            };
+            ed.notify(new Event(Events.itemCnahge, eventBody, context));
+        });
     }
     renderUI(timetable: EmployTimetable[]): void {
         let sheduleItems: any[] = [];

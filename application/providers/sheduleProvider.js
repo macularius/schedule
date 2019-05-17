@@ -120,7 +120,6 @@ var SheduleProvider = /** @class */ (function (_super) {
         }
     };
     SheduleProvider.prototype.update = function (value, editor, id) {
-        console.log(arguments);
         var editableDayDate;
         var editablesDay;
         /**
