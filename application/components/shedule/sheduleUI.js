@@ -36,6 +36,8 @@ var SheduleUI = /** @class */ (function (_super) {
     SheduleUI.prototype.getDataviewItemById = function (id) {
         var elements = document.getElementsByClassName("webix_dataview_item");
         for (var element in elements) {
+            if (element == "length")
+                break; // отсечения метаданных
             if (elements[element].getAttribute('webix_l_id') != null
                 && Number(elements[element].getAttribute('webix_l_id')) == id) {
                 // console.log(elements[element]);
@@ -47,6 +49,24 @@ var SheduleUI = /** @class */ (function (_super) {
     SheduleUI.prototype.init = function () {
         var ed = this.eventDispatcher;
         var context = this;
+        //@ts-ignore
+        $$("shedule items").attachEvent("onAfterRender", function () {
+            /**
+             * Замена добавленных дней на пустое пространство,
+             * для избежания редактирования добавленных дней
+             */
+            var lastEdited;
+            for (var i = 0; i < context.counter - 1; i++) {
+                //@ts-ignore
+                context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+            }
+            /**
+             * вставка стилизованного пространства на место добавленных
+             */
+            //@ts-ignore
+            context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
+                = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+        });
     };
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
@@ -63,22 +83,21 @@ var SheduleUI = /** @class */ (function (_super) {
                 }
             });
             var isEdit = this.verefication(timetable[0].employ.id);
-            var i = 1;
             var options_1 = {
                 weekday: 'short',
             };
-            console.log(sheduleItems);
             /**
              * Добавление пустого пространства для выравнивания расписания по понидельнику
              */
             while (new Date(sheduleItems[0].date).getDay() != 1) {
                 var currentFirstDay = new Date(sheduleItems[0].date);
-                var newFirstDay = currentFirstDay.setDate(currentFirstDay.getDay() - 1);
+                var newFirstDay = currentFirstDay.setDate(currentFirstDay.getDate() - 1);
                 sheduleItems.unshift({
                     date: new Date(newFirstDay).toString(),
                     id: "",
                     shedule: ""
                 });
+                this.counter++;
             }
             //@ts-ignore
             webix.ui({
@@ -114,6 +133,20 @@ var SheduleUI = /** @class */ (function (_super) {
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
         }
+        /**
+         * Замена добавленных дней на пустое пространство,
+         * для избежания редактирования добавленных дней
+         */
+        for (var i = 0; i < this.counter - 1; i++) {
+            //@ts-ignore
+            this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+        }
+        /**
+         * вставка стилизованного пространства на место добавленных
+         */
+        //@ts-ignore
+        this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
+            = "<div style='width: " + (160 * this.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
     };
     SheduleUI.prototype.event = function (e) {
     };

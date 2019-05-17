@@ -28,6 +28,8 @@ export class SheduleUI extends UI {
         let elements = document.getElementsByClassName("webix_dataview_item");        
 
         for(let element in elements) {
+            if (element == "length") break; // отсечения метаданных
+            
             if (elements[element].getAttribute('webix_l_id') != null 
              && Number(elements[element].getAttribute('webix_l_id')) == id) {
                 // console.log(elements[element]);
@@ -42,6 +44,24 @@ export class SheduleUI extends UI {
         let ed = this.eventDispatcher;
         let context = this;
 
+        //@ts-ignore
+        $$("shedule items").attachEvent("onAfterRender", function() {
+            /**
+             * Замена добавленных дней на пустое пространство, 
+             * для избежания редактирования добавленных дней
+             */
+            let lastEdited;
+            for (let i = 0; i < context.counter-1; i++) {
+                //@ts-ignore
+                context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+            }
+            /**
+             * вставка стилизованного пространства на место добавленных
+             */
+            //@ts-ignore
+            context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
+            = "<div style='width: "+(160*context.counter-1)+"px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+        })
     }
     renderUI(timetable: EmployTimetable[]): void {
         let sheduleItems: any[] = [];
@@ -59,24 +79,23 @@ export class SheduleUI extends UI {
             });
 
             let isEdit = this.verefication(timetable[0].employ.id);
-            let i = 1;
             let options = {
                 weekday: 'short',
             };
 
-            console.log(sheduleItems);
-            
             /**
              * Добавление пустого пространства для выравнивания расписания по понидельнику
              */
             while(new Date(sheduleItems[0].date).getDay() != 1) {
                 let currentFirstDay = new Date(sheduleItems[0].date);
-                let newFirstDay = currentFirstDay.setDate(currentFirstDay.getDay()-1);
+                let newFirstDay = currentFirstDay.setDate(currentFirstDay.getDate()-1);
+                
                 sheduleItems.unshift({
                     date: new Date(newFirstDay).toString(),
                     id: "",
                     shedule: ""
                 });
+                this.counter++;
             }
 
             //@ts-ignore
@@ -113,6 +132,20 @@ export class SheduleUI extends UI {
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
         }
+        /**
+         * Замена добавленных дней на пустое пространство, 
+         * для избежания редактирования добавленных дней
+         */
+        for (let i = 0; i < this.counter-1; i++) {
+            //@ts-ignore
+            this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+        }
+        /**
+         * вставка стилизованного пространства на место добавленных
+         */        
+        //@ts-ignore
+        this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
+         = "<div style='width: "+(160*this.counter-1)+"px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
     }
     event(e: Event): void {
     }
