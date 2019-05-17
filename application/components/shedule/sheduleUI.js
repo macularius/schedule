@@ -50,25 +50,28 @@ var SheduleUI = /** @class */ (function (_super) {
         var ed = this.eventDispatcher;
         var context = this;
         //@ts-ignore
-        $$("shedule items").attachEvent("onAfterRender", function () {
-            /**
-             * Замена добавленных дней на пустое пространство,
-             * для избежания редактирования добавленных дней
-             */
+        if ($$("shedule items")) {
             //@ts-ignore
-            if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
-                for (var i = 1; i < context.counter; i++) {
-                    //@ts-ignore
-                    context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
-                }
+            $$("shedule items").attachEvent("onAfterRender", function () {
                 /**
-                 * вставка стилизованного пространства на место добавленных
+                 * Замена добавленных дней на пустое пространство,
+                 * для избежания редактирования добавленных дней
                  */
                 //@ts-ignore
-                context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
-                    = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
-            }
-        });
+                if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
+                    for (var i = 1; i < context.counter; i++) {
+                        //@ts-ignore
+                        context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+                    }
+                    /**
+                     * вставка стилизованного пространства на место добавленных
+                     */
+                    //@ts-ignore
+                    context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
+                        = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+                }
+            });
+        }
     };
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
