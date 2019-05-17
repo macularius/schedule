@@ -55,17 +55,21 @@ var SheduleUI = /** @class */ (function (_super) {
              * Замена добавленных дней на пустое пространство,
              * для избежания редактирования добавленных дней
              */
-            var lastEdited;
-            for (var i = 0; i < context.counter - 1; i++) {
-                //@ts-ignore
-                context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
-            }
-            /**
-             * вставка стилизованного пространства на место добавленных
-             */
             //@ts-ignore
-            context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
-                = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+            if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
+                //@ts-ignore
+                console.log("after", $$("shedule items"), $$("shedule items").data, $$("shedule items").data.pull);
+                for (var i = 0; i < context.counter - 1; i++) {
+                    //@ts-ignore
+                    context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+                }
+                /**
+                 * вставка стилизованного пространства на место добавленных
+                 */
+                //@ts-ignore
+                context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
+                    = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+            }
         });
     };
     SheduleUI.prototype.renderUI = function (timetable) {
@@ -73,7 +77,7 @@ var SheduleUI = /** @class */ (function (_super) {
         /**
          * проверка на пустоту timetable сотрудника
          */
-        if (timetable.length > 0) {
+        if (timetable[0].shedule.days.length > 0) {
             timetable[0].shedule.days.forEach(function (day) {
                 if (day.ranges[0].start != "") {
                     sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
@@ -86,6 +90,7 @@ var SheduleUI = /** @class */ (function (_super) {
             var options_1 = {
                 weekday: 'short',
             };
+            this.counter = 0;
             /**
              * Добавление пустого пространства для выравнивания расписания по понидельнику
              */
@@ -133,20 +138,28 @@ var SheduleUI = /** @class */ (function (_super) {
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
         }
+        // console.log("timetable", timetable, "shedule", sheduleItems);
         /**
          * Замена добавленных дней на пустое пространство,
          * для избежания редактирования добавленных дней
          */
-        for (var i = 0; i < this.counter - 1; i++) {
-            //@ts-ignore
-            this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
-        }
-        /**
-         * вставка стилизованного пространства на место добавленных
-         */
         //@ts-ignore
-        this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
-            = "<div style='width: " + (160 * this.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+        if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
+            //@ts-ignore
+            console.log(this.counter);
+            for (var i = 1; i < this.counter; i++) {
+                //@ts-ignore
+                this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+            }
+            /**
+             * вставка стилизованного пространства на место добавленных
+             */
+            //@ts-ignore
+            console.log(this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id));
+            //@ts-ignore
+            this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
+                = "<div style='width: " + (160 * this.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+        }
     };
     SheduleUI.prototype.event = function (e) {
     };
