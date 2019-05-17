@@ -40,12 +40,14 @@ var Shedule = /** @class */ (function (_super) {
                             end: e.body.end
                         };
                         this.UI.renderUI(this.provider.load(this.currentID, date), 0);
+                        this.UI.init();
                     }
                 }
                 break;
             case events_1.Events.dateClear:
                 if (this.currentID != "") {
                     this.UI.renderUI(this.provider.load(this.currentID), 0);
+                    this.UI.init();
                 }
                 break;
             /**
@@ -73,6 +75,7 @@ var Shedule = /** @class */ (function (_super) {
                 if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
                     this.currentID = id;
                     this.UI.renderUI(this.provider.load(this.currentID), 0);
+                    this.UI.init();
                 }
                 break;
             case events_1.Events.itemCnahge:

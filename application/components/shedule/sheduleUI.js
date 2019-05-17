@@ -57,9 +57,7 @@ var SheduleUI = /** @class */ (function (_super) {
              */
             //@ts-ignore
             if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
-                //@ts-ignore
-                console.log("after", $$("shedule items"), $$("shedule items").data, $$("shedule items").data.pull);
-                for (var i = 0; i < context.counter - 1; i++) {
+                for (var i = 1; i < context.counter; i++) {
                     //@ts-ignore
                     context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
                 }
@@ -67,7 +65,7 @@ var SheduleUI = /** @class */ (function (_super) {
                  * вставка стилизованного пространства на место добавленных
                  */
                 //@ts-ignore
-                context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(1)].id).outerHTML
+                context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
                     = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
             }
         });
@@ -145,8 +143,6 @@ var SheduleUI = /** @class */ (function (_super) {
          */
         //@ts-ignore
         if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
-            //@ts-ignore
-            console.log(this.counter);
             for (var i = 1; i < this.counter; i++) {
                 //@ts-ignore
                 this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
@@ -154,8 +150,6 @@ var SheduleUI = /** @class */ (function (_super) {
             /**
              * вставка стилизованного пространства на место добавленных
              */
-            //@ts-ignore
-            console.log(this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id));
             //@ts-ignore
             this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
                 = "<div style='width: " + (160 * this.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";

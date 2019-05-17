@@ -36,12 +36,14 @@ export class Shedule extends Component {
                         };
                         
                         this.UI.renderUI(this.provider.load(this.currentID, date), 0);
+                        this.UI.init();
                     }
                 }
                 break;
             case Events.dateClear:
                 if (this.currentID != "") {
                     this.UI.renderUI(this.provider.load(this.currentID), 0);
+                    this.UI.init();
                 }
                 break;
             /**
@@ -70,6 +72,7 @@ export class Shedule extends Component {
                     this.currentID = id;
                     
                     this.UI.renderUI(this.provider.load(this.currentID), 0);
+                    this.UI.init();
                 }
                 break;
             case Events.itemCnahge:            
