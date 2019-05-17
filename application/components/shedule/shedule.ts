@@ -35,13 +35,13 @@ export class Shedule extends Component {
                             end: e.body.end
                         };
                         
-                        this.UI.renderUI(this.provider.load(this.currentID, date));
+                        this.UI.renderUI(this.provider.load(this.currentID, date), 0);
                     }
                 }
                 break;
             case Events.dateClear:
                 if (this.currentID != "") {
-                    this.UI.renderUI(this.provider.load(this.currentID));
+                    this.UI.renderUI(this.provider.load(this.currentID), 0);
                 }
                 break;
             /**
@@ -69,7 +69,7 @@ export class Shedule extends Component {
                 if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
                     this.currentID = id;
                     
-                    this.UI.renderUI(this.provider.load(this.currentID));
+                    this.UI.renderUI(this.provider.load(this.currentID), 0);
                 }
                 break;
             case Events.itemCnahge:            

@@ -17,3 +17,10 @@ application/components/shedule/shedule.js
 application/components/shedule/shedule.ts
 application/kernel/events.js
 application/providers/sheduleProvider.js
+bundle.js
+application/components/dateRange/dateRange.js
+application/components/dateRange/dateRangeUI.js
+application/components/shedule/shedule.js
+application/components/shedule/sheduleUI.js
+application/providers/menuProvider.js
+application/kernel/app.js

@@ -24,7 +24,7 @@ export class DateRange extends Component {
             case Events.dateClear:
                 break;
             case Events.menuItemClick:
-                console.log("[dateRange, menuItemClick]", e.body);
+                this.UI.event(e);
                 break;
         
             default:

@@ -14,15 +14,13 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var UI_1 = require("../../ui/UI");
-var event_1 = require("../../kernel/event");
-var events_1 = require("../../kernel/events");
 var SheduleUI = /** @class */ (function (_super) {
     __extends(SheduleUI, _super);
     function SheduleUI(ed) {
         var _this = _super.call(this, ed) || this;
+        _this.counter = 0;
         _this.webixUI = [];
         _this.userID = 0;
-        _this.counter = 0;
         return _this;
     }
     /**
@@ -49,24 +47,6 @@ var SheduleUI = /** @class */ (function (_super) {
     SheduleUI.prototype.init = function () {
         var ed = this.eventDispatcher;
         var context = this;
-        //@ts-ignore
-        $$("shedule items").attachEvent("onBeforeEditStop", function (value, editor) {
-            var eventBody = {
-                value: value.value,
-                editor: editor,
-            };
-            ed.notify(new event_1.Event(events_1.Events.itemCnahge, eventBody, context));
-        });
-        //@ts-ignore
-        $$("shedule items").attachEvent("onAfterRender", function () {
-            if (context.counter > 1) {
-                //@ts-ignore
-                $$("shedule items").$view.children[0].children[0].innerHTML =
-                    "<div style='float: left; width: " + (160 * context.counter - 1) + "px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>"
-                        //@ts-ignore
-                        + $$("shedule items").$view.children[0].children[0].innerHTML;
-            }
-        });
     };
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
@@ -87,15 +67,18 @@ var SheduleUI = /** @class */ (function (_super) {
             var options_1 = {
                 weekday: 'short',
             };
+            console.log(sheduleItems);
             /**
-             * дополнение расписания пустым пространством до понедельника
+             * Добавление пустого пространства для выравнивания расписания по понидельнику
              */
-            var mainDate = Date.parse(sheduleItems[0].date);
-            if (sheduleItems.length > 0) {
-                while (new Date(mainDate).getDay() != 1) {
-                    mainDate = new Date(mainDate).setDate(new Date(mainDate).getDate() - i);
-                    this.counter++;
-                }
+            while (new Date(sheduleItems[0].date).getDay() != 1) {
+                var currentFirstDay = new Date(sheduleItems[0].date);
+                var newFirstDay = currentFirstDay.setDate(currentFirstDay.getDay() - 1);
+                sheduleItems.unshift({
+                    date: new Date(newFirstDay).toString(),
+                    id: "",
+                    shedule: ""
+                });
             }
             //@ts-ignore
             webix.ui({
@@ -130,33 +113,6 @@ var SheduleUI = /** @class */ (function (_super) {
                 body: {}
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
-        }
-        /**
-         * пустое пространство на месте, добавленных пустых дней
-         * (дни добавляются дополняя выборку так, чтобы первый день был понедельником)
-         */
-        var elements = new Array(), element, c = 0;
-        //@ts-ignore
-        for (var item in $$('shedule items').data.pull) {
-            //@ts-ignore
-            if ($$('shedule items').data.pull[item].shedule == "") {
-                //@ts-ignore
-                element = this.getDataviewItemById($$('shedule items').data.pull[item].id);
-                if (element != null) {
-                    elements.push(element);
-                    c++;
-                }
-            }
-            else
-                break;
-        }
-        if (this.counter > 1) {
-            var div = "";
-            //@ts-ignore
-            $$("shedule items").$view.children[0].children[0].innerHTML =
-                "<div style='float: left; width: " + (160 * this.counter - 1) + "px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>"
-                    //@ts-ignore
-                    + $$("shedule items").$view.children[0].children[0].innerHTML;
         }
     };
     SheduleUI.prototype.event = function (e) {

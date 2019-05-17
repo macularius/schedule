@@ -70,6 +70,7 @@ export class App{
          */
         this.components.menu.subscribeOnUI(this.components.sheduleTableTitle);
         this.components.menu.subscribeOnUI(this.components.sheduleTableShedule);
+        this.components.menu.subscribeOnUI(this.components.sheduleDateRange);
         
         this.components.sheduleDateRange.subscribeOnUI(this.components.sheduleTableShedule);
 

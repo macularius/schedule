@@ -5,16 +5,15 @@ import { Event } from "../../kernel/event";
 import { Events } from "../../kernel/events";
 
 export class SheduleUI extends UI {
-    private counter: number;
     public userID: number;
+    public counter = 0;
+
     constructor(ed: EventDispatcher){
         super(ed);
 
         this.webixUI = [];
 
         this.userID = 0;
-
-        this.counter = 0;
     }
 
     /**
@@ -43,25 +42,6 @@ export class SheduleUI extends UI {
         let ed = this.eventDispatcher;
         let context = this;
 
-        //@ts-ignore
-        $$("shedule items").attachEvent("onBeforeEditStop", function(value: any, editor: any) {
-            let eventBody = {
-                value: value.value,
-                editor: editor,
-            };
-            ed.notify(new Event(Events.itemCnahge, eventBody, context));
-        });
-        
-        //@ts-ignore
-        $$("shedule items").attachEvent("onAfterRender", function(){
-            if (context.counter > 1) {
-                //@ts-ignore
-                $$("shedule items").$view.children[0].children[0].innerHTML = 
-                "<div style='float: left; width: "+(160*context.counter-1)+"px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>"
-                //@ts-ignore
-                +$$("shedule items").$view.children[0].children[0].innerHTML;
-            }    
-        });
     }
     renderUI(timetable: EmployTimetable[]): void {
         let sheduleItems: any[] = [];
@@ -83,17 +63,20 @@ export class SheduleUI extends UI {
             let options = {
                 weekday: 'short',
             };
-                
+
+            console.log(sheduleItems);
+            
             /**
-             * дополнение расписания пустым пространством до понедельника
+             * Добавление пустого пространства для выравнивания расписания по понидельнику
              */
-            let mainDate = Date.parse(sheduleItems[0].date);
-            if (sheduleItems.length > 0) {
-                while (new Date(mainDate).getDay() != 1) {
-                    mainDate = new Date(mainDate).setDate(new Date(mainDate).getDate() - i);
-                    
-                    this.counter++;
-                }
+            while(new Date(sheduleItems[0].date).getDay() != 1) {
+                let currentFirstDay = new Date(sheduleItems[0].date);
+                let newFirstDay = currentFirstDay.setDate(currentFirstDay.getDay()-1);
+                sheduleItems.unshift({
+                    date: new Date(newFirstDay).toString(),
+                    id: "",
+                    shedule: ""
+                });
             }
 
             //@ts-ignore
@@ -118,7 +101,7 @@ export class SheduleUI extends UI {
                     data: sheduleItems,
                 }
                 //@ts-ignore
-            }, $$("shedule table"), $$("shedule table shedule"));
+            }, $$("shedule table"), $$("shedule table shedule"));            
         }
         else {
             //@ts-ignore
@@ -130,33 +113,6 @@ export class SheduleUI extends UI {
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
         }
-
-        /**
-         * пустое пространство на месте, добавленных пустых дней
-         * (дни добавляются дополняя выборку так, чтобы первый день был понедельником)
-         */
-        let elements = new Array(), element, c = 0;
-        //@ts-ignore
-        for(let item in $$('shedule items').data.pull) {
-            //@ts-ignore
-            if ($$('shedule items').data.pull[item].shedule == "") {
-                //@ts-ignore
-                element = this.getDataviewItemById($$('shedule items').data.pull[item].id);
-                if (element != null) {
-                    elements.push(element);
-                    c++;
-                }
-            }
-            else break;
-        }
-        if (this.counter > 1) {
-            let div = "";
-            //@ts-ignore
-            $$("shedule items").$view.children[0].children[0].innerHTML = 
-             "<div style='float: left; width: "+(160*this.counter-1)+"px; height: 49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0;'><br></div>"
-            //@ts-ignore
-             +$$("shedule items").$view.children[0].children[0].innerHTML;    
-        }    
     }
     event(e: Event): void {
     }

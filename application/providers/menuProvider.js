@@ -23,11 +23,11 @@ var MenuProvider = /** @class */ (function (_super) {
             new group_1.Group("1", [
                 new employ_1.Employ(1, "Иванов", "Иван", "Иванович", "birthday", "position", "email", "phone number"),
                 new employ_1.Employ(2, "Петров", "Петр", "Петрович", "birthday", "position", "email", "phone number"),
-            ]),
+            ], "Группа 1"),
             new group_1.Group("2", [
                 new employ_1.Employ(3, "Сидоров", "Сидор", "Сидорович", "birthday", "position", "email", "phone number"),
                 new employ_1.Employ(2, "Федоров", "Федор", "Федорович", "birthday", "position", "email", "phone number"),
-            ]),
+            ], "Группа 2"),
         ]) || this;
     }
     /**

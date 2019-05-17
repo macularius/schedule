@@ -53,6 +53,10 @@ var DateRangeUI = /** @class */ (function (_super) {
     DateRangeUI.prototype.renderUI = function () {
     };
     DateRangeUI.prototype.event = function (e) {
+        if (e.body.groupId && e.body.employeeId) {
+            //@ts-ignore
+            $$("shedule_date").setValue("");
+        }
         if (e.body.start != null) {
             if (e.body.end == null) {
                 //@ts-ignore

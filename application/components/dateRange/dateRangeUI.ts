@@ -40,6 +40,10 @@ export class DateRangeUI extends UI {
     renderUI(): void {
     }
     event(e: Event): void {
+        if (e.body.groupId && e.body.employeeId) {
+            //@ts-ignore
+            $$("shedule_date").setValue("");
+        }
         if (e.body.start != null) {
             if (e.body.end == null) {
                 //@ts-ignore

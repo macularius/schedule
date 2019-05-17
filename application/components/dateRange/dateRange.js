@@ -33,7 +33,7 @@ var DateRange = /** @class */ (function (_super) {
             case events_1.Events.dateClear:
                 break;
             case events_1.Events.menuItemClick:
-                console.log("[dateRange, menuItemClick]", e.body);
+                this.UI.event(e);
                 break;
             default:
                 break;
