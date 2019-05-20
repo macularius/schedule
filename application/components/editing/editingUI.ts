@@ -8,6 +8,7 @@ export class EditingUI extends UI {
         
         this.webixUI = [
             {
+                id: "edit",
                 rows:[
                     { template: "По дате" },
                     { template: "Шаблон" }
@@ -17,10 +18,13 @@ export class EditingUI extends UI {
     }
     
     init() {
-        
     }
     renderUI() {
-        
+        //@ts-ignore
+        if ($$("edit") == null) {
+            //@ts-ignore
+            $$("shedule table").addView(this.webixUI[0]);
+        }
     }
     event(e: Event): void {
     }
@@ -29,5 +33,9 @@ export class EditingUI extends UI {
     }
     getEventDispatcher(): EventDispatcher {
         return this.eventDispatcher;
+    }
+    destroy() {
+        //@ts-ignore
+        $$("shedule table").removeView("edit");
     }
 }

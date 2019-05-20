@@ -35,7 +35,10 @@ var Editing = /** @class */ (function (_super) {
                 break;
             case events_1.Events.menuItemClick:
                 if (e.body.context == "edit") {
-                    console.log("editing, menuItemClick");
+                    this.UI.renderUI();
+                }
+                else {
+                    this.UI.destroy();
                 }
                 break;
             case events_1.Events.itemCnahge:
@@ -46,7 +49,6 @@ var Editing = /** @class */ (function (_super) {
         }
     };
     Editing.prototype.init = function () {
-        this.UI.renderUI(this.provider.load("0_0", null));
         this.UI.init();
     };
     Editing.prototype.getUI = function () {

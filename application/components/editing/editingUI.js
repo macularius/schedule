@@ -20,6 +20,7 @@ var EditingUI = /** @class */ (function (_super) {
         var _this = _super.call(this, ed) || this;
         _this.webixUI = [
             {
+                id: "edit",
                 rows: [
                     { template: "По дате" },
                     { template: "Шаблон" }
@@ -31,6 +32,11 @@ var EditingUI = /** @class */ (function (_super) {
     EditingUI.prototype.init = function () {
     };
     EditingUI.prototype.renderUI = function () {
+        //@ts-ignore
+        if ($$("edit") == null) {
+            //@ts-ignore
+            $$("shedule table").addView(this.webixUI[0]);
+        }
     };
     EditingUI.prototype.event = function (e) {
     };
@@ -39,6 +45,10 @@ var EditingUI = /** @class */ (function (_super) {
     };
     EditingUI.prototype.getEventDispatcher = function () {
         return this.eventDispatcher;
+    };
+    EditingUI.prototype.destroy = function () {
+        //@ts-ignore
+        $$("shedule table").removeView("edit");
     };
     return EditingUI;
 }(UI_1.UI));

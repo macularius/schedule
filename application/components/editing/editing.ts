@@ -9,7 +9,7 @@ import { Events } from "../../kernel/events";
 import { UI } from "../../ui/UI";
 
 export class Editing extends Component {
-    private UI: UI;
+    private UI: EditingUI;
 
     constructor(){
         super(new SheduleProvider());
@@ -27,7 +27,10 @@ export class Editing extends Component {
                 break;
             case Events.menuItemClick:
                 if (e.body.context == "edit") {
-                    console.log("editing, menuItemClick");
+                    this.UI.renderUI();
+                }
+                else {
+                    this.UI.destroy();
                 }
                 break;
             case Events.itemCnahge:
@@ -38,7 +41,6 @@ export class Editing extends Component {
         }
     }
     init(): void {
-        this.UI.renderUI(this.provider.load("0_0", null));
         this.UI.init();
     }
     getUI(): any {
