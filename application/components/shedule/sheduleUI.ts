@@ -118,7 +118,7 @@ export class SheduleUI extends UI {
             webix.ui({
                 id: "shedule table shedule",
                 view:"scrollview", 
-                scroll:"x",
+                scroll:"auto",
                 body: {
                     view:"dataview_edit",
                     id: "shedule items",

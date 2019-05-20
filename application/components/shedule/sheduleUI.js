@@ -119,7 +119,7 @@ var SheduleUI = /** @class */ (function (_super) {
             webix.ui({
                 id: "shedule table shedule",
                 view: "scrollview",
-                scroll: "x",
+                scroll: "auto",
                 body: {
                     view: "dataview_edit",
                     id: "shedule items",

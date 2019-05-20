@@ -37,7 +37,7 @@ var Title = /** @class */ (function (_super) {
                         }
                         else {
                             //@ts-ignore
-                            $$("shedule table title").setHTML("<b>" + this.provider.load(id) + "</b> группа: " + e.body.groupId);
+                            $$("shedule table title").setHTML("<b>" + this.provider.load(id));
                         }
                     }
                 }
@@ -53,7 +53,7 @@ var Title = /** @class */ (function (_super) {
     };
     Title.prototype.init = function () {
         //@ts-ignore
-        $$("shedule table title").setHTML("<b>мое расписание</b>");
+        $$("shedule table title").setHTML("<b>Мое расписание</b>");
     };
     Title.prototype.getUI = function () {
         return this.UI.getWebixUI();

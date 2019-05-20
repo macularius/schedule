@@ -30,7 +30,7 @@ export class Title extends Component {
                         }
                         else{
                             //@ts-ignore
-                            $$("shedule table title").setHTML("<b>" + this.provider.load(id) + "</b> группа: " + e.body.groupId);    
+                            $$("shedule table title").setHTML("<b>" + this.provider.load(id));    
                         }
                     }
                 }
@@ -48,7 +48,7 @@ export class Title extends Component {
     
     init(): void {
         //@ts-ignore
-        $$("shedule table title").setHTML("<b>мое расписание</b>");
+        $$("shedule table title").setHTML("<b>Мое расписание</b>");
     }
     getUI(): any {
         return this.UI.getWebixUI();
