@@ -22,13 +22,117 @@ var EditingUI = /** @class */ (function (_super) {
             {
                 id: "edit",
                 rows: [
-                    { template: "По дате" },
-                    { template: "Шаблон" }
+                    {
+                        rows: [
+                            {
+                                template: "По дате:",
+                                height: 40,
+                            },
+                            {
+                                cols: [
+                                    {
+                                        id: "editingCalendar",
+                                        view: "calendar",
+                                        weekHeader: true,
+                                    },
+                                    {
+                                        view: "form",
+                                        rows: [
+                                            {
+                                                id: "editingDate",
+                                                template: _this.format,
+                                                height: 40,
+                                            },
+                                            {
+                                                cols: [
+                                                    {
+                                                        view: "text",
+                                                        label: "с",
+                                                    },
+                                                    {
+                                                        view: "text",
+                                                        label: "по",
+                                                    },
+                                                ]
+                                            },
+                                            {
+                                                cols: [
+                                                    {
+                                                        view: "button",
+                                                        id: "editingBtnAccept",
+                                                        value: "Принять",
+                                                        inputWidth: 100
+                                                    },
+                                                    {
+                                                        view: "button",
+                                                        id: "editingBtnCancel",
+                                                        value: "Отменить",
+                                                        inputWidth: 100
+                                                    },
+                                                ],
+                                            },
+                                            {
+                                                template: "",
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        view: "form",
+                        rows: [
+                            {
+                                template: "Шаблон",
+                                height: 40,
+                            },
+                            {
+                                rows: [
+                                    {
+                                        cols: [
+                                            { template: "пн", height: 40 },
+                                            { template: "вт", height: 40 },
+                                            { template: "ср", height: 40 },
+                                            { template: "чт", height: 40 },
+                                            { template: "пт", height: 40 },
+                                            { template: "сб", height: 40 },
+                                            { template: "вс", height: 40 },
+                                        ],
+                                    },
+                                    {
+                                        cols: [
+                                            { view: "text", height: 40 },
+                                            { view: "text", height: 40 },
+                                            { view: "text", height: 40 },
+                                            { view: "text", height: 40 },
+                                            { view: "text", height: 40 },
+                                            { view: "text", height: 40 },
+                                            { view: "text", height: 40 },
+                                        ],
+                                    }
+                                ],
+                            },
+                        ],
+                    }
                 ],
             }
         ];
         return _this;
     }
+    EditingUI.prototype.format = function (obj) {
+        if (obj.value) {
+            //@ts-ignore
+            if (webix.isArray(obj.value)) {
+                //@ts-ignore
+                return obj.value.map(webix.i18n.dateFormatStr).join("<br>");
+            }
+            //@ts-ignore
+            return webix.i18n.dateFormatStr(obj.value);
+        }
+        return "";
+    };
+    ;
     EditingUI.prototype.init = function () {
     };
     EditingUI.prototype.renderUI = function () {
@@ -36,6 +140,10 @@ var EditingUI = /** @class */ (function (_super) {
         if ($$("edit") == null) {
             //@ts-ignore
             $$("shedule table").addView(this.webixUI[0]);
+            //@ts-ignore
+            $$("editingCalendar").selectDate(Date.now());
+            //@ts-ignore
+            $$("editingDate").bind($$("editingCalendar"), "value");
         }
     };
     EditingUI.prototype.event = function (e) {

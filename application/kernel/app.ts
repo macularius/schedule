@@ -27,7 +27,10 @@ export class App{
      * собирает из UI компонентов единый Webix объект
      */
     public init(): void{
-        // @ts-ignore
+        //@ts-ignore
+        webix.i18n.setLocale("ru-RU");
+
+        //@ts-ignore
         webix.protoUI({
             name:"dataview_edit"
             //@ts-ignore

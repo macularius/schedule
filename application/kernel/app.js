@@ -24,7 +24,9 @@ var App = /** @class */ (function () {
      * собирает из UI компонентов единый Webix объект
      */
     App.prototype.init = function () {
-        // @ts-ignore
+        //@ts-ignore
+        webix.i18n.setLocale("ru-RU");
+        //@ts-ignore
         webix.protoUI({
             name: "dataview_edit"
             //@ts-ignore
