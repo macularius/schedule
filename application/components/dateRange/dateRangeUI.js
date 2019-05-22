@@ -31,6 +31,8 @@ var DateRangeUI = /** @class */ (function (_super) {
                     format: "%d.%m.%Y",
                     width: 300,
                     label: "Период",
+                    labelAlign: "right",
+                    labelWidth: 70,
                 },
             },
         ];

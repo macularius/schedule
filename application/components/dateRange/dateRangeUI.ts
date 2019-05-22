@@ -16,7 +16,9 @@ export class DateRangeUI extends UI {
                     view:"daterangepicker",
                     format:"%d.%m.%Y",
                     width: 300,
-                    label:"Период",
+                    label: "Период",
+                    labelAlign: "right",
+                    labelWidth: 70,
                 },
             },
         ];

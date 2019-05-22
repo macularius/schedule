@@ -21,118 +21,150 @@ var EditingUI = /** @class */ (function (_super) {
         _this.webixUI = [
             {
                 id: "edit",
-                rows: [
-                    {
-                        rows: [
-                            {
-                                template: "По дате:",
-                                height: 40,
-                            },
-                            {
-                                cols: [
-                                    {
-                                        id: "editingCalendar",
-                                        view: "calendar",
-                                        weekHeader: true,
-                                    },
-                                    {
-                                        view: "form",
-                                        rows: [
-                                            {
-                                                id: "editingDate",
-                                                template: _this.format,
-                                                height: 40,
-                                            },
-                                            {
-                                                cols: [
-                                                    {
-                                                        view: "text",
-                                                        label: "с",
+                view: "scrollview",
+                scroll: "auto",
+                maxWidth: 788,
+                body: {
+                    rows: [
+                        {
+                            view: "form",
+                            rows: [
+                                {
+                                    view: "label",
+                                    label: "По дате:",
+                                    inputWidth: 100,
+                                },
+                                {
+                                    cols: [
+                                        {
+                                            id: "editingCalendar",
+                                            view: "calendar",
+                                            weekHeader: true,
+                                        },
+                                        {
+                                            view: "form",
+                                            width: 400,
+                                            rows: [
+                                                {
+                                                    id: "editingDate",
+                                                    template: function (obj) {
+                                                        if (obj.value) {
+                                                            //@ts-ignore
+                                                            if (webix.isArray(obj.value)) {
+                                                                //@ts-ignore
+                                                                return obj.value.map(webix.i18n.dateFormatStr).join("<br>");
+                                                            }
+                                                            //@ts-ignore
+                                                            return webix.i18n.dateFormatStr(obj.value);
+                                                        }
+                                                        return "";
                                                     },
-                                                    {
-                                                        view: "text",
-                                                        label: "по",
-                                                    },
-                                                ]
-                                            },
-                                            {
-                                                cols: [
-                                                    {
-                                                        view: "button",
-                                                        id: "editingBtnAccept",
-                                                        value: "Принять",
-                                                        inputWidth: 100
-                                                    },
-                                                    {
-                                                        view: "button",
-                                                        id: "editingBtnCancel",
-                                                        value: "Отменить",
-                                                        inputWidth: 100
-                                                    },
-                                                ],
-                                            },
-                                            {
-                                                template: "",
-                                            },
-                                        ],
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        view: "form",
-                        rows: [
-                            {
-                                template: "Шаблон",
-                                height: 40,
-                            },
-                            {
-                                rows: [
-                                    {
-                                        cols: [
-                                            { template: "пн", height: 40 },
-                                            { template: "вт", height: 40 },
-                                            { template: "ср", height: 40 },
-                                            { template: "чт", height: 40 },
-                                            { template: "пт", height: 40 },
-                                            { template: "сб", height: 40 },
-                                            { template: "вс", height: 40 },
-                                        ],
-                                    },
-                                    {
-                                        cols: [
-                                            { view: "text", height: 40 },
-                                            { view: "text", height: 40 },
-                                            { view: "text", height: 40 },
-                                            { view: "text", height: 40 },
-                                            { view: "text", height: 40 },
-                                            { view: "text", height: 40 },
-                                            { view: "text", height: 40 },
-                                        ],
-                                    }
-                                ],
-                            },
-                        ],
-                    }
-                ],
+                                                    height: 40,
+                                                },
+                                                {
+                                                    cols: [
+                                                        {
+                                                            view: "text",
+                                                            width: 70,
+                                                            labelAlign: "right",
+                                                            label: "с",
+                                                            labelWidth: 30,
+                                                            inputWidth: 70,
+                                                        },
+                                                        {
+                                                            view: "text",
+                                                            width: 70,
+                                                            labelAlign: "right",
+                                                            label: "по",
+                                                            labelWidth: 30,
+                                                            inputWidth: 70,
+                                                        },
+                                                    ]
+                                                },
+                                                {
+                                                    cols: [
+                                                        {
+                                                            gravity: 1,
+                                                        },
+                                                        {
+                                                            gravity: 2,
+                                                            cols: [
+                                                                {
+                                                                    view: "button",
+                                                                    id: "editingBtnAccept",
+                                                                    value: "Принять",
+                                                                    inputWidth: 100
+                                                                },
+                                                                { gravity: 0.5 },
+                                                                {
+                                                                    view: "button",
+                                                                    id: "editingBtnCancel",
+                                                                    value: "Отменить",
+                                                                    inputWidth: 100
+                                                                }
+                                                            ]
+                                                        },
+                                                    ],
+                                                },
+                                            ],
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            view: "form",
+                            rows: [
+                                {
+                                    view: "label",
+                                    label: "Шаблоны:",
+                                    inputWidth: 100,
+                                },
+                                {
+                                    view: "datatable",
+                                    id: "template table",
+                                    scrollY: "auto",
+                                    width: 752,
+                                    columns: [
+                                        { id: "mon", header: "понедельник", width: 105 },
+                                        { id: "tue", header: "вторник", width: 105 },
+                                        { id: "wed", header: "среда", width: 105 },
+                                        { id: "thu", header: "четверг", width: 105 },
+                                        { id: "fri", header: "пятница", width: 105 },
+                                        { id: "sat", header: "суббота", width: 105 },
+                                        { id: "sun", header: "воскресенье", width: 105 },
+                                    ],
+                                    data: [
+                                        {
+                                            id: "1",
+                                            "mon": "14 - 18",
+                                            "tue": "14 - 18",
+                                            "wed": "9 - 18",
+                                            "thu": "",
+                                            "fri": "9 - 18",
+                                            "sat": "",
+                                            "sun": "",
+                                        },
+                                        {
+                                            id: "2",
+                                            "mon": "14 - 18",
+                                            "tue": "14 - 18",
+                                            "wed": "9 - 18",
+                                            "thu": "",
+                                            "fri": "9 - 18",
+                                            "sat": "",
+                                            "sun": "",
+                                        },
+                                    ] //#TODO data load
+                                },
+                            ],
+                        }
+                    ],
+                },
             }
         ];
         return _this;
     }
-    EditingUI.prototype.format = function (obj) {
-        if (obj.value) {
-            //@ts-ignore
-            if (webix.isArray(obj.value)) {
-                //@ts-ignore
-                return obj.value.map(webix.i18n.dateFormatStr).join("<br>");
-            }
-            //@ts-ignore
-            return webix.i18n.dateFormatStr(obj.value);
-        }
-        return "";
-    };
-    ;
     EditingUI.prototype.init = function () {
     };
     EditingUI.prototype.renderUI = function () {

@@ -7,12 +7,13 @@ import { iProvider } from "../../providers/iProvider";
 import { Event } from "../../kernel/event";
 import { Events } from "../../kernel/events";
 import { UI } from "../../ui/UI";
+import { EditingProvider } from "../../providers/editingProvider";
 
 export class Editing extends Component {
     private UI: EditingUI;
 
     constructor(){
-        super(new SheduleProvider());
+        super(new EditingProvider());
 
         this.UI = new EditingUI(new EventDispatcher([this]));
     }

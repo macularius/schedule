@@ -14,14 +14,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = require("../../kernel/component");
-var sheduleProvider_1 = require("../../providers/sheduleProvider");
 var editingUI_1 = require("./editingUI");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var events_1 = require("../../kernel/events");
+var editingProvider_1 = require("../../providers/editingProvider");
 var Editing = /** @class */ (function (_super) {
     __extends(Editing, _super);
     function Editing() {
-        var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
+        var _this = _super.call(this, new editingProvider_1.EditingProvider()) || this;
         _this.UI = new editingUI_1.EditingUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
