@@ -23,7 +23,7 @@ var Shedule = /** @class */ (function (_super) {
     function Shedule() {
         var _this = _super.call(this, new sheduleProvider_1.SheduleProvider()) || this;
         _this.provider = new sheduleProvider_1.SheduleProvider();
-        _this.currentID = "0_0";
+        _this.currentID = "0";
         _this.UI = new sheduleUI_1.SheduleUI(new eventDispatcher_1.EventDispatcher([_this]));
         return _this;
     }
@@ -104,7 +104,7 @@ var Shedule = /** @class */ (function (_super) {
         // }
     };
     Shedule.prototype.init = function () {
-        this.UI.renderUI(this.provider.load("0_0", null));
+        this.UI.renderUI(this.provider.load("0", null));
         this.UI.init();
     };
     Shedule.prototype.getUI = function () {

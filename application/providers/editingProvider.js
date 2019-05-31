@@ -17,7 +17,10 @@ var provider_1 = require("./provider");
 var EditingProvider = /** @class */ (function (_super) {
     __extends(EditingProvider, _super);
     function EditingProvider() {
-        return _super.call(this, {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    EditingProvider.prototype.load = function (id) {
+        this.data = {
             "1": {
                 "mon": { start: "14", end: "18" },
                 "tue": { start: "14", end: "18" },
@@ -36,9 +39,7 @@ var EditingProvider = /** @class */ (function (_super) {
                 "sat": { start: "", end: "" },
                 "sun": { start: "", end: "" },
             }
-        }) || this;
-    }
-    EditingProvider.prototype.load = function (id) {
+        };
         return this.data[id];
     };
     EditingProvider.prototype.update = function (t_id, day, value) {

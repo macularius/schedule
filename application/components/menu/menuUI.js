@@ -118,21 +118,19 @@ var MenuUI = /** @class */ (function (_super) {
          *                         webixUI[1].data[0]      - submenu "Расписание"
          */
         var menuSheduleItems = this.webixUI[1].data[0].data;
-        var g = 1; // group counter
-        var e = 1; // employees counter
         /**
          * добавляет каждого сотрудника, каждой группы в меню
          */
         groups.forEach(function (group) {
             var groupui = {
-                id: "menu_1_" + g,
+                id: "menu_1_" + group.id,
                 open: false,
                 value: group.name,
                 data: new Array(),
             };
             group.employees.forEach(function (employee) {
                 var empui = {
-                    id: "menu_1_" + g + "_" + e++,
+                    id: "menu_1_" + group.id + "_" + employee.id,
                     value: employee.lastname + " " +
                         employee.firstname.slice(0, 1) + " " +
                         employee.middlename.slice(0, 1),
@@ -140,8 +138,6 @@ var MenuUI = /** @class */ (function (_super) {
                 groupui.data.push(empui);
             });
             menuSheduleItems.push(groupui);
-            e = 1;
-            g++;
         });
     };
     MenuUI.prototype.event = function (e) {

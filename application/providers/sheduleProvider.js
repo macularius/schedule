@@ -22,76 +22,15 @@ var timeRange_1 = require("../entity/timeRange");
 var SheduleProvider = /** @class */ (function (_super) {
     __extends(SheduleProvider, _super);
     function SheduleProvider() {
-        return _super.call(this, {
-            "0_0": new employTimetable_1.EmployTimetable(new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "23.07.1998", "position", "email", "phone number"), new timetable_1.Timetable([
-                new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-                new day_1.Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "18")]),
-            ])),
-            "1_1": new employTimetable_1.EmployTimetable(new employ_1.Employ(1, "Иванов", "Иван", "Иванович", "23.07.1998", "position", "email", "phone number"), new timetable_1.Timetable([
-                new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-                new day_1.Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("9", "14")]),
-            ])),
-            "1_2": new employTimetable_1.EmployTimetable(new employ_1.Employ(2, "Петров", "Петр", "Петрович", "23.07.1998", "position", "email", "phone number"), new timetable_1.Timetable([
-                new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-                new day_1.Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("12", "18")]),
-            ])),
-            "2_1": new employTimetable_1.EmployTimetable(new employ_1.Employ(3, "Сидоров", "Сидр", "Сидорович", "23.07.1998", "position", "email", "phone number"), new timetable_1.Timetable([
-                new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-                new day_1.Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("11", "16")]),
-            ])),
-            "2_2": new employTimetable_1.EmployTimetable(new employ_1.Employ(4, "Федоров", "Федр", "Федорович", "23.07.1998", "position", "email", "phone number"), new timetable_1.Timetable([
-                new day_1.Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("", "")]),
-                new day_1.Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-                new day_1.Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new timeRange_1.TimeRange("8", "18")]),
-            ])),
-        }) || this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     *
      * @param id id сотрудника, чье расписание будет загружено
      * @param date
      */
     SheduleProvider.prototype.load = function (id, date) {
         if (date != null) {
+            this.data = this.getDataWithDate(id, date);
             var employTimetable_2 = {
                 employ: this.data[id].employ,
                 shedule: {
@@ -116,6 +55,7 @@ var SheduleProvider = /** @class */ (function (_super) {
             return [employTimetable_2];
         }
         else {
+            this.data = this.getDataWithoutDate(id);
             return [this.data[id]];
         }
     };
@@ -154,6 +94,271 @@ var SheduleProvider = /** @class */ (function (_super) {
         if (!editStatus) {
         }
     };
+    SheduleProvider.prototype.getDataWithoutDate = function (id) {
+        var data = [];
+        this.getJSON('http://localhost:9000/employee/' + id + '/schedule', function (err, gettingdata) {
+            data = JSON.parse(gettingdata);
+        });
+        var days = [];
+        var employees = {
+            "0": new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
+            "1": new employ_1.Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
+        };
+        data.forEach(function (day) {
+            var range = new timeRange_1.TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1]);
+            days.push(new day_1.Day(day.Date, [range]));
+        });
+        var result = {};
+        result[id] = new employTimetable_1.EmployTimetable(employees[id], new timetable_1.Timetable(days));
+        return result;
+    };
+    SheduleProvider.prototype.getDataWithDate = function (id, date) {
+        var data = [];
+        if (date.end) {
+            var url = 'http://localhost:9000/employee/' + id + '/schedule?start=' + date.start.toLocaleDateString() + '&end=' + date.end.toLocaleDateString();
+        }
+        else {
+            url = 'http://localhost:9000/employee/' + id + '/schedule?start=' + date.start.toLocaleDateString();
+        }
+        this.getJSON(url, function (err, gettingdata) {
+            data = JSON.parse(gettingdata);
+        });
+        var days = [];
+        var employees = {
+            "0": new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
+            "1": new employ_1.Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
+        };
+        data.forEach(function (day) {
+            var range = new timeRange_1.TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1]);
+            days.push(new day_1.Day(day.Date, [range]));
+        });
+        var result = {};
+        result[id] = new employTimetable_1.EmployTimetable(employees[id], new timetable_1.Timetable(days));
+        return result;
+    };
+    SheduleProvider.prototype.getJSON = function (url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        xhr.onload = function () {
+            var status = xhr.status;
+            if (status === 200) {
+                callback(null, xhr.response);
+            }
+            else {
+                callback(status, xhr.response);
+            }
+        };
+        xhr.send();
+    };
+    ;
     return SheduleProvider;
 }(provider_1.Provider));
 exports.SheduleProvider = SheduleProvider;
+/*
+{
+                "0_0": new EmployTimetable(
+                    new Employ(0, "Коваценко", "Игорь", "Николаевич", "23.07.1998", "position", "email", "phone number"),
+                    new Timetable([
+                        new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                        new Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "18")]),
+                    ])
+                ),
+                "1_1": new EmployTimetable(
+                    new Employ(1, "Иванов", "Иван", "Иванович", "23.07.1998", "position", "email", "phone number"),
+                    new Timetable([
+                        new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                        new Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("9", "14")]),
+                    ])
+                ),
+                "1_2": new EmployTimetable(
+                    new Employ(2, "Петров", "Петр", "Петрович", "23.07.1998", "position", "email", "phone number"),
+                    new Timetable([
+                        new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                        new Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("12", "18")]),
+                    ])
+                ),
+                "2_1": new EmployTimetable(
+                    new Employ(3, "Сидоров", "Сидр", "Сидорович", "23.07.1998", "position", "email", "phone number"),
+                    new Timetable([
+                        new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                        new Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("11", "16")]),
+                    ])
+                ),
+                "2_2": new EmployTimetable(
+                    new Employ(4, "Федоров", "Федр", "Федорович", "23.07.1998", "position", "email", "phone number"),
+                    new Timetable([
+                        new Day("Wed Apr 10 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Thu Apr 11 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Fri Apr 12 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Fri Apr 13 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Fri Apr 14 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("", "")]),
+                        new Day("Mon Apr 15 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Tue Apr 16 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Wed Apr 17 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Thu Apr 18 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                        new Day("Fri Apr 19 2019 00:00:00 GMT+0400 (GMT+04:00)", [new TimeRange("8", "18")]),
+                    ])
+                ),
+            }
+*/
+/*
+data = [
+            {
+              "Date": "05.31.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.01.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.02.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.03.2019",
+              "Timerange": "1500-1800"
+            },
+            {
+              "Date": "06.04.2019",
+              "Timerange": "1200-1800"
+            },
+            {
+              "Date": "06.05.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.06.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.07.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.08.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.09.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.10.2019",
+              "Timerange": "1400-1800"
+            },
+            {
+              "Date": "06.11.2019",
+              "Timerange": "1400-1800"
+            },
+            {
+              "Date": "06.12.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.13.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.14.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.15.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.16.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.17.2019",
+              "Timerange": "1400-1800"
+            },
+            {
+              "Date": "06.18.2019",
+              "Timerange": "1400-1800"
+            },
+            {
+              "Date": "06.19.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.20.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.21.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.22.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.23.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.24.2019",
+              "Timerange": "1400-1800"
+            },
+            {
+              "Date": "06.25.2019",
+              "Timerange": "1400-1800"
+            },
+            {
+              "Date": "06.26.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.27.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.28.2019",
+              "Timerange": "0900-1800"
+            },
+            {
+              "Date": "06.29.2019",
+              "Timerange": ""
+            },
+            {
+              "Date": "06.30.2019",
+              "Timerange": ""
+            }
+          ];
+        
+ */ 

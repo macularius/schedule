@@ -54,41 +54,44 @@ var SheduleUI = /** @class */ (function (_super) {
         //@ts-ignore
         if ($$("shedule items")) {
             //@ts-ignore
-            $$("shedule items").attachEvent("onAfterRender", function () {
-                /**
-                 * Замена добавленных дней на пустое пространство,
-                 * для избежания редактирования добавленных дней
-                 */
+            if ($$("shedule items")) {
                 //@ts-ignore
-                if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
-                    for (var i = 1; i < context.counter; i++) {
-                        //@ts-ignore
-                        context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
-                    }
+                $$("shedule items").attachEvent("onAfterRender", function () {
                     /**
-                     * вставка стилизованного пространства на место добавленных
+                     * Замена добавленных дней на пустое пространство,
+                     * для избежания редактирования добавленных дней
                      */
                     //@ts-ignore
-                    context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
-                        = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
-                }
+                    if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
+                        for (var i = 1; i < context.counter; i++) {
+                            //@ts-ignore
+                            context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
+                        }
+                        /**
+                         * вставка стилизованного пространства на место добавленных
+                         */
+                        //@ts-ignore
+                        context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
+                            = "<div style='width: " + (160 * context.counter - 1) + "px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+                    }
+                });
+            }
+            //@ts-ignore
+            $$("shedule items").attachEvent("onBeforeEditStop", function (value, editor) {
+                var eventBody = {
+                    value: value.value,
+                    editor: editor,
+                };
+                ed.notify(new event_1.Event(events_1.Events.itemCnahge, eventBody, context));
             });
         }
-        //@ts-ignore
-        $$("shedule items").attachEvent("onBeforeEditStop", function (value, editor) {
-            var eventBody = {
-                value: value.value,
-                editor: editor,
-            };
-            ed.notify(new event_1.Event(events_1.Events.itemCnahge, eventBody, context));
-        });
     };
     SheduleUI.prototype.renderUI = function (timetable) {
         var sheduleItems = [];
         /**
          * проверка на пустоту timetable сотрудника
          */
-        if (timetable[0].shedule.days.length > 0) {
+        if (timetable[0] && timetable[0].shedule.days.length > 0) {
             timetable[0].shedule.days.forEach(function (day) {
                 if (day.ranges[0].start != "") {
                     sheduleItems.push({ date: day.date, shedule: day.ranges[0].start + " - " + day.ranges[0].end });
@@ -155,7 +158,7 @@ var SheduleUI = /** @class */ (function (_super) {
          * для избежания редактирования добавленных дней
          */
         //@ts-ignore
-        if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull) {
+        if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull.length != 0) {
             for (var i = 1; i < this.counter; i++) {
                 //@ts-ignore
                 this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";

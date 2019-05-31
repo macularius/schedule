@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/macularius/schedule#readme",
   "dependencies": {
+    "@types/jquery": "^3.3.29",
+    "@types/webix": "^5.1.1",
     "typescript": "^3.4.4",
     "webix": "^6.3.1"
   },

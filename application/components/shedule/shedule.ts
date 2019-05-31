@@ -17,7 +17,7 @@ export class Shedule extends Component {
 
         this.provider = new SheduleProvider();
 
-        this.currentID = "0_0";
+        this.currentID = "0";
 
         this.UI = new SheduleUI(new EventDispatcher([this]));
     }
@@ -105,7 +105,7 @@ export class Shedule extends Component {
     }
     
     init(): void {
-        this.UI.renderUI(this.provider.load("0_0", null));
+        this.UI.renderUI(this.provider.load("0", null));
         this.UI.init();
     }
     getUI(): any {

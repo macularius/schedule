@@ -112,22 +112,20 @@ export class MenuUI extends UI {
          *                         webixUI[1].data[0]      - submenu "Расписание"
          */
         let menuSheduleItems: Array<object> = this.webixUI[1].data[0].data;
-        let g: number = 1; // group counter
-        let e: number = 1; // employees counter
 
         /**
          * добавляет каждого сотрудника, каждой группы в меню
          */
         groups.forEach(group => {
             let groupui = {
-                id: "menu_1_"+g,
+                id: "menu_1_"+group.id,
                 open: false,
                 value: group.name,
                 data: new Array(),
             };
             group.employees.forEach(employee => {
                 let empui = {
-                    id: "menu_1_" + g + "_" + e++,
+                    id: "menu_1_" + group.id + "_" + employee.id,
                     value: employee.lastname + " " + 
                            employee.firstname.slice(0, 1) + " " +
                            employee.middlename.slice(0, 1),
@@ -135,8 +133,6 @@ export class MenuUI extends UI {
                 groupui.data.push(empui);
             });
             menuSheduleItems.push(groupui);
-            e = 1;
-            g++;
         });
     }
     event(e: Event): void {

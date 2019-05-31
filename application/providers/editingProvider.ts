@@ -6,8 +6,9 @@ import { Day } from "../entity/day";
 import { TimeRange } from "../entity/timeRange";
 
 export class EditingProvider extends Provider {
-    constructor(){
-        super({
+
+    load(id: string): any {
+        this.data = {
             "1": {
                 "mon": { start: "14", end: "18" },
                 "tue": { start: "14", end: "18" },
@@ -26,10 +27,8 @@ export class EditingProvider extends Provider {
                 "sat": { start: "", end: "" },
                 "sun": { start: "", end: "" },
             }
-        });
-    }
+        };
 
-    load(id: string): any {
         return this.data[id];
     }
     update(t_id: string, day: string, value: any): void {

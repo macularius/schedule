@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Provider = /** @class */ (function () {
-    function Provider(data) {
-        this.data = data;
+    function Provider() {
     }
     Provider.prototype.load = function (p) {
     };

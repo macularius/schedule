@@ -17,14 +17,15 @@ var provider_1 = require("./provider");
 var TitleProvider = /** @class */ (function (_super) {
     __extends(TitleProvider, _super);
     function TitleProvider() {
-        return _super.call(this, {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TitleProvider.prototype.load = function (id) {
+        this.data = {
             "1_1": "Иванов Иван Иванович",
             "1_2": "Петров Петр Петрович",
             "2_1": "Сидоров Сидр Сидорович",
             "2_2": "Федоров Федр Федорович",
-        }) || this;
-    }
-    TitleProvider.prototype.load = function (id) {
+        };
         return [this.data[id]];
     };
     TitleProvider.prototype.update = function () {

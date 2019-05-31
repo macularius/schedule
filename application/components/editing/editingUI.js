@@ -159,8 +159,8 @@ var EditingUI = /** @class */ (function (_super) {
                                 },
                             ],
                         }
-                    ],
-                },
+                    ]
+                }
             }
         ];
         return _this;
