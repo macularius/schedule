@@ -81,6 +81,7 @@ export class SheduleUI extends UI {
         }
     }
     renderUI(timetable: EmployTimetable[]): void {
+        
         let sheduleItems: any[] = [];
         /**
          * проверка на пустоту timetable сотрудника
@@ -159,17 +160,21 @@ export class SheduleUI extends UI {
          * для избежания редактирования добавленных дней
          */
         //@ts-ignore
-        if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull.length != 0) {
+        if ($$("shedule items") && $$("shedule items").data && $$("shedule items").data.pull.length != 0) {            
             for (let i = 1; i < this.counter; i++) {
                 //@ts-ignore
                 this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(i)].id).outerHTML = "";
             }
+            //@ts-ignore
+            
             /**
              * вставка стилизованного пространства на место добавленных
              */
-            //@ts-ignore
-            this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
-             = "<div style='width: "+(160*this.counter-1)+"px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+            if (this.counter != 0) {
+                //@ts-ignore
+                this.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
+                 = "<div style='width: "+(160*this.counter-1)+"px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+            }
         }
     }
     event(e: Event): void {

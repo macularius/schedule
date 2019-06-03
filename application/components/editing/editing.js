@@ -42,7 +42,6 @@ var Editing = /** @class */ (function (_super) {
                 }
                 break;
             case events_1.Events.itemCnahge:
-                console.log("editing, itemCnahge");
                 break;
             default:
                 break;

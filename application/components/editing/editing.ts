@@ -35,7 +35,6 @@ export class Editing extends Component {
                 }
                 break;
             case Events.itemCnahge:
-                console.log("editing, itemCnahge");
                 break;
             default:
                 break;

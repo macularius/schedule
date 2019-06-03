@@ -96,8 +96,6 @@ export class MenuUI extends UI {
             
             
             if (eventBody) {
-                console.log(eventBody);
-                
                 ed.notify(new Event(Events.menuItemClick, eventBody, context));
             }
             
