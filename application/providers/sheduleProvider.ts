@@ -18,7 +18,7 @@ export class SheduleProvider extends Provider {
                 shedule: {
                     days: new Array(),
                 },
-            };
+            };            
     
             if (date.end) {                
                 this.data[id].shedule.days.forEach((day: Day) => {

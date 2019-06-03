@@ -103,6 +103,7 @@ var MenuUI = /** @class */ (function (_super) {
                     break;
             }
             if (eventBody) {
+                console.log(eventBody);
                 ed.notify(new event_1.Event(events_1.Events.menuItemClick, eventBody, context));
             }
         });

@@ -94,7 +94,7 @@ export class SheduleUI extends UI {
                     sheduleItems.push({ date: day.date, shedule: "" });
                 }
             });
-
+            
             let isEdit = this.verefication(timetable[0].employ.id);
             let options = {
                 weekday: 'short',

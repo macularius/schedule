@@ -77,7 +77,7 @@ var Shedule = /** @class */ (function (_super) {
                 if (e.body.context == "shedule") {
                     this.switch(true);
                     if (e.body.groupId != "") {
-                        id = e.body.groupId + "_" + e.body.employeeId;
+                        id = e.body.employeeId;
                         menuPos = e.body.groupId;
                     }
                     else {
@@ -87,7 +87,7 @@ var Shedule = /** @class */ (function (_super) {
                     /**
                      * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
                      */
-                    if (e.body.groupId != "" && (Number(menuPos) == 0 || id.indexOf("_") != -1)) {
+                    if ((Number(menuPos) == 0 || id != -1)) {
                         this.currentID = id;
                         this.UI.renderUI(this.provider.load(this.currentID), 0);
                         this.UI.init();
