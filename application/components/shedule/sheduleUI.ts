@@ -63,9 +63,11 @@ export class SheduleUI extends UI {
                         /**
                          * вставка стилизованного пространства на место добавленных
                          */
-                        //@ts-ignore
-                        context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
-                        = "<div style='width: "+(160*context.counter-1)+"px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+                        if (context.counter != 0) {
+                            //@ts-ignore
+                            context.getDataviewItemById($$("shedule items").data.pull[$$("shedule items").getIdByIndex(0)].id).outerHTML
+                            = "<div style='width: "+(160*context.counter-1)+"px; height:49px; border-bottom: 1px solid #EDEFF0; border-right: 1px solid #EDEFF0; float: left'><br></div>";
+                        }
                     }
                 })
             }
