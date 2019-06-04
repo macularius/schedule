@@ -83,7 +83,12 @@ export class SheduleUI extends UI {
         }
     }
     renderUI(timetable: EmployTimetable[]): void {
-        
+        if (timetable[0].employ.id == -1) {
+            //@ts-ignore
+            webix.message("ошибка загрузки данных");
+            return
+        }
+
         let sheduleItems: any[] = [];
         /**
          * проверка на пустоту timetable сотрудника
@@ -154,8 +159,6 @@ export class SheduleUI extends UI {
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
         }
-        
-        // console.log("timetable", timetable, "shedule", sheduleItems);
             
         /**
          * Замена добавленных дней на пустое пространство, 

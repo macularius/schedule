@@ -11,37 +11,44 @@ export class SheduleProvider extends Provider {
      * @param date 
      */
     load(id: string, date?: any): any {
-        if (date != null) {
-            this.data = this.getDataWithDate(id, date);
-            let employTimetable = {
-                employ: this.data[id].employ,
-                shedule: {
-                    days: new Array(),
-                },
-            };            
-    
-            if (date.end) {                
-                this.data[id].shedule.days.forEach((day: Day) => {
-                    if (Date.parse(day.date) >= Date.parse(date.start) 
-                     && Date.parse(day.date) <= Date.parse(date.end)) {
-                        employTimetable.shedule.days.push(day);
-                    }
-                });
-            }
-            else {
-                this.data[id].shedule.days.forEach((day: Day) => {
-                    if (Date.parse(day.date) == Date.parse(date.start)) {
-                        employTimetable.shedule.days.push(day);
-                    }
-                });
-            }
-            
-            return [employTimetable];
-        }
-        else {
-            this.data = this.getDataWithoutDate(id);
-            return [this.data[id]];
-        }
+      let result: any[];
+      if (date && date[0] != null) {
+          this.data = this.getDataWithDate(id, date);
+          let employTimetable = {
+              employ: this.data[id].employ,
+              shedule: {
+                  days: new Array(),
+              },
+          };            
+  
+          if (date.end) {                
+              this.data[id].shedule.days.forEach((day: Day) => {
+                  if (Date.parse(day.date) >= Date.parse(date.start) 
+                    && Date.parse(day.date) <= Date.parse(date.end)) {
+                      employTimetable.shedule.days.push(day);
+                  }
+              });
+          }
+          else {
+              this.data[id].shedule.days.forEach((day: Day) => {
+                  if (Date.parse(day.date) == Date.parse(date.start)) {
+                      employTimetable.shedule.days.push(day);
+                  }
+              });
+          }
+          
+          result = [employTimetable];
+      }
+      else {
+          this.data = this.getDataWithoutDate(id);
+          result = [this.data[id]];
+      }
+
+      if (result[0] == undefined) {
+        result = [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))];
+      }    
+      
+      return result;
     }
     update(value: any, editor: any, id: any): void {
         let editableDayDate: any;
@@ -86,9 +93,17 @@ export class SheduleProvider extends Provider {
     getDataWithoutDate(id: string): any {
         let data: any[] = [];
         this.getJSON('http://localhost:9000/employee/'+id+'/schedule', function(err: any, gettingdata: any) {
-            data = JSON.parse(gettingdata);
+          if (JSON.parse(gettingdata).Status == "Succes") {
+            data = JSON.parse(gettingdata).Data;
+          } else {
+            return
+          }
         });
-
+        
+        if (data[0] == null) {
+          let result = {"-1": [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))]}
+          return result;
+        }        
 
         let days: Day[] = []
         let employees: any = {
@@ -113,9 +128,18 @@ export class SheduleProvider extends Provider {
             url = 'http://localhost:9000/employee/'+id+'/schedule?start='+date.start.toLocaleDateString()
         }
         this.getJSON(url, function(err: any, gettingdata: any) {
-            data = JSON.parse(gettingdata);
+          if (JSON.parse(gettingdata).Status == "Succes") {
+            data = JSON.parse(gettingdata).Data;
+          } else {
+            return
+          }
         });
 
+        if (data[0] == null) {
+          let result = {"-1": [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))]}
+          
+          return result;
+        }        
 
         let days: Day[] = []
         let employees: any = {

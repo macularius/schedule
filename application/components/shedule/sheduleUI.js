@@ -89,6 +89,11 @@ var SheduleUI = /** @class */ (function (_super) {
         }
     };
     SheduleUI.prototype.renderUI = function (timetable) {
+        if (timetable[0].employ.id == -1) {
+            //@ts-ignore
+            webix.message("ошибка загрузки данных");
+            return;
+        }
         var sheduleItems = [];
         /**
          * проверка на пустоту timetable сотрудника
@@ -154,7 +159,6 @@ var SheduleUI = /** @class */ (function (_super) {
                 //@ts-ignore
             }, $$("shedule table"), $$("shedule table shedule"));
         }
-        // console.log("timetable", timetable, "shedule", sheduleItems);
         /**
          * Замена добавленных дней на пустое пространство,
          * для избежания редактирования добавленных дней

@@ -29,7 +29,8 @@ var SheduleProvider = /** @class */ (function (_super) {
      * @param date
      */
     SheduleProvider.prototype.load = function (id, date) {
-        if (date != null) {
+        var result;
+        if (date && date[0] != null) {
             this.data = this.getDataWithDate(id, date);
             var employTimetable_2 = {
                 employ: this.data[id].employ,
@@ -52,12 +53,16 @@ var SheduleProvider = /** @class */ (function (_super) {
                     }
                 });
             }
-            return [employTimetable_2];
+            result = [employTimetable_2];
         }
         else {
             this.data = this.getDataWithoutDate(id);
-            return [this.data[id]];
+            result = [this.data[id]];
         }
+        if (result[0] == undefined) {
+            result = [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))];
+        }
+        return result;
     };
     SheduleProvider.prototype.update = function (value, editor, id) {
         var editableDayDate;
@@ -97,8 +102,17 @@ var SheduleProvider = /** @class */ (function (_super) {
     SheduleProvider.prototype.getDataWithoutDate = function (id) {
         var data = [];
         this.getJSON('http://localhost:9000/employee/' + id + '/schedule', function (err, gettingdata) {
-            data = JSON.parse(gettingdata);
+            if (JSON.parse(gettingdata).Status == "Succes") {
+                data = JSON.parse(gettingdata).Data;
+            }
+            else {
+                return;
+            }
         });
+        if (data[0] == null) {
+            var result_1 = { "-1": [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))] };
+            return result_1;
+        }
         var days = [];
         var employees = {
             "0": new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
@@ -121,8 +135,17 @@ var SheduleProvider = /** @class */ (function (_super) {
             url = 'http://localhost:9000/employee/' + id + '/schedule?start=' + date.start.toLocaleDateString();
         }
         this.getJSON(url, function (err, gettingdata) {
-            data = JSON.parse(gettingdata);
+            if (JSON.parse(gettingdata).Status == "Succes") {
+                data = JSON.parse(gettingdata).Data;
+            }
+            else {
+                return;
+            }
         });
+        if (data[0] == null) {
+            var result_2 = { "-1": [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))] };
+            return result_2;
+        }
         var days = [];
         var employees = {
             "0": new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
