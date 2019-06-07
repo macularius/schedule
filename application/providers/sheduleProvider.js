@@ -102,6 +102,7 @@ var SheduleProvider = /** @class */ (function (_super) {
     SheduleProvider.prototype.getDataWithoutDate = function (id) {
         var data = [];
         this.getJSON('http://localhost:9000/employee/' + id + '/schedule', function (err, gettingdata) {
+            console.log(gettingdata);
             if (JSON.parse(gettingdata).Status == "Succes") {
                 data = JSON.parse(gettingdata).Data;
             }
@@ -118,6 +119,7 @@ var SheduleProvider = /** @class */ (function (_super) {
             "0": new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
             "1": new employ_1.Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
         };
+        console.log(data);
         data.forEach(function (day) {
             var range = new timeRange_1.TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1]);
             days.push(new day_1.Day(day.Date, [range]));

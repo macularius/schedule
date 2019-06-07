@@ -93,6 +93,8 @@ export class SheduleProvider extends Provider {
     getDataWithoutDate(id: string): any {
         let data: any[] = [];
         this.getJSON('http://localhost:9000/employee/'+id+'/schedule', function(err: any, gettingdata: any) {
+          console.log(gettingdata);
+ 
           if (JSON.parse(gettingdata).Status == "Succes") {
             data = JSON.parse(gettingdata).Data;
           } else {
@@ -111,6 +113,9 @@ export class SheduleProvider extends Provider {
             "1": new Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
         }
         
+        console.log(data);
+        
+
         data.forEach(day => {
             let range = new TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1])
             days.push(new Day(day.Date, [range]))
