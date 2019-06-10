@@ -17,6 +17,7 @@ var component_1 = require("../../kernel/component");
 var menuUI_1 = require("./menuUI");
 var eventDispatcher_1 = require("../../kernel/eventDispatcher");
 var menuProvider_1 = require("../../providers/menuProvider");
+var events_1 = require("../../kernel/events");
 var Menu = /** @class */ (function (_super) {
     __extends(Menu, _super);
     function Menu() {
@@ -26,7 +27,14 @@ var Menu = /** @class */ (function (_super) {
         return _this;
     }
     Menu.prototype.handleEvent = function (e) {
+        console.log(e);
         switch (e.type) {
+            case events_1.Events.menuItemClick:
+                if (e.body.context == "exit") {
+                    console.log(location);
+                    location.replace("http://localhost:9000/authentication/logout");
+                }
+                break;
             default:
                 break;
         }

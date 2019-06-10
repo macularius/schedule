@@ -44,7 +44,7 @@ export class MenuUI extends UI {
                     },
                     // Кнопка меню "Выход"
                     {
-                        id: "menu_5",
+                        id: "menu_3",
                         value: "Выход"
                     },
                 ],
@@ -88,6 +88,11 @@ export class MenuUI extends UI {
                 case "2":
                     eventBody = {
                         context: "edit",
+                    };
+                    break;
+                case "3":
+                    eventBody = {
+                        context: "exit",
                     };
                     break;
                 default:

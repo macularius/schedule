@@ -56,7 +56,7 @@ var MenuUI = /** @class */ (function (_super) {
                     },
                     // Кнопка меню "Выход"
                     {
-                        id: "menu_5",
+                        id: "menu_3",
                         value: "Выход"
                     },
                 ],
@@ -97,6 +97,11 @@ var MenuUI = /** @class */ (function (_super) {
                 case "2":
                     eventBody = {
                         context: "edit",
+                    };
+                    break;
+                case "3":
+                    eventBody = {
+                        context: "exit",
                     };
                     break;
                 default:

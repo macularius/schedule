@@ -20,7 +20,16 @@ export class Menu extends Component {
     }
     
     handleEvent(e: Event): void {
-        switch (e.type) {        
+        console.log(e);
+        
+        switch (e.type) {   
+            case Events.menuItemClick:
+                if (e.body.context == "exit") {
+                    console.log(location);
+                    
+                    location.replace("http://localhost:9000/authentication/logout");
+                }
+                break;
             default:
                 break;
         }

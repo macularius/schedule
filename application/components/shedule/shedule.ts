@@ -33,6 +33,8 @@ export class Shedule extends Component {
     }
 
     handleEvent(e: Event): void {
+        console.log(e);
+        
         switch (e.type) {
             case Events.calendarDone:
                 if (e.body.start != null) {
