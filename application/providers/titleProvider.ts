@@ -3,10 +3,8 @@ import { Provider } from "./provider";
 export class TitleProvider extends Provider {
     load(id: string) {
         this.data = {
-            "1_1": "Иванов Иван Иванович",
-            "1_2": "Петров Петр Петрович",
-            "2_1": "Сидоров Сидр Сидорович",
-            "2_2": "Федоров Федр Федорович",
+            "1_0": "Коваценко Игорь Николаевич",
+            "1_1": "Федоров Федор Федорович",
         };
 
         return [this.data[id]];

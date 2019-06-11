@@ -38,7 +38,6 @@ var Shedule = /** @class */ (function (_super) {
         }
     };
     Shedule.prototype.handleEvent = function (e) {
-        console.log(e);
         switch (e.type) {
             case events_1.Events.calendarDone:
                 if (e.body.start != null) {

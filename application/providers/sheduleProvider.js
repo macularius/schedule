@@ -30,7 +30,7 @@ var SheduleProvider = /** @class */ (function (_super) {
      */
     SheduleProvider.prototype.load = function (id, date) {
         var result;
-        if (date && date[0] != null) {
+        if (date != null && date.start != null) {
             this.data = this.getDataWithDate(id, date);
             var employTimetable_2 = {
                 employ: this.data[id].employ,
@@ -110,7 +110,6 @@ var SheduleProvider = /** @class */ (function (_super) {
                 return;
             }
         });
-        console.log(data);
         if (data[0] == null) {
             var result_1 = { "-1": [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))] };
             return result_1;
@@ -136,6 +135,7 @@ var SheduleProvider = /** @class */ (function (_super) {
         else {
             url = 'http://localhost:9000/employee/' + id + '/schedule?start=' + date.start.toLocaleDateString();
         }
+        console.log(url);
         this.getJSON(url, function (err, gettingdata) {
             if (JSON.parse(gettingdata).Status == "Succes") {
                 data = JSON.parse(gettingdata).Data;

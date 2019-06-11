@@ -10,9 +10,9 @@ export class SheduleProvider extends Provider {
      * @param id id сотрудника, чье расписание будет загружено
      * @param date 
      */
-    load(id: string, date?: any): any {
+    load(id: string, date?: any): any {      
       let result: any[];
-      if (date && date[0] != null) {
+      if (date != null && date.start != null) {
           this.data = this.getDataWithDate(id, date);
           let employTimetable = {
               employ: this.data[id].employ,
@@ -92,6 +92,7 @@ export class SheduleProvider extends Provider {
     }
     getDataWithoutDate(id: string): any {
         let data: any[] = [];
+        
         this.getJSON('http://localhost:9000/employee/'+id+'/schedule', function(err: any, gettingdata: any) {
           // console.log(gettingdata);
  
@@ -102,7 +103,6 @@ export class SheduleProvider extends Provider {
           }
         });
         
-        console.log(data);
         if (data[0] == null) {
           let result = {"-1": [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))]}
           return result;
@@ -126,12 +126,15 @@ export class SheduleProvider extends Provider {
         return result
     }
     getDataWithDate(id: string, date: any): any {
+        
         let data: any[] = [];
         if (date.end) {
             var url = 'http://localhost:9000/employee/'+id+'/schedule?start='+date.start.toLocaleDateString() +'&end=' + date.end.toLocaleDateString()
         } else {
             url = 'http://localhost:9000/employee/'+id+'/schedule?start='+date.start.toLocaleDateString()
         }
+        console.log(url);
+
         this.getJSON(url, function(err: any, gettingdata: any) {
           if (JSON.parse(gettingdata).Status == "Succes") {
             data = JSON.parse(gettingdata).Data;
