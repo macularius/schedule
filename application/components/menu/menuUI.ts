@@ -117,23 +117,23 @@ export class MenuUI extends UI {
          *                         webixUI[1].data[0]      - submenu "Расписание"
          */
         let menuSheduleItems: Array<object> = this.webixUI[1].data[0].data;
-
+        
         /**
          * добавляет каждого сотрудника, каждой группы в меню
          */
         groups.forEach(group => {
             let groupui = {
-                id: "menu_1_"+group.id,
+                id: "menu_1_"+group.GID,
                 open: false,
-                value: group.name,
+                value: group.Name,
                 data: new Array(),
             };
-            group.employees.forEach(employee => {
+            group.Employees.forEach(employee => {
                 let empui = {
-                    id: "menu_1_" + group.id + "_" + employee.id,
-                    value: employee.lastname + " " + 
-                           employee.firstname.slice(0, 1) + " " +
-                           employee.middlename.slice(0, 1),
+                    id: "menu_1_" + group.GID + "_" + employee.EID,
+                    value: employee.Lastname + " " + 
+                           employee.Firstname.slice(0, 1) + " " +
+                           employee.Middlename.slice(0, 1),
                 };
                 groupui.data.push(empui);
             });

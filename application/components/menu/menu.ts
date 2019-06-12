@@ -16,17 +16,13 @@ export class Menu extends Component {
 
         this.UI = new MenuUI(new EventDispatcher([this]));
 
-        this.UI.renderUI(this.provider.load("all"));
+        this.UI.renderUI(this.provider.load());
     }
     
     handleEvent(e: Event): void {
-        console.log(e);
-        
         switch (e.type) {   
             case Events.menuItemClick:
                 if (e.body.context == "exit") {
-                    console.log(location);
-                    
                     location.replace("http://localhost:9000/authentication/logout");
                 }
                 break;

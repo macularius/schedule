@@ -140,9 +140,20 @@ export class SheduleUI extends UI {
                     editaction:"click",
                     template: function (item: any) {
                         var date = new Date(item.date);
+                        var leftTimeRange = "";
+                        var rightTimeRange = "";
+                        var timeRange = "";
+
+                        if (item.shedule) {
+                            leftTimeRange = item.shedule.split(" - ")[0].substr(0, 2) + ":" + item.shedule.split(" - ")[0].substr(2, 4)
+                            rightTimeRange = item.shedule.split(" - ")[1].substr(0, 2) + ":" + item.shedule.split(" - ")[1].substr(2, 4)
+                            timeRange = leftTimeRange + " - " + rightTimeRange
+                        }
+
                         return "<div class='webix_strong shedule'>"+date.toLocaleDateString()
                               +" "+date.toLocaleString('ru-RU', options)
-                              +"</div><div>"+item.shedule+"</div>";
+                              +"</div><div>" + timeRange +"</div>";
+                              
                     },
                     data: sheduleItems,
                 }

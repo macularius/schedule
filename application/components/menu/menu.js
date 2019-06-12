@@ -23,15 +23,13 @@ var Menu = /** @class */ (function (_super) {
     function Menu() {
         var _this = _super.call(this, new menuProvider_1.MenuProvider()) || this;
         _this.UI = new menuUI_1.MenuUI(new eventDispatcher_1.EventDispatcher([_this]));
-        _this.UI.renderUI(_this.provider.load("all"));
+        _this.UI.renderUI(_this.provider.load());
         return _this;
     }
     Menu.prototype.handleEvent = function (e) {
-        console.log(e);
         switch (e.type) {
             case events_1.Events.menuItemClick:
                 if (e.body.context == "exit") {
-                    console.log(location);
                     location.replace("http://localhost:9000/authentication/logout");
                 }
                 break;

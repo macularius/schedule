@@ -1,6 +1,6 @@
 import { Provider } from "./provider";
 import { Group } from "../entity/group";
-import { Employ } from "../entity/employ";
+import { GroupEmployee } from "../entity/groupEmployee";
 
 export class MenuProvider extends Provider {
 
@@ -8,16 +8,42 @@ export class MenuProvider extends Provider {
      * возвращает группы с инициалами сотрудников
      */
     load(): object[] {
-        this.data = [
-            new Group("1", [
-                new Employ(1, "Федоров", "Федор", "Федорович", "birthday", "position", "email", "phone number"),
-                new Employ(0, "Коваценко", "Тгорь", "Николаевич", "birthday", "position", "email", "phone number"),
-            ], "Стажеры"),
-        ];
+        this.data = [];
+        let data: Group[] = [];
+        this.getJSON("/metadata/menu", function(err: any, gettingdata: any) {
+        if (JSON.parse(gettingdata).Status == "Succes") {
+            data = JSON.parse(gettingdata).Data;
+        } else {
+            return
+        }
+        });
 
+        data.forEach((group: Group) => {            
+            let employees: GroupEmployee[] = [];
+            group.Employees.forEach((emp: GroupEmployee) => {
+                employees.push(new GroupEmployee(emp.EID, emp.Lastname, emp.Firstname, emp.Middlename))
+            });
+
+            this.data.push(new Group(group.GID+1, employees, group.Name))
+        });
+        
         return this.data;
     }
     update(param: string): void {
         
     }
+
+    getJSON(url: string, callback: any) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        xhr.onload = function() {
+          var status = xhr.status;
+          if (status === 200) {
+            callback(null, xhr.response);
+          } else {
+            callback(status, xhr.response);
+          }
+        };
+        xhr.send();
+    };
 }

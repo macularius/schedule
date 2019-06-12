@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var provider_1 = require("./provider");
 var group_1 = require("../entity/group");
-var employ_1 = require("../entity/employ");
+var groupEmployee_1 = require("../entity/groupEmployee");
 var MenuProvider = /** @class */ (function (_super) {
     __extends(MenuProvider, _super);
     function MenuProvider() {
@@ -25,16 +25,43 @@ var MenuProvider = /** @class */ (function (_super) {
      * возвращает группы с инициалами сотрудников
      */
     MenuProvider.prototype.load = function () {
-        this.data = [
-            new group_1.Group("1", [
-                new employ_1.Employ(1, "Федоров", "Федор", "Федорович", "birthday", "position", "email", "phone number"),
-                new employ_1.Employ(0, "Коваценко", "Тгорь", "Николаевич", "birthday", "position", "email", "phone number"),
-            ], "Стажеры"),
-        ];
+        var _this = this;
+        this.data = [];
+        var data = [];
+        this.getJSON("/metadata/menu", function (err, gettingdata) {
+            if (JSON.parse(gettingdata).Status == "Succes") {
+                data = JSON.parse(gettingdata).Data;
+            }
+            else {
+                return;
+            }
+        });
+        data.forEach(function (group) {
+            var employees = [];
+            group.Employees.forEach(function (emp) {
+                employees.push(new groupEmployee_1.GroupEmployee(emp.EID, emp.Lastname, emp.Firstname, emp.Middlename));
+            });
+            _this.data.push(new group_1.Group(group.GID + 1, employees, group.Name));
+        });
         return this.data;
     };
     MenuProvider.prototype.update = function (param) {
     };
+    MenuProvider.prototype.getJSON = function (url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        xhr.onload = function () {
+            var status = xhr.status;
+            if (status === 200) {
+                callback(null, xhr.response);
+            }
+            else {
+                callback(status, xhr.response);
+            }
+        };
+        xhr.send();
+    };
+    ;
     return MenuProvider;
 }(provider_1.Provider));
 exports.MenuProvider = MenuProvider;
