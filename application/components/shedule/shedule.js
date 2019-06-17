@@ -41,9 +41,6 @@ var Shedule = /** @class */ (function (_super) {
         switch (e.type) {
             case events_1.Events.calendarDone:
                 if (e.body.start != null) {
-                    /**
-                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                     */
                     if (this.currentID != null) {
                         var date = {
                             start: e.body.start,
@@ -71,7 +68,7 @@ var Shedule = /** @class */ (function (_super) {
                  *
                  * только "мое расписание" не имеет группы
                  */
-                if (e.body.context == "edit") {
+                if (e.body.context != "shedule") {
                     this.switch(false);
                 }
                 if (e.body.context == "shedule") {
@@ -104,7 +101,7 @@ var Shedule = /** @class */ (function (_super) {
         // }
     };
     Shedule.prototype.init = function () {
-        this.UI.renderUI(this.provider.load("0", null));
+        this.UI.renderUI(this.provider.load("init", null));
         this.UI.init();
     };
     Shedule.prototype.getUI = function () {

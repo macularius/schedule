@@ -4,13 +4,15 @@ import { Employ } from "../entity/employ";
 import { Timetable } from "../entity/timetable";
 import { Day } from "../entity/day";
 import { TimeRange } from "../entity/timeRange";
+import { GroupEmployee } from "../entity/groupEmployee";
 
 export class SheduleProvider extends Provider {
     /**
      * @param id id сотрудника, чье расписание будет загружено
      * @param date 
      */
-    load(id: string, date?: any): any {      
+    load(id: string, date?: any): any {    
+          
       let result: any[];
       if (date != null && date.start != null) {
           this.data = this.getDataWithDate(id, date);
@@ -91,9 +93,9 @@ export class SheduleProvider extends Provider {
         }
     }
     getDataWithoutDate(id: string): any {
-        let data: any[] = [];
+        let data: any;
         let url: string;
-        if (id == "") {
+        if (id == "init") {
           url = 'http://localhost:9000/employee/schedule'
         } else {
           url = 'http://localhost:9000/employee/'+id+'/schedule'
@@ -108,34 +110,33 @@ export class SheduleProvider extends Provider {
           }
         });
         
-        if (data[0] == null) {
+        console.log(data);
+        
+        if (data.Employee == null) {
           let result = {"-1": [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))]}
           return result;
         }        
 
         let days: Day[] = []
-        let employees: any = { // #TODO employees load
-            "0": new Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
-            "1": new Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
-        }
-        
-        
+        let groupEmployee: GroupEmployee = data.Employee
+        let employee = new Employ(groupEmployee.EID, groupEmployee.Lastname, groupEmployee.Firstname, groupEmployee.Middlename, "", "", "", "")
 
-        data.forEach(day => {
+        data.Days.forEach((day: any)=> {
             let range = new TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1])
             days.push(new Day(day.Date, [range]))
         });
 
         let result: any = {}
-        result[id] = new EmployTimetable(employees[id], new Timetable(days))
+        
+        result[id] = new EmployTimetable(employee, new Timetable(days))
         return result
     }
     getDataWithDate(id: string, date: any): any {
-        
-        let data: any[] = [];
+
+        let data: any;
         let url: string;
         let urlget: string;
-        if (id == "") {
+        if (id == "init") {
           url = 'http://localhost:9000/employee/schedule'
         } else {
           url = 'http://localhost:9000/employee/'+id+'/schedule'
@@ -154,25 +155,26 @@ export class SheduleProvider extends Provider {
           }
         });
 
-        if (data[0] == null) {
+        console.log(data);
+        
+        if (data.Employee == null) {
           let result = {"-1": [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))]}
           
           return result;
         }        
 
         let days: Day[] = []
-        let employees: any = {
-            "0": new Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
-            "1": new Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
-        }
-        
-        data.forEach(day => {
+        let groupEmployee: GroupEmployee = data.Employee
+        let employee = new Employ(groupEmployee.EID, groupEmployee.Lastname, groupEmployee.Firstname, groupEmployee.Middlename, "", "", "", "")
+
+        data.Days.forEach((day: any) => {
             let range = new TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1])
             days.push(new Day(day.Date, [range]))
         });
 
         let result: any = {}
-        result[id] = new EmployTimetable(employees[id], new Timetable(days))
+        
+        result[id] = new EmployTimetable(employee, new Timetable(days))
         return result
     }
 

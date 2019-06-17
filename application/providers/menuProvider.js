@@ -41,7 +41,7 @@ var MenuProvider = /** @class */ (function (_super) {
             group.Employees.forEach(function (emp) {
                 employees.push(new groupEmployee_1.GroupEmployee(emp.EID, emp.Lastname, emp.Firstname, emp.Middlename));
             });
-            _this.data.push(new group_1.Group(group.GID + 1, employees, group.Name));
+            _this.data.push(new group_1.Group(group.GID, employees, group.Name));
         });
         return this.data;
     };

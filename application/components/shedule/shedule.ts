@@ -36,9 +36,6 @@ export class Shedule extends Component {
         switch (e.type) {
             case Events.calendarDone:
                 if (e.body.start != null) {
-                    /**
-                     * проверка является-ли e, id кнопки меню, соответствующей расписанию сотрудника или submenu
-                     */
                     if (this.currentID != null) {
                         let date = {
                             start: e.body.start,
@@ -67,7 +64,7 @@ export class Shedule extends Component {
                  * 
                  * только "мое расписание" не имеет группы
                  */
-                if(e.body.context == "edit"){
+                if(e.body.context != "shedule"){
                     this.switch(false);
                 }
 
@@ -105,7 +102,7 @@ export class Shedule extends Component {
     }
     
     init(): void {
-        this.UI.renderUI(this.provider.load("0", null));
+        this.UI.renderUI(this.provider.load("init", null));
         this.UI.init();
     }
     getUI(): any {

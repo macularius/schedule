@@ -89,6 +89,7 @@ var SheduleUI = /** @class */ (function (_super) {
         }
     };
     SheduleUI.prototype.renderUI = function (timetable) {
+        console.log(timetable);
         if (timetable[0].employ.id == -1) {
             //@ts-ignore
             webix.message("ошибка загрузки данных");
@@ -107,7 +108,7 @@ var SheduleUI = /** @class */ (function (_super) {
                     sheduleItems.push({ date: day.date, shedule: "" });
                 }
             });
-            var isEdit = this.verefication(timetable[0].employ.id);
+            var isEdit = false;
             var options_1 = {
                 weekday: 'short',
             };

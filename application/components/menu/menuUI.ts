@@ -30,10 +30,10 @@ export class MenuUI extends UI {
                         value: "Расписание",
                         data: [
                             // Кнопка сабменю "Мое расписание"
-                            {
-                                id: "menu_1_0",
-                                value: "Мое расписание"
-                            },
+                            // {
+                            //     id: "menu_1_0",
+                            //     value: "Мое расписание"
+                            // },
                         ],
                     },
                     {
@@ -66,7 +66,10 @@ export class MenuUI extends UI {
             id = id.slice(7);
             let eventBody;
             
+            
+
             switch (menuPos) {
+                case "0":
                 case "1":
                     if (id.indexOf("_") != -1) {
                         eventBody = {
@@ -76,7 +79,7 @@ export class MenuUI extends UI {
                         };
                     }
                     else{
-                        if (id == "0") {
+                        if (menuPos == "0") {
                             eventBody = {
                                 context: "shedule",
                                 groupId: "0",
@@ -122,22 +125,30 @@ export class MenuUI extends UI {
          * добавляет каждого сотрудника, каждой группы в меню
          */
         groups.forEach(group => {
-            let groupui = {
-                id: "menu_1_"+group.GID,
-                open: false,
-                value: group.Name,
-                data: new Array(),
-            };
-            group.Employees.forEach(employee => {
-                let empui = {
-                    id: "menu_1_" + group.GID + "_" + employee.EID,
-                    value: employee.Lastname + " " + 
-                           employee.Firstname.slice(0, 1) + " " +
-                           employee.Middlename.slice(0, 1),
+            if (group.GID == -1) { // id "Моего расписания"
+                let myScheduleUI = {
+                    id: "menu_0_"+group.Employees[0].EID,
+                    value: "Мое расписание",
                 };
-                groupui.data.push(empui);
-            });
-            menuSheduleItems.push(groupui);
+                menuSheduleItems.push(myScheduleUI);
+            } else {
+                let groupui = {
+                    id: "menu_1_"+group.GID,
+                    open: false,
+                    value: group.Name,
+                    data: new Array(),
+                };
+                group.Employees.forEach(employee => {
+                    let empui = {
+                        id: "menu_1_" + group.GID + "_" + employee.EID,
+                        value: employee.Lastname + " " + 
+                               employee.Firstname.slice(0, 1) + " " +
+                               employee.Middlename.slice(0, 1),
+                    };
+                    groupui.data.push(empui);
+                });
+                menuSheduleItems.push(groupui);
+            }
         });
     }
     event(e: Event): void {

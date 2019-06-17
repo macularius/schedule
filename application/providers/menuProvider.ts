@@ -24,7 +24,7 @@ export class MenuProvider extends Provider {
                 employees.push(new GroupEmployee(emp.EID, emp.Lastname, emp.Firstname, emp.Middlename))
             });
 
-            this.data.push(new Group(group.GID+1, employees, group.Name))
+            this.data.push(new Group(group.GID, employees, group.Name))
         });
         
         return this.data;

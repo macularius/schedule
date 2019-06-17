@@ -100,9 +100,9 @@ var SheduleProvider = /** @class */ (function (_super) {
         }
     };
     SheduleProvider.prototype.getDataWithoutDate = function (id) {
-        var data = [];
+        var data;
         var url;
-        if (id == "") {
+        if (id == "init") {
             url = 'http://localhost:9000/employee/schedule';
         }
         else {
@@ -117,28 +117,27 @@ var SheduleProvider = /** @class */ (function (_super) {
                 return;
             }
         });
-        if (data[0] == null) {
+        console.log(data);
+        if (data.Employee == null) {
             var result_1 = { "-1": [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))] };
             return result_1;
         }
         var days = [];
-        var employees = {
-            "0": new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
-            "1": new employ_1.Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
-        };
-        data.forEach(function (day) {
+        var groupEmployee = data.Employee;
+        var employee = new employ_1.Employ(groupEmployee.EID, groupEmployee.Lastname, groupEmployee.Firstname, groupEmployee.Middlename, "", "", "", "");
+        data.Days.forEach(function (day) {
             var range = new timeRange_1.TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1]);
             days.push(new day_1.Day(day.Date, [range]));
         });
         var result = {};
-        result[id] = new employTimetable_1.EmployTimetable(employees[id], new timetable_1.Timetable(days));
+        result[id] = new employTimetable_1.EmployTimetable(employee, new timetable_1.Timetable(days));
         return result;
     };
     SheduleProvider.prototype.getDataWithDate = function (id, date) {
-        var data = [];
+        var data;
         var url;
         var urlget;
-        if (id == "") {
+        if (id == "init") {
             url = 'http://localhost:9000/employee/schedule';
         }
         else {
@@ -158,21 +157,20 @@ var SheduleProvider = /** @class */ (function (_super) {
                 return;
             }
         });
-        if (data[0] == null) {
+        console.log(data);
+        if (data.Employee == null) {
             var result_2 = { "-1": [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))] };
             return result_2;
         }
         var days = [];
-        var employees = {
-            "0": new employ_1.Employ(0, "Коваценко", "Игорь", "Николаевич", "", "", "", ""),
-            "1": new employ_1.Employ(1, "Федоров", "Федор", "Федорович", "", "", "", "")
-        };
-        data.forEach(function (day) {
+        var groupEmployee = data.Employee;
+        var employee = new employ_1.Employ(groupEmployee.EID, groupEmployee.Lastname, groupEmployee.Firstname, groupEmployee.Middlename, "", "", "", "");
+        data.Days.forEach(function (day) {
             var range = new timeRange_1.TimeRange(day.Timerange.split("-")[0], day.Timerange.split("-")[1]);
             days.push(new day_1.Day(day.Date, [range]));
         });
         var result = {};
-        result[id] = new employTimetable_1.EmployTimetable(employees[id], new timetable_1.Timetable(days));
+        result[id] = new employTimetable_1.EmployTimetable(employee, new timetable_1.Timetable(days));
         return result;
     };
     SheduleProvider.prototype.getJSON = function (url, callback) {

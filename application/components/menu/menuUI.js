@@ -41,11 +41,11 @@ var MenuUI = /** @class */ (function (_super) {
                         id: "menu_1",
                         value: "Расписание",
                         data: [
-                            // Кнопка сабменю "Мое расписание"
-                            {
-                                id: "menu_1_0",
-                                value: "Мое расписание"
-                            },
+                        // Кнопка сабменю "Мое расписание"
+                        // {
+                        //     id: "menu_1_0",
+                        //     value: "Мое расписание"
+                        // },
                         ],
                     },
                     {
@@ -76,6 +76,7 @@ var MenuUI = /** @class */ (function (_super) {
             id = id.slice(7);
             var eventBody;
             switch (menuPos) {
+                case "0":
                 case "1":
                     if (id.indexOf("_") != -1) {
                         eventBody = {
@@ -85,7 +86,7 @@ var MenuUI = /** @class */ (function (_super) {
                         };
                     }
                     else {
-                        if (id == "0") {
+                        if (menuPos == "0") {
                             eventBody = {
                                 context: "shedule",
                                 groupId: "0",
@@ -127,22 +128,31 @@ var MenuUI = /** @class */ (function (_super) {
          * добавляет каждого сотрудника, каждой группы в меню
          */
         groups.forEach(function (group) {
-            var groupui = {
-                id: "menu_1_" + group.GID,
-                open: false,
-                value: group.Name,
-                data: new Array(),
-            };
-            group.Employees.forEach(function (employee) {
-                var empui = {
-                    id: "menu_1_" + group.GID + "_" + employee.EID,
-                    value: employee.Lastname + " " +
-                        employee.Firstname.slice(0, 1) + " " +
-                        employee.Middlename.slice(0, 1),
+            if (group.GID == -1) { // id "Моего расписания"
+                var myScheduleUI = {
+                    id: "menu_0_" + group.Employees[0].EID,
+                    value: "Мое расписание",
                 };
-                groupui.data.push(empui);
-            });
-            menuSheduleItems.push(groupui);
+                menuSheduleItems.push(myScheduleUI);
+            }
+            else {
+                var groupui_1 = {
+                    id: "menu_1_" + group.GID,
+                    open: false,
+                    value: group.Name,
+                    data: new Array(),
+                };
+                group.Employees.forEach(function (employee) {
+                    var empui = {
+                        id: "menu_1_" + group.GID + "_" + employee.EID,
+                        value: employee.Lastname + " " +
+                            employee.Firstname.slice(0, 1) + " " +
+                            employee.Middlename.slice(0, 1),
+                    };
+                    groupui_1.data.push(empui);
+                });
+                menuSheduleItems.push(groupui_1);
+            }
         });
     };
     MenuUI.prototype.event = function (e) {

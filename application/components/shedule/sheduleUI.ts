@@ -83,6 +83,8 @@ export class SheduleUI extends UI {
         }
     }
     renderUI(timetable: EmployTimetable[]): void {
+        console.log(timetable);
+        
         if (timetable[0].employ.id == -1) {
             //@ts-ignore
             webix.message("ошибка загрузки данных");
@@ -103,7 +105,7 @@ export class SheduleUI extends UI {
                 }
             });
             
-            let isEdit = this.verefication(timetable[0].employ.id);
+            let isEdit = false;
             let options = {
                 weekday: 'short',
             };         
