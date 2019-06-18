@@ -110,8 +110,6 @@ export class SheduleProvider extends Provider {
           }
         });
         
-        console.log(data);
-        
         if (data.Employee == null) {
           let result = {"-1": [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))]}
           return result;
@@ -154,8 +152,6 @@ export class SheduleProvider extends Provider {
             return
           }
         });
-
-        console.log(data);
         
         if (data.Employee == null) {
           let result = {"-1": [new EmployTimetable(new Employ(-1, "", "", "", "", "", "", ""), new Timetable([new Day("", [new TimeRange("","")])]))]}
@@ -191,5 +187,4 @@ export class SheduleProvider extends Provider {
         };
         xhr.send();
     };
-
 }

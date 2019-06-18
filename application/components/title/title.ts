@@ -20,11 +20,11 @@ export class Title extends Component {
     handleEvent(e: Event): void {
         switch (e.type) {
             case Events.menuItemClick:
-                let id = e.body.groupId + "_" + e.body.employeeId;
+                let id = e.body.employeeId;
 
                 if (e.body.context == "shedule") {
-                    if (e.body.groupId != "" || id.indexOf("_") != -1) {
-                        if (e.body.groupId == "0") {
+                    if (e.body.groupId != "") {
+                        if (e.body.groupId == "-1") {
                             //@ts-ignore
                             $$("shedule table title").setHTML("<b>Мое расписание</b>");
                         }

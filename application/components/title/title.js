@@ -28,10 +28,10 @@ var Title = /** @class */ (function (_super) {
     Title.prototype.handleEvent = function (e) {
         switch (e.type) {
             case events_1.Events.menuItemClick:
-                var id = e.body.groupId + "_" + e.body.employeeId;
+                var id = e.body.employeeId;
                 if (e.body.context == "shedule") {
-                    if (e.body.groupId != "" || id.indexOf("_") != -1) {
-                        if (e.body.groupId == "0") {
+                    if (e.body.groupId != "") {
+                        if (e.body.groupId == "-1") {
                             //@ts-ignore
                             $$("shedule table title").setHTML("<b>Мое расписание</b>");
                         }

@@ -19,15 +19,42 @@ var TitleProvider = /** @class */ (function (_super) {
     function TitleProvider() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    TitleProvider.prototype.init = function () {
+        var url = "/metadata/title";
+        var data = [];
+        this.getJSON(url, function (err, gettingdata) {
+            if (JSON.parse(gettingdata).Status == "Succes") {
+                data = JSON.parse(gettingdata).Data;
+            }
+            else {
+                return;
+            }
+        });
+        this.data = data;
+    };
     TitleProvider.prototype.load = function (id) {
-        this.data = {
-            "1_0": "Коваценко Игорь Николаевич",
-            "1_1": "Федоров Федор Федорович",
-        };
-        return [this.data[id]];
+        if (this.data == null) {
+            this.init();
+        }
+        return this.data[id];
     };
     TitleProvider.prototype.update = function () {
     };
+    TitleProvider.prototype.getJSON = function (url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, false);
+        xhr.onload = function () {
+            var status = xhr.status;
+            if (status === 200) {
+                callback(null, xhr.response);
+            }
+            else {
+                callback(status, xhr.response);
+            }
+        };
+        xhr.send();
+    };
+    ;
     return TitleProvider;
 }(provider_1.Provider));
 exports.TitleProvider = TitleProvider;

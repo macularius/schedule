@@ -83,8 +83,6 @@ export class SheduleUI extends UI {
         }
     }
     renderUI(timetable: EmployTimetable[]): void {
-        console.log(timetable);
-        
         if (timetable[0].employ.id == -1) {
             //@ts-ignore
             webix.message("ошибка загрузки данных");

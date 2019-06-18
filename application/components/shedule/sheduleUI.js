@@ -89,7 +89,6 @@ var SheduleUI = /** @class */ (function (_super) {
         }
     };
     SheduleUI.prototype.renderUI = function (timetable) {
-        console.log(timetable);
         if (timetable[0].employ.id == -1) {
             //@ts-ignore
             webix.message("ошибка загрузки данных");

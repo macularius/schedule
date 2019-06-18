@@ -117,7 +117,6 @@ var SheduleProvider = /** @class */ (function (_super) {
                 return;
             }
         });
-        console.log(data);
         if (data.Employee == null) {
             var result_1 = { "-1": [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))] };
             return result_1;
@@ -157,7 +156,6 @@ var SheduleProvider = /** @class */ (function (_super) {
                 return;
             }
         });
-        console.log(data);
         if (data.Employee == null) {
             var result_2 = { "-1": [new employTimetable_1.EmployTimetable(new employ_1.Employ(-1, "", "", "", "", "", "", ""), new timetable_1.Timetable([new day_1.Day("", [new timeRange_1.TimeRange("", "")])]))] };
             return result_2;
